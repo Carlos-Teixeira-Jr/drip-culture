@@ -1,1 +1,59 @@
 @import "tailwindcss";
+
+@layer base{
+  body {
+    @apply mx-auto;
+  }
+
+  h6 {
+    @apply text-sm font-normal
+  }
+
+  /* 500 14px */
+  h5 {
+    @apply text-sm font-medium;
+  }
+
+  h4 {
+    @apply font-extrabold text-xl text-[#0E1422];
+  }
+
+  h3 {
+    @apply font-semibold text-base;
+  }
+
+  h2 {
+    @apply font-semibold text-[32px];
+  }
+
+  h1 {
+    @apply font-bold text-2xl;
+  }
+
+  /* 500 12px */
+  p {
+    @apply text-xs font-medium;
+  }
+
+  button {
+    @apply cursor-pointer w-fit text-white bg-[#0E1422] py-3 px-6 rounded-sm;
+  }
+
+  input {
+    @apply border border-[#E6E7E8] rounded-sm py-3 px-6 w-full;
+  }
+}
+
+@theme {
+  --color-primary: #4078FF;
+  --color-neutral: #0E1422;
+  --color-semantic: #306CEF;
+  --color-white: #FFFFFF;
+  --color-offWhite: #F6F6F6;
+  --color-lightBlue: #E9E9EB;
+  --color-borderColor: #E6E7E8;
+  --color-slateBlack: #474B57;
+  --color-slateGrey: #878A92;
+  --color-vividBlack: #5C5F6A;
+  --color-lightBtnBorder: #B6B7BC;
+}
