@@ -37,13 +37,11 @@ export function Home() {
   
   return (
     <div>
-      <Header/>
       <NewCollectionBanner/>
       <AdvantagesBanner/>
       <BestSellingProducts products={products}/>
       <BrowsingProductsBanner/>
       <OnOfferProducts products={products}/>
-      <Footer/>
     </div>
   )
 }

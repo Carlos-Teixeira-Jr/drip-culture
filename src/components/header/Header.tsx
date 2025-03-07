@@ -1,6 +1,7 @@
 import LogoImage from "../../assets/logos/logomark.png";
 import CartImage from "../../assets/icons/cart-icon.png";
 import UserImage from "../../assets/icons/user.png";
+import { Link } from "react-router-dom";
 
 export function Header() {
   return (
@@ -21,7 +22,9 @@ export function Header() {
         </div>
         <div className="flex gap-8">
           <img src={CartImage} alt="logo" className="w-[18px] h-[18px]" />
-          <img src={UserImage} alt="logo" className="w-[18px] h-[18px]" />
+          <Link to={"/login"}>
+            <img src={UserImage} alt="logo" className="w-[18px] h-[18px]" />
+          </Link>
         </div>
       </nav>
     </header>

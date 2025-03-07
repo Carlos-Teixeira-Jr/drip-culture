@@ -9,6 +9,7 @@
     @apply text-sm font-normal
   }
 
+  /* 500 14px */
   h5 {
     @apply text-sm font-medium;
   }
@@ -29,6 +30,7 @@
     @apply font-bold text-2xl;
   }
 
+  /* 500 12px */
   p {
     @apply text-xs font-medium;
   }
@@ -53,4 +55,5 @@
   --color-slateBlack: #474B57;
   --color-slateGrey: #878A92;
   --color-vividBlack: #5C5F6A;
+  --color-lightBtnBorder: #B6B7BC;
 }
