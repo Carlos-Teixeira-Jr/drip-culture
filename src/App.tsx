@@ -3,10 +3,12 @@ import { useLocation, useNavigate, matchRoutes, Routes, Route } from 'react-rout
 import './App.css'
 import { Home } from './pages/Home';
 import { LoginPage } from './pages/LoginPage';
+import { SignUpPage } from './pages/SignUpPage';
 
 const routes = [
   { path: "/" },
   { path: "/login" },
+  { path: "/signup" },
   { path: "page-not-found" },
 ];
 
@@ -33,6 +35,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<h1>404</h1>} />
         <Route path="/login" element={<LoginPage/>} />
+        <Route path="/signup" element={<SignUpPage/>} />
       </Routes>
     </>
   )

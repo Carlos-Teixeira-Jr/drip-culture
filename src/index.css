@@ -5,6 +5,7 @@
     @apply mx-auto;
   }
 
+  /* 400 14px */
   h6 {
     @apply text-sm font-normal
   }
