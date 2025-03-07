@@ -90,5 +90,29 @@
         "https://dummyjson.com/image/i/products/5/4.jpg"  
       ]
     }
+  ],
+  "charts": [
+    {
+      "id": 1,
+      "userEmail": "I0zTt@example.com",
+      "products": [
+        {
+          "id": 1,
+          "title": "Levi's - 541 Stretch Mid-Rise Relaxed Fit Tapered Leg Jeans",
+          "price": 68,
+          "quantity": 1,
+          "orderDate": "2023-05-01",
+          "image": "https://cdn.shopify.com/s/files/1/0532/6720/2223/files/levi-s-men-s-541-stretch-mid-rise-relaxed-fit-tapered-leg-jeans-husker-17__60522.jpg?v=1715271115"
+        },
+        {
+          "id": 2,
+          "title": "The North Face - Thermoball Eco Jacket",
+          "price": 130,
+          "quantity": 1,
+          "orderDate": "2023-05-01",
+          "image": "https://thenorthface.vtexassets.com/arquivos/ids/221655/jaqueta-masculina-thermoball-eco-preta-5GLLJK3-1.png?v=638488026307970000"
+        }
+      ]
+    }
   ]
 }

@@ -1,4 +1,4 @@
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import googleImage from "../../../assets/socialMediaIcons/google-icon.png";
 
@@ -24,7 +24,6 @@ export function SignUpBox({
     password: "",
     name: "",
   });
-  console.log("🚀 ~ signUpFormData:", signUpFormData)
 
   const [signUpFormDataErrors, setSignUpFormDataErrors] = useState({
     email: "",
@@ -33,8 +32,12 @@ export function SignUpBox({
   });
 
   const [hiddenPassword, setHiddenPassword] = useState("");
-  const [hiddenPasswordConfirmation, setHiddenPasswordConfirmation] =
-    useState("");
+
+  const [loading, setLoading] = useState(isLoading)
+
+  useEffect(() => {
+    onSignUpFormDataChange(signUpFormData);
+  }, [signUpFormData]);
 
   const inputs = [
     {

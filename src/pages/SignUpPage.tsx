@@ -4,21 +4,22 @@ import {
   SignUpFormData,
 } from "../components/auth/signupBox/SignupBox";
 import { validateEmail } from "../utils/validators/emailValidator/emailValidator";
-import { useSignIn, useUser } from "@clerk/clerk-react";
+import { useSignUp } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { validateName } from "../utils/validators/nameValidator/nameValidator";
+import { Toast } from "../components/toasts/toast";
+import { AuthBreadCrumb } from "../components/breadcrumbs/authBreadCrumb/AuthBreadCrumb";
 
 export function SignUpPage() {
   const navigate = useNavigate();
-  const { signIn, setActive } = useSignIn();
-  const { isSignedIn } = useUser();
+  const { signUp, isLoaded, setActive } = useSignUp();
 
   const [showToast, setShowToast] = useState({
     show: false,
     message: "",
     type: "",
   });
-  
+
   const [signUpFormData, setSignUpFormData] = useState<SignUpFormData>({
     email: "",
     password: "",
@@ -37,83 +38,89 @@ export function SignUpPage() {
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
 
-    setSignUpFormDataErrors({
+    let newSignUpFormDataErrors = {
+      name: "",
       email: "",
       password: "",
-      name: "",
-    });
+    };
 
     setLoading(true);
 
     if (!validateName(signUpFormData.name).isValid) {
-      setSignUpFormDataErrors({
-        ...signUpFormDataErrors,
-        name: validateName(signUpFormData.name).errorMsg,
-      });
+      newSignUpFormDataErrors.name = validateName(signUpFormData.name).errorMsg;
     }
     if (!validateEmail(signUpFormData.email).isValid) {
-      setSignUpFormDataErrors({
-        ...signUpFormDataErrors,
-        email: validateEmail(signUpFormData.email).errorMsg,
-      });
+      newSignUpFormDataErrors.email = validateEmail(
+        signUpFormData.email
+      ).errorMsg;
     }
     if (!signUpFormData.password) {
-      setSignUpFormDataErrors({
-        ...signUpFormDataErrors,
-        password: "Password is required",
-      });
+      newSignUpFormDataErrors.password = "Password is required";
     }
 
-    let input = "";
-    let message = "";
+    setSignUpFormDataErrors(newSignUpFormDataErrors);
 
     if (Object.values(signUpFormDataErrors).every((error) => error === "")) {
-      try {
-        const signInResource = await signIn?.create({
-          identifier: signUpFormData.email,
-          password: signUpFormData.password,
-        });
+      const { name, email, password } = signUpFormData;
+      console.log("🚀 ~ handleSubmit ~ email:", email);
+      console.log("🚀 ~ handleSubmit ~ signUpFormData:", signUpFormData);
+      if (isLoaded) {
+        try {
+          setLoading(true);
 
-        await setActive?.({ session: signInResource?.createdSessionId });
+          await signUp?.create({
+            firstName: name.split(" ")[0] || "",
+            lastName: name.split(" ")[1] || "",
+            emailAddress: email,
+            password,
+          });
 
-        setLoading(false);
-      } catch (error: any) {
-        input = error.errors[0].meta.paramName;
-        message = error.errors[0].longMessage;
+          setActive({ session: signUp?.createdSessionId });
 
-        if (input === "identifier") {
-          setSignUpFormDataErrors({ ...signUpFormDataErrors, email: message });
-        } else if (input === "password") {
-          setSignUpFormDataErrors({ ...signUpFormDataErrors, password: message });
+          await signUp.prepareVerification({
+            redirectUrl: "http://localhost:5173/verify",
+            strategy: "email_link",
+          });
+
+          setShowToast({
+            show: true,
+            message: "Check your email to verify your account",
+            type: "success",
+          });
+
+          setTimeout(() => {
+            navigate("/verify");
+          }, 3000);
+        } catch (error: any) {
+          setShowToast({
+            show: true,
+            message: "Error on signup!",
+            type: "error",
+          });
+          setLoading(false);
         }
-
-        setLoading(false);
-
-        setShowToast({
-          show: true,
-          message: message,
-          type: "error",
-        });
-      } finally {
-        setLoading(false);
       }
     } else {
-      setLoading(false);
       setShowToast({
         show: true,
-        message: "There's an empty field",
+        message: "Error on signup!",
         type: "error",
       });
     }
   };
 
   return (
-    <SignUpBox
-      onSignUpFormDataChange={(signUpFormData: SignUpFormData) =>
-        setSignUpFormData(signUpFormData)
-      }
-      onSubmit={handleSubmit}
-      isLoading={loading}
-    />
+    <>
+      <AuthBreadCrumb />
+      <SignUpBox
+        onSignUpFormDataChange={(signUpFormData: SignUpFormData) =>
+          setSignUpFormData(signUpFormData)
+        }
+        onSubmit={handleSubmit}
+        isLoading={loading}
+      />
+
+      <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
+    </>
   );
 }
