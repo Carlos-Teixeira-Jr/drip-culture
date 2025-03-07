@@ -2,8 +2,12 @@ import LogoImage from "../../assets/logos/logomark.png";
 import CartImage from "../../assets/icons/cart-icon.png";
 import UserImage from "../../assets/icons/user.png";
 import { Link } from "react-router-dom";
+import { useUser, useClerk } from "@clerk/clerk-react";
 
 export function Header() {
+  const { isSignedIn, user } = useUser();
+  const { signOut } = useClerk();
+
   return (
     <header className="flex flex-col justify-center items-center">
       <section className="h-10 bg-neutral text-white flex justify-center items-center gap-2 w-full">
@@ -16,15 +20,32 @@ export function Header() {
           <h4>Ecommerce</h4>
         </div>
         <div className="flex gap-8">
-          <h5 className="text-[#5C5F6A]">Home</h5>
-          <h5 className="text-[#5C5F6A]">Shop</h5>
-          <h5 className="text-[#5C5F6A]">About</h5>
+          <h5 className="text-[#5C5F6A]">
+            <a href="/">Home</a>
+          </h5>
+          <h5 className="text-[#5C5F6A]">
+            <a href="/listing">Shop</a>
+          </h5>
+          <h5 className="text-[#5C5F6A]">
+            <a href="/about-me">About Me</a>
+          </h5>
         </div>
-        <div className="flex gap-8">
+        <div className="flex gap-8 items-center">
           <img src={CartImage} alt="logo" className="w-[18px] h-[18px]" />
-          <Link to={"/login"}>
-            <img src={UserImage} alt="logo" className="w-[18px] h-[18px]" />
-          </Link>
+          {isSignedIn && user ? (
+            <Link to={"/my-account"}>
+              <div className="bg-offWhite rounded-full p-3.5 shrink-0">
+                <h5 className="text-blue-400">{`${
+                  (user?.firstName as string)[0].toUpperCase() +
+                  (user?.lastName as string)[0].toUpperCase()
+                }`}</h5>
+              </div>
+            </Link>
+          ) : (
+            <Link to={"/login"}>
+              <img src={UserImage} alt="logo" className="w-[18px] h-[18px]" />
+            </Link>
+          )}
         </div>
       </nav>
     </header>

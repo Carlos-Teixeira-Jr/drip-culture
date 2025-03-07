@@ -1,61 +1,72 @@
 import { FormEvent, useEffect, useState } from "react";
-import googleImage from "../../../assets/socialMediaIcons/google-icon.png";
 import { Link } from "react-router-dom";
+import googleImage from "../../../assets/socialMediaIcons/google-icon.png";
 
-export type AuthFormData = {
+export type SignUpFormData = {
   email: string;
   password: string;
+  name: string;
 };
 
-interface ILoginBox {
-  onAuthFormDataChange: (authFormData: AuthFormData) => void;
+interface ISignUpBox {
+  onSignUpFormDataChange: (signUpFormData: SignUpFormData) => void;
   onSubmit: (event: FormEvent) => void;
   isLoading: boolean;
 }
 
-export function LoginBox({
-  onAuthFormDataChange,
+export function SignUpBox({
+  onSignUpFormDataChange,
   onSubmit,
   isLoading,
-}: ILoginBox) {
-  const [authFormData, setAuthFormData] = useState({
+}: ISignUpBox) {
+  const [signUpFormData, setSignUpFormData] = useState({
     email: "",
     password: "",
+    name: "",
   });
 
-  const [authFormDataErrors, setAuthFormDataErrors] = useState({
+  const [signUpFormDataErrors, setSignUpFormDataErrors] = useState({
     email: "",
     password: "",
+    name: "",
   });
-
-  const [loading, setLoading] = useState(isLoading);
 
   const [hiddenPassword, setHiddenPassword] = useState("");
 
+  const [loading, setLoading] = useState(isLoading)
+
+  useEffect(() => {
+    onSignUpFormDataChange(signUpFormData);
+  }, [signUpFormData]);
+
   const inputs = [
+    {
+      id: 0,
+      name: "Name",
+      key: "name",
+      value: signUpFormData.name,
+    },
     {
       id: 1,
       name: "Email",
-      value: authFormData.email,
+      key: "email",
+      value: signUpFormData.email,
     },
     {
       id: 2,
       name: "Password",
-      value: authFormData.password,
+      key: "password",
+      value: signUpFormData.password,
     },
   ];
 
-  useEffect(() => {
-    onAuthFormDataChange(authFormData);
-  }, [authFormData]);
-
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const actualPassword =
-      e.target.value.length > authFormData.password.length
-        ? authFormData.password + e.target.value.slice(-1)
-        : authFormData.password.slice(0, -1);
+      e.target.value.length > signUpFormData.password.length
+        ? signUpFormData.password + e.target.value.slice(-1)
+        : signUpFormData.password.slice(0, -1);
 
-    setAuthFormData({ ...authFormData, password: actualPassword });
+    setSignUpFormData({ ...signUpFormData, password: actualPassword });
     setHiddenPassword("*".repeat(actualPassword.length));
   };
 
@@ -84,32 +95,26 @@ export function LoginBox({
                 if (input.name === "Password") {
                   handlePasswordChange(e);
                 } else {
-                  setAuthFormData({
-                    ...authFormData,
-                    [input.name]: e.target.value,
+                  setSignUpFormData({
+                    ...signUpFormData,
+                    [input.key]: e.target.value,
                   });
                 }
-              }}
-              onBlur={(e) => {
-                setAuthFormDataErrors({
-                  ...authFormDataErrors,
-                  [input.name]:
-                    e.target.value.length < 1
-                      ? "Please enter a valid email"
-                      : "",
-                });
               }}
             />
           </>
         ))}
       </div>
-      <p className="text-neutral ml-auto cursor-pointer">Forgot Password?</p>
+      <p className="text-neutral ml-auto cursor-pointer">
+        By creating an account you agree with our Terms of Service, Privacy
+        Policy.
+      </p>
       <button className="w-full" type="submit">
-        Login
+        Create account
       </button>
-      <Link to={"/signup"} className="flex justify-center items-center">
-        <h6 className="text-vividBlack">
-          Don't have an account? Sign up
+      <Link to={"/login"} className="flex justify-center items-center">
+        <h6 className="text-vividBlack mx-auto">
+          Already have an account? Log in
         </h6>
       </Link>
     </form>

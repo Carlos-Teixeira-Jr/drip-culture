@@ -3,11 +3,18 @@ import { useLocation, useNavigate, matchRoutes, Routes, Route } from 'react-rout
 import './App.css'
 import { Home } from './pages/Home';
 import { LoginPage } from './pages/LoginPage';
+import { SignUpPage } from './pages/SignUpPage';
+import { VerifyEmail } from './pages/verifyEmail/VerifyEmail';
+import { PrivateRoute } from './routes/PrivateRoute';
+import { MyAccountPage } from './pages/MyAccountPage';
 
 const routes = [
   { path: "/" },
   { path: "/login" },
+  { path: "/signup" },
   { path: "page-not-found" },
+  { path: "/verify" },
+  {  path: "/my-account" },
 ];
 
 function RouteValidator() {
@@ -33,6 +40,16 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="*" element={<h1>404</h1>} />
         <Route path="/login" element={<LoginPage/>} />
+        <Route path="/signup" element={<SignUpPage/>} />
+        <Route path="/verify" element={<VerifyEmail />} />
+        <Route
+          path="/my-account"
+          element={
+            <PrivateRoute>
+              <MyAccountPage />
+            </PrivateRoute>
+          }
+        />
       </Routes>
     </>
   )
