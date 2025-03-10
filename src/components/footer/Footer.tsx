@@ -5,8 +5,20 @@ import youtubeIcon from "../../assets/socialMediaIcons/youtube-icon.png";
 import masterCardIcon from "../../assets/creditCardIcons/mastercard-icon.png";
 import amexIcon from "../../assets/creditCardIcons/amex-icon.png";
 import visaIcon from "../../assets/creditCardIcons/visa-icon.png";
+import { useState } from "react";
+import { validateEmail } from "../../utils/validators/emailValidator/emailValidator";
+import { Toast } from "../toasts/toast";
+import { Link } from "react-router-dom";
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [emailError, setEmailError] = useState("");
+  const [showToast, setShowToast] = useState({
+    show: false,
+    message: "",
+    type: "",
+  });
+
   const socialMediaIcons = [
     {
       name: "github",
@@ -40,6 +52,29 @@ export function Footer() {
     },
   ];
 
+  const handleSubscribe = () => {
+    setEmailError("");
+
+    if (!validateEmail(email).isValid) {
+      setEmailError(validateEmail(email).errorMsg);
+      return;
+    } else {
+      try {
+        setShowToast({
+          show: true,
+          message: "Subscribed successfully",
+          type: "success",
+        });
+      } catch (error) {
+        setShowToast({
+          show: true,
+          message: "Error subscribing",
+          type: "error",
+        });
+      }
+    }
+  };
+
   return (
     <footer>
       <section className="w-full bg-offWhite px-[11rem] flex justify-between items-center gap-[16rem]">
@@ -48,9 +83,16 @@ export function Footer() {
           <h6>We love to surprise our subscribers with occasional gifts.</h6>
         </div>
         <div className="flex gap-4 w-[28rem]">
-          <input placeholder="Your email address" />
-          <button>Subscribe</button>
+          <input
+            placeholder="Your email address"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          {emailError && <p className="text-error">{emailError}</p>}
+          <button onClick={handleSubscribe}>Subscribe</button>
         </div>
+        {showToast && (
+          <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
+        )}
       </section>
 
       <section className="flex justify-between px-[11rem] pt-20">
@@ -74,16 +116,18 @@ export function Footer() {
           <div className="flex flex-col gap-7">
             <h5 className="text-slateGrey">SUPPORT</h5>
             <ul className="flex flex-col gap-4 text-vividBlack">
-              <li>Home</li>
-              <li>Shop</li>
-              <li>About</li>
+              <li>FAQ</li>
+              <li>Terms of use</li>
+              <li>Privacy Policy</li>
             </ul>
           </div>
 
           <div className="flex flex-col gap-7">
             <h5 className="text-slateGrey">COMPANY</h5>
             <ul className="flex flex-col gap-4 text-vividBlack">
-              <li>About us</li>
+              <Link to={"/about-me"}>
+                <li>About me</li>
+              </Link>
               <li>Contact</li>
               <li>Careers</li>
             </ul>

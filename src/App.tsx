@@ -7,6 +7,7 @@ import { SignUpPage } from './pages/SignUpPage';
 import { VerifyEmail } from './pages/verifyEmail/VerifyEmail';
 import { PrivateRoute } from './routes/PrivateRoute';
 import { MyAccountPage } from './pages/MyAccountPage';
+import { AboutMePage } from './pages/AboutMePage';
 
 const routes = [
   { path: "/" },
@@ -14,7 +15,8 @@ const routes = [
   { path: "/signup" },
   { path: "page-not-found" },
   { path: "/verify" },
-  {  path: "/my-account" },
+  { path: "/my-account" },
+  { path: "/about-me" },
 ];
 
 function RouteValidator() {
@@ -42,6 +44,7 @@ function App() {
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/signup" element={<SignUpPage/>} />
         <Route path="/verify" element={<VerifyEmail />} />
+        <Route path='/about-me' element={<AboutMePage />} />
         <Route
           path="/my-account"
           element={

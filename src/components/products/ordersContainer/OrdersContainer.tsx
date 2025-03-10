@@ -20,7 +20,7 @@ export function OrdersContainer() {
   
           if (response.ok) {
             const data = await response.json();
-            setChart(data[0]);
+            // setChart(data[0]);
           } else {
             console.error("Error fetching data:", response.statusText);
           }

@@ -5,7 +5,6 @@ interface IChartProductsContainer {
 }
 
 export function ChartProductsContainer({ chart }: IChartProductsContainer) {
-  console.log("🚀 ~ ChartProductsContainer ~ chart:", chart);
   return (
     <main>
       <h3 className="pb-14">Orders</h3>
