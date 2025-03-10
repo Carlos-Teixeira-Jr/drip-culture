@@ -18,6 +18,7 @@ export function Footer() {
     message: "",
     type: "",
   });
+  console.log("🚀 ~ Footer ~ showToast:", showToast);
 
   const socialMediaIcons = [
     {
@@ -52,18 +53,44 @@ export function Footer() {
     },
   ];
 
-  const handleSubscribe = () => {
+  const handleSubscribe = async () => {
     setEmailError("");
 
     if (!validateEmail(email).isValid) {
       setEmailError(validateEmail(email).errorMsg);
-      return;
+      setShowToast({
+        show: true,
+        message: validateEmail(email).errorMsg,
+        type: "error",
+      });
     } else {
       try {
         setShowToast({
           show: true,
           message: "Subscribed successfully",
           type: "success",
+        });
+        const response = await fetch("http://localhost:3001/newsletter", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email }),
+        });
+        if (response.ok)
+          setShowToast({
+            show: true,
+            message: "Subscribed successfully",
+            type: "success",
+          });
+        else
+          setShowToast({
+            show: true,
+            message: "Error subscribing",
+            type: "error",
+          });
+        response.json().then((data) => {
+          console.log("newsletter list:", data);
         });
       } catch (error) {
         setShowToast({
@@ -83,11 +110,14 @@ export function Footer() {
           <h6>We love to surprise our subscribers with occasional gifts.</h6>
         </div>
         <div className="flex gap-4 w-[28rem]">
-          <input
-            placeholder="Your email address"
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          {emailError && <p className="text-error">{emailError}</p>}
+          <div>
+            <input
+              placeholder="Your email address"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {emailError && <p className="text-red-500">{emailError}</p>}
+          </div>
+
           <button onClick={handleSubscribe}>Subscribe</button>
         </div>
         {showToast && (
@@ -101,7 +131,9 @@ export function Footer() {
             <div className="border border-borderColor rounded-md px-3 py-2">
               <img src={Logo} alt="logo" />
             </div>
-            <div className="font-extrabold text-neutral text-xl">Ecommerce</div>
+            <div className="font-extrabold text-neutral text-xl">
+              DripCulture
+            </div>
           </div>
           <p className="text-neutral">
             DevCut is a YouTube channel for practical project-based learning.
@@ -128,17 +160,27 @@ export function Footer() {
               <Link to={"/about-me"}>
                 <li>About me</li>
               </Link>
-              <li>Contact</li>
-              <li>Careers</li>
+              <Link to={"/page-not-found"}>
+                <li>Contact</li>
+              </Link>
+              <Link to={"/page-not-found"}>
+                <li>Carreers</li>
+              </Link>
             </ul>
           </div>
 
           <div className="flex flex-col gap-7">
             <h5 className="text-slateGrey">SHOP</h5>
             <ul className="flex flex-col gap-4 text-vividBlack">
-              <li>My Account</li>
-              <li>Checkout</li>
-              <li>Cart</li>
+              <Link to={"/my-account"}>
+                <li>My Account</li>
+              </Link>
+              <Link to={"/checkout"}>
+                <li>Checkout</li>
+              </Link>
+              <Link to={"/cart"}>
+                <li>Cart</li>
+              </Link>
             </ul>
           </div>
         </div>

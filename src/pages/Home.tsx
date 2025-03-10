@@ -1,15 +1,14 @@
-import { useEffect, useState } from "react"
-import { AdvantagesBanner } from "../components/banners/advantagesBanner/AdvantagesBanner"
-import { BrowsingProductsBanner } from "../components/banners/browsingProductsBanner/BrowsingProductsBanner"
-import { NewCollectionBanner } from "../components/banners/newCollectionBanner/NewCollectionBanner"
-import { Header } from "../components/header/Header"
-import { BestSellingProducts } from "../components/products/bestSellingProducts/BestSellingProducts"
-import { OnOfferProducts } from "../components/products/onOfferProducts/OnOfferProducts"
-import { IProduct } from "../interfaces/product.interface"
-import { Footer } from "../components/footer/Footer"
+import { useEffect, useState } from "react";
+import { AdvantagesBanner } from "../components/banners/advantagesBanner/AdvantagesBanner";
+import { BrowsingProductsBanner } from "../components/banners/browsingProductsBanner/BrowsingProductsBanner";
+import { NewCollectionBanner } from "../components/banners/newCollectionBanner/NewCollectionBanner";
+import { BestSellingProducts } from "../components/products/bestSellingProducts/BestSellingProducts";
+import { OnOfferProducts } from "../components/products/onOfferProducts/OnOfferProducts";
+import { IProduct } from "../interfaces/product.interface";
 
 export function Home() {
-  const [products, setProducts] = useState<IProduct[]>([]);
+  const [bestSellingProduct, setBestSellingProducts] = useState<IProduct[]>([]);
+  const [productsOnOffer, setProductsOnOffer] = useState<IProduct[]>([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -22,9 +21,23 @@ export function Home() {
         });
 
         if (response.ok) {
-          const data = await response.json();
-          const first4Products = data.slice(0, 4);
-          setProducts(first4Products);
+          const data: IProduct[] = await response.json();
+
+          const productsOnOffer = data
+            .map((product) => ({
+              ...product,
+              priceDifference:
+                product.price * (product.discountPercentage / 100),
+            }))
+            .sort((a, b) => b.priceDifference - a.priceDifference)
+            .slice(0, 4);
+            
+            setProductsOnOffer(productsOnOffer);
+
+          const bestSellingProducts = data
+            .sort((a, b) => b.rating - a.rating)
+            .slice(0, 4);
+          setBestSellingProducts(bestSellingProducts);
         } else {
           console.error("Error fetching data:", response.statusText);
         }
@@ -34,14 +47,14 @@ export function Home() {
     };
     fetchData();
   }, []);
-  
+
   return (
     <div>
-      <NewCollectionBanner/>
-      <AdvantagesBanner/>
-      <BestSellingProducts products={products}/>
-      <BrowsingProductsBanner/>
-      <OnOfferProducts products={products}/>
+      <NewCollectionBanner />
+      <AdvantagesBanner />
+      <BestSellingProducts products={bestSellingProduct} />
+      <BrowsingProductsBanner />
+      <OnOfferProducts products={productsOnOffer} />
     </div>
-  )
+  );
 }

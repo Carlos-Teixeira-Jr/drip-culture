@@ -4,7 +4,7 @@ export function AuthBreadCrumb() {
   const { pathname } = useLocation();
 
   let breadCrumb = pathname.split("/");
-  breadCrumb.unshift("Ecommerce");
+  breadCrumb.unshift("DripCulture");
 
   return (
     <section className="px-40 py-8.5 bg-offWhite flex flex-col gap-2">

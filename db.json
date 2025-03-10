@@ -15,7 +15,7 @@
         "https://cdn.shopify.com/s/files/1/0532/6720/2223/files/levi-s-men-s-541-stretch-mid-rise-relaxed-fit-tapered-leg-jeans-husker-17__60522.jpg?v=1715271115",
         "https://dummyjson.com/image/i/products/1/2.png",
         "https://dummyjson.com/image/i/products/1/3.png",
-        "https://dummyjson.com/image/i/products/1/4.jpg"  
+        "https://dummyjson.com/image/i/products/1/4.jpg"
       ]
     },
     {
@@ -33,7 +33,7 @@
         "https://thenorthface.vtexassets.com/arquivos/ids/221655/jaqueta-masculina-thermoball-eco-preta-5GLLJK3-1.png?v=638488026307970000",
         "https://dummyjson.com/image/i/products/2/2.png",
         "https://dummyjson.com/image/i/products/2/3.png",
-        "https://dummyjson.com/image/i/products/2/4.jpg"  
+        "https://dummyjson.com/image/i/products/2/4.jpg"
       ]
     },
     {
@@ -51,7 +51,7 @@
         "https://s.lojakings.com.br/product/2024/03/fj4146-103-lado2.jpg",
         "https://dummyjson.com/image/i/products/3/2.png",
         "https://dummyjson.com/image/i/products/3/3.png",
-        "https://dummyjson.com/image/i/products/3/4.jpg"  
+        "https://dummyjson.com/image/i/products/3/4.jpg"
       ]
     },
     {
@@ -69,7 +69,7 @@
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYn5Xos-hwaG5nZ2Rkg-mPFd8CoaF5ZeoGoQ&s",
         "https://dummyjson.com/image/i/products/4/2.png",
         "https://dummyjson.com/image/i/products/4/3.png",
-        "https://dummyjson.com/image/i/products/4/4.jpg"  
+        "https://dummyjson.com/image/i/products/4/4.jpg"
       ]
     },
     {
@@ -77,17 +77,17 @@
       "title": "Puma - Carina Sneakers",
       "description": "The Puma Carina Sneaker is a stylish and comfortable choice for everyday wear. It features a sleek design and a comfortable fit that makes it perfect for running errands or working out.",
       "price": 70,
-      "discountPercentage": 12,
-      "rating": 4.3,
+      "discountPercentage": 10,
+      "rating": 4.9,
       "stock": 110,
       "brand": "Puma",
       "category": "sneakers",
       "thumbnail": "https://dummyjson.com/image/i/products/5/thumbnail.jpg",
       "images": [
-        "https://dummyjson.com/image/i/products/5/1.jpg",
+        "https://static.netshoes.com.br/produtos/tenis-puma-carina-bdp-feminino/91/NWG-1371-C91/NWG-1371-C91_zoom1.jpg?ts=1726675377&ims=1088x",
         "https://dummyjson.com/image/i/products/5/2.png",
         "https://dummyjson.com/image/i/products/5/3.png",
-        "https://dummyjson.com/image/i/products/5/4.jpg"  
+        "https://dummyjson.com/image/i/products/5/4.jpg"
       ]
     }
   ],
@@ -113,6 +113,12 @@
           "image": "https://thenorthface.vtexassets.com/arquivos/ids/221655/jaqueta-masculina-thermoball-eco-preta-5GLLJK3-1.png?v=638488026307970000"
         }
       ]
+    }
+  ],
+  "newsletter": [
+    {
+      "id": "2489",
+      "email": "wwww@sss.com"
     }
   ]
 }
