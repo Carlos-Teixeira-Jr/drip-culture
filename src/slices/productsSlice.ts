@@ -106,7 +106,9 @@ const productsSlice = createSlice({
       .addCase(fetchPriceEndPoints.fulfilled, (state, action) => {
         state.priceEndPoints = action.payload;
 
-        state.price = action.payload.min;
+        if (state.price === initialState.price) {
+          state.price = action.payload.max;
+        }
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
         state.categories = action.payload;

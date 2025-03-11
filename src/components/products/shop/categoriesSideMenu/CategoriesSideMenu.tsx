@@ -12,7 +12,6 @@ export function CategoriesSideMenu() {
   const dispatch = useDispatch<AppDispatch>();
 
   const { categories, price, priceEndPoints, filters } = useSelector((state: RootState) => state.products);
-  console.log("🚀 ~ CategoriesSideMenu ~ price:", price)
 
   const [position, setPosition] = useState(0);
   const sliderRef = useRef<HTMLInputElement>(null);

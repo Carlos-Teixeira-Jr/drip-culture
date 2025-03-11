@@ -5,7 +5,7 @@ import { Pagination } from "../../pagination/Pagination";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../../store";
-import { fetchProducts, setFilters } from "../../../../slices/productsSlice";
+import { fetchPriceEndPoints, fetchProducts, setFilters } from "../../../../slices/productsSlice";
 
 interface IProductsListing {
   onPageChange: (page: number) => void;
@@ -31,6 +31,7 @@ export function ProductsListing({
 
   useEffect(() => {
     dispatch(fetchProducts());
+    dispatch(fetchPriceEndPoints());
   },[dispatch, filters, price]);
 
   return (
