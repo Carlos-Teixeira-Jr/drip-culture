@@ -11,6 +11,7 @@ export interface ProductsState {
   priceEndPoints: { min: number; max: number };
   price: number;
   loading: boolean;
+  totalPages: number;
 }
 
 const initialState: ProductsState = {
@@ -21,7 +22,8 @@ const initialState: ProductsState = {
   totalProducts: 0,
   priceEndPoints: { min: 0, max: 0 },
   price: 0,
-  loading: false,
+  loading: true,
+  totalPages: 0,
 };
 
 export const fetchProducts = createAsyncThunk(
@@ -33,9 +35,20 @@ export const fetchProducts = createAsyncThunk(
     const filterParams =
       filters.length > 0 ? `&category=${filters.join(",")}` : "";
     const response = await fetch(
-      `http://localhost:3001/products?${filterParams}&price_lte=${price}&_page=${page}&_limit=9`
+      `http://localhost:3001/products?${filterParams}&price_lte=${price}&_page=${page}&_per_page=9`
     );
-    return response.json();
+
+    const fetcheData = await response.json();
+
+    const products = fetcheData.data;
+    const totalPages = fetcheData.pages;
+    const totalProducts = fetcheData.items;
+
+    return {
+      products,
+      totalPages,
+      totalProducts,
+    };
   }
 );
 
@@ -74,6 +87,25 @@ export const fetchPriceEndPoints = createAsyncThunk(
   }
 );
 
+export const fetchTotalProducts = createAsyncThunk(
+  "products/fetchTotalProducts",
+  async (_, { getState }) => {
+    const state = getState() as { products: ProductsState };
+
+    const filterParams =
+      state.products.filters.length > 0
+        ? `&category=${state.products.filters.join(",")}`
+        : "";
+
+    const response = await fetch(
+      `http://localhost:3001/products?${filterParams}`
+    );
+    const allProducts: IProduct[] = await response.json();
+
+    return allProducts.length;
+  }
+);
+
 export const fetchCategories = createAsyncThunk(
   "products/fetchCategories",
   async () => {
@@ -95,13 +127,21 @@ const productsSlice = createSlice({
     setPrice: (state, action: PayloadAction<number>) => {
       state.price = action.payload;
     },
+    setTotalProducts: (state, action: PayloadAction<number>) => {
+      state.totalProducts = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
+      .addCase(fetchProducts.pending, (state) => {
+        state.loading = true;
+      })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        const products: IProduct[] = action.payload;
+        const products: IProduct[] = action.payload.products;
         state.products = products;
-        state.totalProducts = products.length;
+        state.totalProducts = action.payload.totalProducts;
+        state.totalPages = action.payload.totalPages;
+        state.loading = false;
       })
       .addCase(fetchPriceEndPoints.fulfilled, (state, action) => {
         state.priceEndPoints = action.payload;
@@ -112,6 +152,9 @@ const productsSlice = createSlice({
       })
       .addCase(fetchCategories.fulfilled, (state, action) => {
         state.categories = action.payload;
+      })
+      .addCase(fetchTotalProducts.fulfilled, (state, action) => {
+        state.totalProducts = action.payload;
       });
   },
 });

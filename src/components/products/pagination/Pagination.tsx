@@ -1,28 +1,40 @@
+import { useDispatch, useSelector } from "react-redux";
 import ArrowLeftIcon from "../../../assets/icons/arrow-left-icon.png";
 import ArrowRightIcon from "../../../assets/icons/arrow-right-icon.png";
+import { AppDispatch, RootState } from "../../../../store";
+import { fetchProducts, setPage  } from "../../../slices/productsSlice";
+import { useEffect } from "react";
 
-interface IPagination {
-  page: number;
-  totalPages: number;
-  onPageChange: (page: number) => void;
-}
+export function Pagination() {
 
-export function Pagination({ page, totalPages, onPageChange }: IPagination) {
+  const dispatch = useDispatch<AppDispatch>()
+
+  const { totalPages, page } = useSelector((state: RootState) => state.products);
 
   const handleNextPage = () => {
     if (page < totalPages) {
       const newPage = page + 1
-      onPageChange(newPage);
-      return newPage;
+      dispatch(setPage(newPage));
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   };
 
   const handlePreviousPage = () => {
     if (page > 1) {
-      onPageChange(page - 1);
-      return page - 1;
+      dispatch(setPage(page - 1));
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
     }
   }
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  },[dispatch, page])
 
   return (
     <div className="flex border border-borderColor rounded-sm p-2 gap-2 w-fit justify-between items-center">
@@ -33,9 +45,10 @@ export function Pagination({ page, totalPages, onPageChange }: IPagination) {
       <div className="bg-offWhite rounded-sm p-3 w-10 flex justify-center cursor-pointer">
         <p>{page}</p>
       </div>
-      <div className={`p-3 ${page < totalPages ? "opacity-25" : "cursor-pointer"}`} onClick={handleNextPage}>
+      <div className={`p-3 ${page >= totalPages ? "opacity-25" : "cursor-pointer"}`} onClick={handleNextPage}>
         <img src={ArrowRightIcon} alt="" className="w-6 h-6" />
       </div>
     </div>
   );
 }
+

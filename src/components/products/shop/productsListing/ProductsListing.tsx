@@ -5,24 +5,12 @@ import { Pagination } from "../../pagination/Pagination";
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../../store";
-import { fetchPriceEndPoints, fetchProducts, setFilters } from "../../../../slices/productsSlice";
+import { fetchPriceEndPoints, fetchProducts, fetchTotalProducts, setFilters } from "../../../../slices/productsSlice";
 
-interface IProductsListing {
-  onPageChange: (page: number) => void;
-  page: number;
-}
-
-export function ProductsListing({
-  onPageChange,
-  page,
-}: IProductsListing) {
+export function ProductsListing() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const [totalProductsOnPage, setTotalProductsOnPage] = useState(page * 9);
-
-  const { products, totalProducts, filters, price } = useSelector((state: RootState) => state.products);
-
-  const [totalPages, setTotalPages] = useState(totalProducts > 9 ? Math.ceil(Number(totalProducts) / 9) : 1);
+  const { products, totalProducts, filters, price, page } = useSelector((state: RootState) => state.products);
 
   const handleCloseFilters = (filter: string) => {
     const updatedFilters = filters.filter((f) => f !== filter);
@@ -32,6 +20,7 @@ export function ProductsListing({
   useEffect(() => {
     dispatch(fetchProducts());
     dispatch(fetchPriceEndPoints());
+    dispatch(fetchTotalProducts());
   },[dispatch, filters, price]);
 
   return (
@@ -51,7 +40,7 @@ export function ProductsListing({
               </div>
             ))}
           </div>
-          <p className="text-vividBlack py-5.5">Showing {page}-{totalProductsOnPage} of {totalProducts} results.</p>
+          <p className="text-vividBlack py-5.5">Showing {page}-{products.length} of {totalProducts} results.</p>
         </div>
         <div className="grid grid-cols-3 gap-6">
           {products.map((product: IProduct) => (
@@ -79,7 +68,7 @@ export function ProductsListing({
         </div>
       </div>
 
-      <Pagination page={page} totalPages={totalPages} onPageChange={(page: number) => onPageChange(page)}/>
+      <Pagination/>
     </section>
   );
 }

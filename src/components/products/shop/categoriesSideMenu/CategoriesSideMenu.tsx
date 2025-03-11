@@ -14,6 +14,7 @@ export function CategoriesSideMenu() {
   const { categories, price, priceEndPoints, filters } = useSelector((state: RootState) => state.products);
 
   const [position, setPosition] = useState(0);
+  const [loading, setIsLoading] = useState(true);
   const sliderRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
@@ -48,6 +49,7 @@ export function CategoriesSideMenu() {
     dispatch(fetchProducts());
     dispatch(fetchCategories());
     dispatch(fetchPriceEndPoints());
+    setIsLoading(false);
   },[dispatch, filters])
 
   return (
