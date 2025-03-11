@@ -44,7 +44,7 @@ export function ProductsListing() {
         </div>
         <div className="grid grid-cols-3 gap-6">
           {products.map((product: IProduct) => (
-            <Link to={`/shop/${product.id}`} key={product.id}>
+            <Link to={`/product/${product.id}`} key={product.id}>
               <div
                 className="flex flex-col gap-5 items-center w-64.5 h-[443px] cursor-pointer"
               >

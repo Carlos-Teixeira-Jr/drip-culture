@@ -11,6 +11,11 @@
       "brand": "Levi's",
       "category": "men's jeans",
       "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "images": [
         "https://cdn.shopify.com/s/files/1/0532/6720/2223/files/levi-s-men-s-541-stretch-mid-rise-relaxed-fit-tapered-leg-jeans-husker-17__60522.jpg?v=1715271115",
         "https://dummyjson.com/image/i/products/1/2.png",
@@ -28,6 +33,11 @@
       "stock": 100,
       "brand": "The North Face",
       "category": "jackets",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
       "images": [
         "https://thenorthface.vtexassets.com/arquivos/ids/221655/jaqueta-masculina-thermoball-eco-preta-5GLLJK3-1.png?v=638488026307970000",
@@ -46,6 +56,11 @@
       "stock": 120,
       "brand": "Nike",
       "category": "sneakers",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
       "images": [
         "https://s.lojakings.com.br/product/2024/03/fj4146-103-lado2.jpg",
@@ -64,6 +79,11 @@
       "stock": 80,
       "brand": "Ray-Ban",
       "category": "sunglasses",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
       "images": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSYn5Xos-hwaG5nZ2Rkg-mPFd8CoaF5ZeoGoQ&s",
@@ -82,6 +102,11 @@
       "stock": 110,
       "brand": "Puma",
       "category": "sneakers",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/5/thumbnail.jpg",
       "images": [
         "https://static.netshoes.com.br/produtos/tenis-puma-carina-bdp-feminino/91/NWG-1371-C91/NWG-1371-C91_zoom1.jpg?ts=1726675377&ims=1088x",
@@ -100,6 +125,11 @@
       "stock": 90,
       "brand": "Vans",
       "category": "sneakers",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/6/thumbnail.webp",
       "images": [
         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdGiEdT7ywG--b2BbposUxX6IDETcja16cHA&s",
@@ -118,6 +148,11 @@
       "stock": 85,
       "brand": "Adidas",
       "category": "sneakers",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/7/thumbnail.jpg",
       "images": [
         "https://static.netshoes.com.br/produtos/tenis-adidas-courtblock/78/FB9-3749-078/FB9-3749-078_zoom1.jpg?ts=1727112409&ims=1088x",
@@ -136,6 +171,11 @@
       "stock": 95,
       "brand": "New Balance",
       "category": "sneakers",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/8/thumbnail.jpg",
       "images": [
         "https://static.netshoes.com.br/produtos/tenis-new-balance-574-v2-unissex/04/39U-5016-004/39U-5016-004_zoom1.jpg?ts=1721669460&ims=1088x",
@@ -154,6 +194,11 @@
       "stock": 80,
       "brand": "Nike",
       "category": "sneakers",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/9/thumbnail.jpg",
       "images": [
         "http://imgnike-a.akamaihd.net/360x360/0166185CA1.jpg",
@@ -172,6 +217,11 @@
       "stock": 100,
       "brand": "Oakley",
       "category": "sunglasses",
+      "colors": [
+        "black",
+        "white",
+        "blue"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/10/thumbnail.jpg",
       "images": [
         "https://images.tcdn.com.br/img/img_prod/678895/90_oculos_de_sol_oakley_frogskins_matte_brown_tortoise_prizm_tungsten_30598_4_90460591c98ec085d61b23d15b266570.jpg",

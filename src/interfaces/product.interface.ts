@@ -9,4 +9,5 @@ export interface IProduct {
   brand: string;
   category: string;
   images: string[];
+  colors: string[];
 }

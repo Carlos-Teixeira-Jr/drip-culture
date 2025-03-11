@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 type Tech = {
   id: number;
@@ -145,7 +145,7 @@ export function TechStack() {
         {techs.map((tech) => (
           <div
             key={tech.id}
-            className="flex flex-col items-center justify-between h-30"
+            className="flex flex-col items-center justify-between h-30 cursor-pointer"
             onClick={() => handleSelectTech(tech)}
           >
             <img

@@ -28,6 +28,7 @@
     @apply font-semibold text-[32px];
   }
 
+  /* 700 24px */
   h1 {
     @apply font-bold text-2xl;
   }

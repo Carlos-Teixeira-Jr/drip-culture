@@ -34,7 +34,7 @@ export function Header() {
             <a href="/">Home</a>
           </h5>
           <h5 className="text-[#5C5F6A]">
-            <a href="/listing">Shop</a>
+            <a href="/shop">Shop</a>
           </h5>
           <h5 className="text-[#5C5F6A]">
             <a href="/about-me">About Me</a>
