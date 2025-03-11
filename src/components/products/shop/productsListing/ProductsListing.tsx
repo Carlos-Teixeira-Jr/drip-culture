@@ -3,32 +3,35 @@ import CloseIcon from "../../../../assets/icons/close.png";
 import { IProduct } from "../../../../interfaces/product.interface";
 import { Pagination } from "../../pagination/Pagination";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../../../store";
+import { fetchProducts, setFilters } from "../../../../slices/productsSlice";
 
 interface IProductsListing {
-  filtersProp: string[];
-  onCloseFilter: (filters: string[]) => void;
-  products: IProduct[];
   onPageChange: (page: number) => void;
   page: number;
-  totalProducts: number
 }
 
 export function ProductsListing({
-  filtersProp,
-  onCloseFilter,
-  products,
   onPageChange,
   page,
-  totalProducts
 }: IProductsListing) {
+  const dispatch = useDispatch<AppDispatch>();
 
   const [totalProductsOnPage, setTotalProductsOnPage] = useState(page * 9);
+
+  const { products, totalProducts, filters, price } = useSelector((state: RootState) => state.products);
+
   const [totalPages, setTotalPages] = useState(totalProducts > 9 ? Math.ceil(Number(totalProducts) / 9) : 1);
 
   const handleCloseFilters = (filter: string) => {
-    const updatedFilters = filtersProp.filter((f) => f !== filter);
-    onCloseFilter(updatedFilters);
+    const updatedFilters = filters.filter((f) => f !== filter);
+    dispatch(setFilters(updatedFilters));
   };
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+  },[dispatch, filters, price]);
 
   return (
     <section className="flex flex-col justify-center items-center pb-32">
@@ -36,7 +39,7 @@ export function ProductsListing({
         <div className="flex flex-col gap-3">
           <h5>Applied Filters:</h5>
           <div className="flex gap-3">
-            {filtersProp.map((filter) => (
+            {filters.map((filter) => (
               <div
                 key={filter}
                 className="flex gap-2 px-4 py-0.5 rounded-full border border-borderColor cursor-pointer"

@@ -1,32 +1,19 @@
 import { useEffect, useRef, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../../../store";
+import { fetchCategories, fetchPriceEndPoints, fetchProducts, setFilters, setPrice } from "../../../../slices/productsSlice";
 
 export type Category = {
   id: string;
   name: string;
 };
 
-interface ICategoriesSideMenu {
-  categories: Category[];
-  onFiltersChange: (filters: string[]) => void;
-  selectedFilters: string[];
-  onPriceChange: (price: number) => void;
-  priceEndPoints: {
-    min: number;
-    max: number;
-  },
-  priceProp: number
-}
-export function CategoriesSideMenu({
-  categories,
-  onFiltersChange,
-  selectedFilters,
-  onPriceChange,
-  priceEndPoints,
-  priceProp
-}: ICategoriesSideMenu) {
-  const [checkedFilters, setCheckedFilters] =
-    useState<string[]>(selectedFilters);
-  const [price, setPrice] = useState(priceEndPoints.min);
+export function CategoriesSideMenu() {
+  const dispatch = useDispatch<AppDispatch>();
+
+  const { categories, price, priceEndPoints, filters } = useSelector((state: RootState) => state.products);
+  console.log("🚀 ~ CategoriesSideMenu ~ price:", price)
+
   const [position, setPosition] = useState(0);
   const sliderRef = useRef<HTMLInputElement>(null);
 
@@ -42,26 +29,27 @@ export function CategoriesSideMenu({
   }, [price]);
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPrice(Number(e.target.value));
-    onPriceChange(Number(e.target.value));
+    const newPrice = Number(e.target.value);
+    dispatch(setPrice(newPrice));
   };
-
-  useEffect(() => {
-    setCheckedFilters(selectedFilters);
-  }, [selectedFilters]);
 
   const handleSelectFilter = (category: string) => {
     let updatedFilters: string[];
 
-    if (!checkedFilters.includes(category)) {
-      updatedFilters = [...checkedFilters, category];
+    if (!filters.includes(category)) {
+      updatedFilters = [...filters, category];
     } else {
-      updatedFilters = checkedFilters.filter((filter) => filter !== category);
+      updatedFilters = filters.filter((filter) => filter !== category);
     }
 
-    setCheckedFilters(updatedFilters);
-    onFiltersChange(updatedFilters);
+    dispatch(setFilters(updatedFilters));
   };
+
+  useEffect(() => {
+    dispatch(fetchProducts());
+    dispatch(fetchCategories());
+    dispatch(fetchPriceEndPoints());
+  },[dispatch, filters])
 
   return (
     <section className="ml-44 border border-borderColor pt-6 pl-4.5 pr-3.5 w-60.5 rounded-md h-fit relative">
@@ -75,7 +63,7 @@ export function CategoriesSideMenu({
           >
             <div
               className={`w-4.5 h-4.5 border-2 rounded-xs border-borderColor cursor-pointer ${
-                selectedFilters.includes(category.name) ? "bg-neutral" : ""
+                filters.includes(category.name) ? "bg-neutral" : ""
               }`}
             />
             <h6 className="text-slateBlack">{category.name}</h6>
