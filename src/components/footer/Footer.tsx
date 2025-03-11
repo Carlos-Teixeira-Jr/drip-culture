@@ -18,7 +18,8 @@ export function Footer() {
     message: "",
     type: "",
   });
-  console.log("🚀 ~ Footer ~ showToast:", showToast);
+  
+  const year = new Date().getFullYear();
 
   const socialMediaIcons = [
     {
@@ -140,7 +141,7 @@ export function Footer() {
           </p>
           <div className="flex gap-6 shrink-0">
             {socialMediaIcons.map((icon) => (
-              <img src={icon.icon} alt={icon.name} className="w-5 h-5" />
+              <img src={icon.icon} alt={icon.name} className="w-5 h-5" key={icon.name}/>
             ))}
           </div>
         </div>
@@ -189,6 +190,7 @@ export function Footer() {
           <div className="flex gap-6 shrink-0 w-10">
             {creditCardIcons.map((icon) => (
               <img
+                key={icon.name}
                 src={icon.icon}
                 alt={icon.name}
                 className={`${
@@ -200,7 +202,7 @@ export function Footer() {
         </div>
       </section>
       <div className="flex justify-center items-center py-6">
-        <h6 className="text-vividBlack">© 2023 DevCut. All rights reserved.</h6>
+        <h6 className="text-vividBlack">© {year} DevCut. All rights reserved.</h6>
       </div>
     </footer>
   );

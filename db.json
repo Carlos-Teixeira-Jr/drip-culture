@@ -89,6 +89,114 @@
         "https://dummyjson.com/image/i/products/5/3.png",
         "https://dummyjson.com/image/i/products/5/4.jpg"
       ]
+    },
+    {
+      "id": 6,
+      "title": "Vans - Old Skool Sneakers",
+      "description": "The Vans Old Skool Sneakers are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
+      "price": 90,
+      "discountPercentage": 15,
+      "rating": 4.7,
+      "stock": 90,
+      "brand": "Vans",
+      "category": "sneakers",
+      "thumbnail": "https://dummyjson.com/image/i/products/6/thumbnail.webp",
+      "images": [
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdGiEdT7ywG--b2BbposUxX6IDETcja16cHA&s",
+        "https://dummyjson.com/image/i/products/6/2.webp",
+        "https://dummyjson.com/image/i/products/6/3.png",
+        "https://dummyjson.com/image/i/products/6/4.webp"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "Adidas - Stan Smith Sneakers",
+      "description": "The Adidas Stan Smith Sneakers are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
+      "price": 120,
+      "discountPercentage": 20,
+      "rating": 4.6,
+      "stock": 85,
+      "brand": "Adidas",
+      "category": "sneakers",
+      "thumbnail": "https://dummyjson.com/image/i/products/7/thumbnail.jpg",
+      "images": [
+        "https://static.netshoes.com.br/produtos/tenis-adidas-courtblock/78/FB9-3749-078/FB9-3749-078_zoom1.jpg?ts=1727112409&ims=1088x",
+        "https://dummyjson.com/image/i/products/6/2.webp",
+        "https://dummyjson.com/image/i/products/6/3.png",
+        "https://dummyjson.com/image/i/products/6/4.webp"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "New Balance - 574 Sneakers",
+      "description": "The New Balance 574 Sneakers are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
+      "price": 110,
+      "discountPercentage": 25,
+      "rating": 4.5,
+      "stock": 95,
+      "brand": "New Balance",
+      "category": "sneakers",
+      "thumbnail": "https://dummyjson.com/image/i/products/8/thumbnail.jpg",
+      "images": [
+        "https://static.netshoes.com.br/produtos/tenis-new-balance-574-v2-unissex/04/39U-5016-004/39U-5016-004_zoom1.jpg?ts=1721669460&ims=1088x",
+        "https://dummyjson.com/image/i/products/6/2.webp",
+        "https://dummyjson.com/image/i/products/6/3.png",
+        "https://dummyjson.com/image/i/products/6/4.webp"
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Air Jordan 1 Mid Sneakers",
+      "description": "The Air Jordan 1 Mid Sneakers are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
+      "price": 150,
+      "discountPercentage": 30,
+      "rating": 4.3,
+      "stock": 80,
+      "brand": "Nike",
+      "category": "sneakers",
+      "thumbnail": "https://dummyjson.com/image/i/products/9/thumbnail.jpg",
+      "images": [
+        "http://imgnike-a.akamaihd.net/360x360/0166185CA1.jpg",
+        "https://dummyjson.com/image/i/products/6/2.webp",
+        "https://dummyjson.com/image/i/products/6/3.png",
+        "https://dummyjson.com/image/i/products/6/4.webp"
+      ]
+    },
+    {
+      "id": 10,
+      "title": "Oakley - Men's 7mm Tortoise Sunglasses",
+      "description": "The Oakley Men's 7mm Tortoise Sunglasses are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
+      "price": 70,
+      "discountPercentage": 10,
+      "rating": 4.2,
+      "stock": 100,
+      "brand": "Oakley",
+      "category": "sunglasses",
+      "thumbnail": "https://dummyjson.com/image/i/products/10/thumbnail.jpg",
+      "images": [
+        "https://images.tcdn.com.br/img/img_prod/678895/90_oculos_de_sol_oakley_frogskins_matte_brown_tortoise_prizm_tungsten_30598_4_90460591c98ec085d61b23d15b266570.jpg",
+        "https://dummyjson.com/image/i/products/6/2.webp",
+        "https://dummyjson.com/image/i/products/6/3.png",
+        "https://dummyjson.com/image/i/products/6/4.webp"
+      ]
+    }
+  ],
+  "categories": [
+    {
+      "id": "2489",
+      "name": "men's jeans"
+    },
+    {
+      "id": "2488",
+      "name": "jackets"
+    },
+    {
+      "id": "2487",
+      "name": "sneakers"
+    },
+    {
+      "id": "2486",
+      "name": "sunglasses"
     }
   ],
   "charts": [

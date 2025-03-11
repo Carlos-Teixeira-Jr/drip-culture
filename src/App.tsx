@@ -8,6 +8,7 @@ import { VerifyEmail } from './pages/verifyEmail/VerifyEmail';
 import { PrivateRoute } from './routes/PrivateRoute';
 import { MyAccountPage } from './pages/MyAccountPage';
 import { AboutMePage } from './pages/AboutMePage';
+import { ShopPage } from './pages/ShopPage';
 
 const routes = [
   { path: "/" },
@@ -17,6 +18,7 @@ const routes = [
   { path: "/verify" },
   { path: "/my-account" },
   { path: "/about-me" },
+  { path: "/shop" },
 ];
 
 function RouteValidator() {
@@ -45,6 +47,7 @@ function App() {
         <Route path="/signup" element={<SignUpPage/>} />
         <Route path="/verify" element={<VerifyEmail />} />
         <Route path='/about-me' element={<AboutMePage />} />
+        <Route path='/shop' element={<ShopPage />} />
         <Route
           path="/my-account"
           element={
