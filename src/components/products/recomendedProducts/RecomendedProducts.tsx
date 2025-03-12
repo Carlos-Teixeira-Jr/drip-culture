@@ -8,7 +8,6 @@ interface IRecomendedProducts {
 
 
 export function RecomendedProducts({ category }: IRecomendedProducts) {
-console.log("🚀 ~ RecomendedProducts ~ category:", category)
 
   const [similarProducts, setSimilarProducts] = useState<IProduct[]>();
 

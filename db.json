@@ -12,9 +12,9 @@
       "category": "men's jeans",
       "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
       "colors": [
-        "black",
-        "white",
-        "blue"
+        "darkBlue",
+        "lightBlue",
+        "black"
       ],
       "sizes": [
         "S",
@@ -22,11 +22,38 @@
         "L",
         "XL"
       ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
+      ],
       "images": [
-        "https://cdn.shopify.com/s/files/1/0532/6720/2223/files/levi-s-men-s-541-stretch-mid-rise-relaxed-fit-tapered-leg-jeans-husker-17__60522.jpg?v=1715271115",
-        "https://dummyjson.com/image/i/products/1/2.png",
-        "https://dummyjson.com/image/i/products/1/3.png",
-        "https://dummyjson.com/image/i/products/1/4.jpg"
+        {
+          "color": "darkBlue",
+          "images": [
+            "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSxC483Xq04peo0Fm44-DuyJfVY0P8nE310liPF2iB_2LxQanM15FiVyPM_apKr_-m6H5rbg1SGiXDVvg-qeuZG8aU8AG3kKU5plk2Fp3gr4gpHXdIRFyXI&usqp=CAE",
+            "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcTtOduVC5IlwTIS7boxQ7FUg9NJ3pkSpxf4r6sy-xNDRE01Pi0CNDJmivM6-nx8H0zOmSfMVbXUY_oGmlHE1QoQC3KBlDx3&usqp=CAE",
+            "https://dummyjson.com/image/i/products/1/4.jpg",
+            "https://encrypted-tbn0.gstatic.com/shopping?q=tbn:ANd9GcRkrzeRu14xGrbXXtGjdzzoGzmrF08OIwzlhFbFBDgpmrc0pYYH75kLI7qRS8mQ6SnxEfoFiYRH5vKYp1VSgBKv4CdV9uaUUQ&usqp=CAE"
+          ]
+        },
+        {
+          "color": "lightBlue",
+          "images": [
+            "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSzUy0OgaD_ZAw0_k4tYzv0Lw9H0_3WFjuZsdDgU9nZjk6N0oeRgLWxE-8DqVzYMKwCnkCEsVMqVS8LQwTpgBmOF67sQdSv-8mIXGnIUl5iXrtRFkZ8cNuCqw&usqp=CAE",
+            "https://static.dafiti.com.br/p/levis-cal%C3%A7a-jeans-levi's%C2%AE-505%C2%AE-regular-lavagem-clara-4897-90064441-1-zoom.jpg?ims=filters:quality(70)",
+            "https://static.dafiti.com.br/p/Levis-Cal%C3%A7a-Jeans-Levi's%C2%AE-505%C2%AE-Regular-Lavagem-Clara-4912-90064441-6-zoom.jpg"
+          ]
+        },
+        {
+          "color": "black",
+          "images": [
+            "https://http2.mlstatic.com/D_NQ_NP_722412-MLB73327054656_122023-O.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_739213-MLB73416068895_122023-O.webp",
+            "https://http2.mlstatic.com/D_NQ_NP_721213-MLB73416234715_122023-O.webp"
+          ]
+        }
       ]
     },
     {
@@ -50,6 +77,12 @@
         "L",
         "XL"
       ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
       "images": [
         "https://thenorthface.vtexassets.com/arquivos/ids/221655/jaqueta-masculina-thermoball-eco-preta-5GLLJK3-1.png?v=638488026307970000",
@@ -69,8 +102,8 @@
       "brand": "Nike",
       "category": "sneakers",
       "colors": [
-        "black",
         "white",
+        "black",
         "blue"
       ],
       "sizes": [
@@ -79,12 +112,28 @@
         "L",
         "XL"
       ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
       "images": [
-        "https://s.lojakings.com.br/product/2024/03/fj4146-103-lado2.jpg",
-        "https://dummyjson.com/image/i/products/3/2.png",
-        "https://dummyjson.com/image/i/products/3/3.png",
-        "https://dummyjson.com/image/i/products/3/4.jpg"
+        {
+          "color": "black",
+          "images": [
+
+          ]
+        },
+        {
+          "color": "white",
+          "images": [
+            "https://www.jotagestore.com.br/cdn/shop/products/air-force-1-branco-34-628c04840c232-large_700x.jpg?v=1677161238",
+            "https://s.lojakings.com.br/product/2024/03/fj4146-103-lado2.jpg",
+            "https://www.jotagestore.com.br/cdn/shop/products/712867_06_jpg_700x.jpg?v=1677161238"
+          ]
+        }
       ]
     },
     {
@@ -107,6 +156,12 @@
         "M",
         "L",
         "XL"
+      ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
       ],
       "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
       "images": [
@@ -137,12 +192,22 @@
         "L",
         "XL"
       ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/5/thumbnail.jpg",
       "images": [
-        "https://static.netshoes.com.br/produtos/tenis-puma-carina-bdp-feminino/91/NWG-1371-C91/NWG-1371-C91_zoom1.jpg?ts=1726675377&ims=1088x",
-        "https://dummyjson.com/image/i/products/5/2.png",
-        "https://dummyjson.com/image/i/products/5/3.png",
-        "https://dummyjson.com/image/i/products/5/4.jpg"
+        {
+          "color": "black",
+          "images": [
+            "https://static.netshoes.com.br/produtos/tenis-puma-carina-bdp-feminino/38/NWG-1371-038/NWG-1371-038_zoom1.jpg?ts=1711980846&ims=1088x",
+            "https://static.netshoes.com.br/produtos/tenis-puma-carina-bdp-feminino/38/NWG-1371-038/NWG-1371-038_zoom4.jpg?ts=1711980846&ims=1088x",
+            "https://static.netshoes.com.br/produtos/tenis-puma-carina-bdp-feminino/91/NWG-1371-C91/NWG-1371-C91_zoom1.jpg?ts=1726675377&ims=1088x"
+          ]
+        }
       ]
     },
     {
@@ -165,6 +230,12 @@
         "M",
         "L",
         "XL"
+      ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
       ],
       "thumbnail": "https://dummyjson.com/image/i/products/6/thumbnail.webp",
       "images": [
@@ -195,6 +266,12 @@
         "L",
         "XL"
       ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/7/thumbnail.jpg",
       "images": [
         "https://static.netshoes.com.br/produtos/tenis-adidas-courtblock/78/FB9-3749-078/FB9-3749-078_zoom1.jpg?ts=1727112409&ims=1088x",
@@ -223,6 +300,12 @@
         "M",
         "L",
         "XL"
+      ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
       ],
       "thumbnail": "https://dummyjson.com/image/i/products/8/thumbnail.jpg",
       "images": [
@@ -253,6 +336,12 @@
         "L",
         "XL"
       ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/9/thumbnail.jpg",
       "images": [
         "http://imgnike-a.akamaihd.net/360x360/0166185CA1.jpg",
@@ -281,6 +370,12 @@
         "M",
         "L",
         "XL"
+      ],
+      "reviews": [
+        {
+          "author": "Alguém",
+          "text": "Lorem ipsun"
+        }
       ],
       "thumbnail": "https://dummyjson.com/image/i/products/10/thumbnail.jpg",
       "images": [

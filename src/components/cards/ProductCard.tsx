@@ -6,11 +6,12 @@ interface IProductCard {
 }
 
 export function ProductCard({ product }: IProductCard) {
+  console.log("🚀 ~ ProductCard ~ product:", product)
   return (
     <Link to={`/product/${product.id}`} key={product.id}>
       <div className="flex flex-col gap-5 w-64.5 h-[443px] cursor-pointer">
         <img
-          src={product.images[0]}
+          src={product.images[0].images[0]}
           alt={product.title}
           className="w-full h-80"
         />
