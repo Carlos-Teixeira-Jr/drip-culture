@@ -1,17 +1,17 @@
 import { useEffect, useState } from "react";
-import { EmptyChartContainer } from "../chart/emptyChartContainer/EmptyChartContainer";
-import { ChartProductsContainer } from "../chart/chartProductsContainer/ChartProductsContainer";
-import { IChart } from "../../../interfaces/chart.interface";
+import { ICart } from "../../../interfaces/cart.interface";
+import { CartProductsContainer } from "../chart/chartProductsContainer/ChartProductsContainer";
+import { EmptyCartContainer } from "../chart/emptyChartContainer/EmptyCartContainer";
 
 
 export function OrdersContainer() {
 
-  const [chart, setChart] = useState<IChart | null>(null);
+  const [cart, setCart] = useState<ICart | null>(null);
 
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await fetch(`http://localhost:3001/charts?userEmail=I0zTt@example.com`, {
+          const response = await fetch(`http://localhost:3001/cart?userEmail=I0zTt@example.com`, {
             method: "GET",
             headers: {
               "Content-Type": "application/json",
@@ -20,7 +20,7 @@ export function OrdersContainer() {
   
           if (response.ok) {
             const data = await response.json();
-            // setChart(data[0]);
+            // setCart(data[0]);
           } else {
             console.error("Error fetching data:", response.statusText);
           }
@@ -33,7 +33,7 @@ export function OrdersContainer() {
 
   return (
     <main className="pl-12 w-2/3">
-      {!chart ? <EmptyChartContainer/> : <ChartProductsContainer chart={chart}/>}
+      {!cart ? <EmptyCartContainer/> : <CartProductsContainer cart={cart}/>}
     </main>
   )
 }

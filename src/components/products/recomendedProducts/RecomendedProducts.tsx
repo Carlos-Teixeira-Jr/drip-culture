@@ -14,7 +14,7 @@ export function RecomendedProducts({ category }: IRecomendedProducts) {
   useEffect(() => {
     const fetchSimilarProducts = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/products?category=sneakers&_limit=4`);
+        const response = await fetch(`http://localhost:3001/products?category=${category}&_limit=4`);
         const data = await response.json();
         setSimilarProducts(data);
       } catch (error) {
@@ -31,7 +31,7 @@ export function RecomendedProducts({ category }: IRecomendedProducts) {
 
       <div className="flex gap-5 pt-14 pb-32.5">
         {similarProducts?.map((product) => (
-          <ProductCard product={product}/>
+          <ProductCard product={product} key={product.id}/>
         ))}
       </div>
     </section>

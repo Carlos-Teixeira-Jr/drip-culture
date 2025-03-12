@@ -8,15 +8,20 @@ import PlusIcon from "../../../assets/icons/plus-icon.png";
 import MoreIcon from "../../../assets/icons/more-icon.png";
 import { RecomendedProducts } from "../recomendedProducts/RecomendedProducts";
 import ArrowRightIcon from "../../../assets/icons/arrow-right-icon.png";
+import { Toast } from "../../toasts/toast";
+import { useUser } from "@clerk/clerk-react";
+import { ICart } from "../../../interfaces/cart.interface";
 
 export function Product() {
   const { pathname } = useLocation();
+  const { user } = useUser();
 
   const [product, setProduct] = useState<IProduct>();
-  const [productId, setProductId] = useState(pathname.split("/")[2]);
+  const productId = pathname.split("/")[2];
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
+  const [cart, setCart] = useState<ICart>();
   const [actualImage, setActualImage] = useState<{
     image: string;
     index: number;
@@ -25,13 +30,56 @@ export function Product() {
     index: 0,
   });
 
-  console.log("🚀 ~ Product ~ actualImage:", actualImage);
+  const [errorMessage, setErrorMessage] = useState("");
 
   const [showToast, setShowToast] = useState({
     show: false,
     message: "",
     type: "",
   });
+
+  useEffect(() => {
+    const fetchProduct = async () => {
+      try {
+        const response = await fetch(
+          `http://localhost:3001/products?id=${productId}`
+        );
+        const data: IProduct[] = await response.json();
+        setProduct(data[0]);
+        setActualImage({
+          image: data[0].images[0].images[0],
+          index: 0,
+        });
+      } catch (error) {
+        setShowToast({
+          show: true,
+          message: "Error fetching product",
+          type: "error",
+        });
+      }
+    };
+
+    fetchProduct();
+  }, []);
+
+  useEffect(() => {
+    const fetchCart = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/cart?userEmail=${user?.emailAddresses[0].emailAddress}`)
+
+        const cartData: ICart = await response.json();
+        setCart(cartData)
+      } catch (error) {
+        setShowToast({
+          show: true,
+          message: "Error fetching cart",
+          type: "error",
+        });
+      }
+    }
+
+    fetchCart()
+  }, [user])
 
   const handleAddProduct = () => {
     setQuantity(quantity + 1);
@@ -40,6 +88,74 @@ export function Product() {
   const handleRemoveProduct = () => {
     if (quantity > 1) {
       setQuantity(quantity - 1);
+    }
+  };
+
+  useEffect(() => {
+    handleAddToCart()
+  },[product, cart]);
+
+  const handleAddToCart = async () => {
+    console.log("testeee")
+
+    setErrorMessage("")
+
+    if (!selectedColor && !selectedSize) {
+      setErrorMessage("Select the color and size of yout product");
+    } else if (!selectedColor && selectedSize) {
+      setErrorMessage("Select the color of your product");
+    } else if (selectedColor && !selectedSize) {
+      setErrorMessage("Select the size of your product");
+    } else {
+      try {
+        console.log("🚀 ~ handleAddToCart ~ cart:", cart)
+
+        if (cart) {
+          let newCart: ICart = cart;
+
+          newCart?.products.push({
+            id: Number(productId),
+            title: product?.title,
+            price: product?.price,
+            quantity,
+            orderDate: new Date(),
+            image: product?.images.find((img) => img.color === selectedColor)
+              ?.images[0],
+          });
+
+          console.log("🚀 ~ handleAddToCart ~ newCart:", newCart)
+
+          const response = await fetch("http://localhost:3001/cart/", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newCart),
+          });
+          
+          console.log("🚀 ~ handleAddToCart ~ response:", response)
+
+          if (response.ok) {
+            setShowToast({
+              show: true,
+              message: "Product added to cart",
+              type: "success",
+            });
+          } else {
+            setShowToast({
+              show: true,
+              message: "Error adding product to cart",
+              type: "error",
+            });
+          }
+        } else {
+          setShowToast({
+            show: true,
+            message: "An error ocurred on get cart data",
+            type: "error"
+          });
+        }
+      } catch (error) {}
     }
   };
 
@@ -69,10 +185,7 @@ export function Product() {
         (img) => img.color === selectedColor
       );
       if (colorImageIndex !== -1) {
-        if (
-          product &&
-          index > 0
-        ) {
+        if (product && index > 0) {
           const nextIndex = index - 1;
           setActualImage({
             image: product?.images[colorImageIndex].images[nextIndex],
@@ -83,31 +196,34 @@ export function Product() {
     }
   };
 
-  useEffect(() => {
-    const fetchProduct = async () => {
-      try {
-        const response = await fetch(
-          `http://localhost:3001/products?id=${productId}`
-        );
-        const data: IProduct[] = await response.json();
-        setProduct(data[0]);
+  const handleSelectColor = (color: string) => {
+    if (product) {
+      setSelectedColor(color);
+      const colorImageIndex = product?.images.findIndex(
+        (img) => img.color === color
+      );
+
+      if (colorImageIndex !== -1) {
         setActualImage({
-          image: data[0].images[0].images[0],
+          image: product.images[colorImageIndex].images[0],
           index: 0,
         });
-        setSelectedColor(data[0].colors[0]);
-        setSelectedSize(data[0].sizes[0]);
-      } catch (error) {
-        setShowToast({
-          show: true,
-          message: "Error fetching product",
-          type: "error",
-        });
       }
-    };
+    }
+  };
 
-    fetchProduct();
-  }, []);
+  const handleSelectedSize = (size: string) => {
+    setSelectedSize(size);
+  };
+
+  const handleShareProduct = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setShowToast({
+      show: true,
+      message: "Link copied to the clipboard!",
+      type: "success",
+    });
+  };
 
   return (
     <section className="px-44 mt-4">
@@ -121,21 +237,23 @@ export function Product() {
           <div className="absolute w-full flex gap-90 left-10 top-[40%]">
             <img
               src={ArrowRightIcon}
-              className="w-10 h-10 rotate-180"
+              className="w-10 h-10 rotate-180 cursor-pointer hover:scale-120 transition duration-300 ease-in-out"
               onClick={() => handlePreviousImage(actualImage.index)}
             />
             <img
               src={ArrowRightIcon}
-              className="w-10 h-10"
+              className="w-10 h-10 cursor-pointer hover:scale-120 transition duration-300 ease-in-out"
               onClick={() => handleNextImage(actualImage.index)}
             />
           </div>
-          <div className="flex justify-center items-center">
+          <div className="flex justify-center items-center pb-8">
             {product?.images[0].images.map((image, index) => (
               <h1
                 key={index}
                 className={`text-5xl ${
-                  index === 0 ? "text-neutral" : "text-gray-500"
+                  index === actualImage.index
+                    ? "text-neutral"
+                    : "text-slateGrey"
                 }`}
               >
                 •
@@ -147,7 +265,12 @@ export function Product() {
         <div className="w-[27.5rem]">
           <div className="flex justify-between">
             <h1>{product?.title}</h1>
-            <img src={ShareIcon} alt="product image" className="w-6 h-6" />
+            <img
+              src={ShareIcon}
+              alt="product image"
+              className="w-6 h-6 cursor-pointer"
+              onClick={handleShareProduct}
+            />
           </div>
           <div>
             <div className="flex items-center gap-2">
@@ -173,7 +296,8 @@ export function Product() {
                 {product?.colors.map((color, idx) => (
                   <div
                     key={idx}
-                    className={`flex items-center justify-center gap-2 border ${
+                    onClick={() => handleSelectColor(color)}
+                    className={`flex items-center justify-center gap-2 border cursor-pointer ${
                       color === selectedColor
                         ? "border-neutral"
                         : "border-borderColor"
@@ -194,7 +318,8 @@ export function Product() {
                 {product?.sizes.map((size, idx) => (
                   <div
                     key={idx}
-                    className={`flex items-center justify-center gap-2 border ${
+                    onClick={() => handleSelectedSize(size)}
+                    className={`flex items-center justify-center gap-2 border cursor-pointer ${
                       size === selectedSize
                         ? "border-neutral"
                         : "border-borderColor"
@@ -213,20 +338,26 @@ export function Product() {
               <div className="flex items-center gap-2 px-4 py-3 border border-borderColor rounded-sm justify-between w-fit">
                 <img
                   src={MinusIcon}
-                  className="w-5 h-5"
+                  className="w-5 h-5 cursor-pointer"
                   onClick={handleRemoveProduct}
                 />
                 <h5 className="text-neutral px-10.5">{quantity}</h5>
                 <img
                   src={PlusIcon}
-                  className="w-5 h-5"
+                  className="w-5 h-5 cursor-pointer"
                   onClick={handleAddProduct}
                 />
               </div>
             </div>
 
             <div className="pr-36.5">
-              <button className="w-full">Add to cart</button>
+              <button
+                className="w-full hover:bg-slate-700 duration-200 transition ease-in-out"
+                onClick={handleAddToCart}
+              >
+                Add to cart
+              </button>
+              {errorMessage && <span className="text-sm text-red-500">{errorMessage}</span>}
               <p className="text-vividBlack pt-1">
                 — Free shipping on orders $100+
               </p>
@@ -248,6 +379,8 @@ export function Product() {
       </div>
 
       <RecomendedProducts category={product?.category} />
+
+      <Toast toastProps={showToast} handleRemoveToast={setShowToast} />
     </section>
   );
 }

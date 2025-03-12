@@ -141,12 +141,11 @@ export function Footer() {
           </p>
           <div className="flex gap-6 shrink-0">
             {socialMediaIcons.map((icon, idx) => (
-              <Link to={icon.link} target="_blank">
+              <Link to={icon.link} target="_blank" key={idx}>
                 <img
                   src={icon.icon}
                   alt={icon.name}
                   className="w-5 h-5"
-                  key={idx}
                 />
               </Link>
             ))}
