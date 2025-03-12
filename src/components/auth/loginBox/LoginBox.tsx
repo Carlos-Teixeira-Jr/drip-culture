@@ -1,18 +1,23 @@
 import { FormEvent, useEffect, useState } from "react";
 import googleImage from "../../../assets/socialMediaIcons/google-icon.png";
+import { Link } from "react-router-dom";
 
 export type AuthFormData = {
   email: string;
   password: string;
-}
+};
 
 interface ILoginBox {
   onAuthFormDataChange: (authFormData: AuthFormData) => void;
   onSubmit: (event: FormEvent) => void;
-  isLoading: boolean
+  isLoading: boolean;
 }
 
-export function LoginBox({ onAuthFormDataChange, onSubmit, isLoading }: ILoginBox) {
+export function LoginBox({
+  onAuthFormDataChange,
+  onSubmit,
+  isLoading,
+}: ILoginBox) {
   const [authFormData, setAuthFormData] = useState({
     email: "",
     password: "",
@@ -99,7 +104,14 @@ export function LoginBox({ onAuthFormDataChange, onSubmit, isLoading }: ILoginBo
         ))}
       </div>
       <p className="text-neutral ml-auto cursor-pointer">Forgot Password?</p>
-      <button className="w-full" type="submit">Login</button>
+      <button className="w-full" type="submit">
+        Login
+      </button>
+      <Link to={"/signup"} className="flex justify-center items-center">
+        <h6 className="text-vividBlack">
+          Don't have an account? Sign up
+        </h6>
+      </Link>
     </form>
   );
 }
