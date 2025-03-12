@@ -16,6 +16,12 @@
         "white",
         "blue"
       ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "images": [
         "https://cdn.shopify.com/s/files/1/0532/6720/2223/files/levi-s-men-s-541-stretch-mid-rise-relaxed-fit-tapered-leg-jeans-husker-17__60522.jpg?v=1715271115",
         "https://dummyjson.com/image/i/products/1/2.png",
@@ -37,6 +43,12 @@
         "black",
         "white",
         "blue"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
       ],
       "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
       "images": [
@@ -61,6 +73,12 @@
         "white",
         "blue"
       ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
       "images": [
         "https://s.lojakings.com.br/product/2024/03/fj4146-103-lado2.jpg",
@@ -83,6 +101,12 @@
         "black",
         "white",
         "blue"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
       ],
       "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
       "images": [
@@ -107,6 +131,12 @@
         "white",
         "blue"
       ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/5/thumbnail.jpg",
       "images": [
         "https://static.netshoes.com.br/produtos/tenis-puma-carina-bdp-feminino/91/NWG-1371-C91/NWG-1371-C91_zoom1.jpg?ts=1726675377&ims=1088x",
@@ -129,6 +159,12 @@
         "black",
         "white",
         "blue"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
       ],
       "thumbnail": "https://dummyjson.com/image/i/products/6/thumbnail.webp",
       "images": [
@@ -153,6 +189,12 @@
         "white",
         "blue"
       ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/7/thumbnail.jpg",
       "images": [
         "https://static.netshoes.com.br/produtos/tenis-adidas-courtblock/78/FB9-3749-078/FB9-3749-078_zoom1.jpg?ts=1727112409&ims=1088x",
@@ -175,6 +217,12 @@
         "black",
         "white",
         "blue"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
       ],
       "thumbnail": "https://dummyjson.com/image/i/products/8/thumbnail.jpg",
       "images": [
@@ -199,6 +247,12 @@
         "white",
         "blue"
       ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
+      ],
       "thumbnail": "https://dummyjson.com/image/i/products/9/thumbnail.jpg",
       "images": [
         "http://imgnike-a.akamaihd.net/360x360/0166185CA1.jpg",
@@ -221,6 +275,12 @@
         "black",
         "white",
         "blue"
+      ],
+      "sizes": [
+        "S",
+        "M",
+        "L",
+        "XL"
       ],
       "thumbnail": "https://dummyjson.com/image/i/products/10/thumbnail.jpg",
       "images": [

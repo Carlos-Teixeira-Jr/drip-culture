@@ -10,4 +10,5 @@ export interface IProduct {
   category: string;
   images: string[];
   colors: string[];
+  sizes: string[];
 }

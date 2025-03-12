@@ -140,13 +140,13 @@ export function Footer() {
             DevCut is a YouTube channel for practical project-based learning.
           </p>
           <div className="flex gap-6 shrink-0">
-            {socialMediaIcons.map((icon) => (
+            {socialMediaIcons.map((icon, idx) => (
               <Link to={icon.link} target="_blank">
                 <img
                   src={icon.icon}
                   alt={icon.name}
                   className="w-5 h-5"
-                  key={icon.name}
+                  key={idx}
                 />
               </Link>
             ))}
@@ -213,9 +213,9 @@ export function Footer() {
         <div className="flex flex-col gap-10">
           <h5 className="text-slateGrey">ACCEPTED PAYMENTS</h5>
           <div className="flex gap-6 shrink-0 w-10">
-            {creditCardIcons.map((icon) => (
+            {creditCardIcons.map((icon, idx) => (
               <img
-                key={icon.name}
+                key={idx}
                 src={icon.icon}
                 alt={icon.name}
                 className={`${
