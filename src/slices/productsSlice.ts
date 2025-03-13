@@ -1,10 +1,11 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IProduct } from "../interfaces/product.interface";
 import { Category } from "../components/products/shop/categoriesSideMenu/CategoriesSideMenu";
+import { ICart } from "../interfaces/cart.interface";
 
 export interface ProductsState {
   categories: Category[];
-  filters: string[];
+  filter: string;
   products: IProduct[];
   page: number;
   totalProducts: number;
@@ -14,9 +15,10 @@ export interface ProductsState {
   totalPages: number;
 }
 
-const initialState: ProductsState = {
+
+const productsInitialState: ProductsState = {
   categories: [],
-  filters: [],
+  filter: "",
   products: [],
   page: 1,
   totalProducts: 0,
@@ -26,14 +28,25 @@ const initialState: ProductsState = {
   totalPages: 0,
 };
 
+export interface ICartState {
+  cart: ICart;
+}
+
+const cartInitialState: ICart = {
+  id: 0,
+  userEmail: "",
+  products: [],
+}
+
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, { getState }) => {
     const state = getState() as { products: ProductsState };
-    const { filters, page, price } = state.products;
+    const { filter, page, price } = state.products;
 
     const filterParams =
-      filters.length > 0 ? `&category=${filters.join(",")}` : "";
+      filter ? `&category=${filter}` : "";
+
     const response = await fetch(
       `http://localhost:3001/products?${filterParams}&price_lte=${price}&_page=${page}&_per_page=9`
     );
@@ -56,10 +69,10 @@ export const fetchPriceEndPoints = createAsyncThunk(
   "products/fetchPriceEndPoints",
   async (_, { getState }) => {
     const state = getState() as { products: ProductsState };
-    const { filters } = state.products;
+    const { filter } = state.products;
 
     const filterParams =
-      filters.length > 0 ? `&category=${filters.join(",")}` : "";
+      filter ? `&category=${filter}` : "";
 
     const response = await fetch(
       `http://localhost:3001/products?${filterParams}`
@@ -93,8 +106,8 @@ export const fetchTotalProducts = createAsyncThunk(
     const state = getState() as { products: ProductsState };
 
     const filterParams =
-      state.products.filters.length > 0
-        ? `&category=${state.products.filters.join(",")}`
+      state.products.filter.length > 0
+        ? `&category=${state.products.filter}`
         : "";
 
     const response = await fetch(
@@ -114,12 +127,21 @@ export const fetchCategories = createAsyncThunk(
   }
 );
 
+export const fetchCart = createAsyncThunk(
+  "cart/fetchCart",
+  async () => {
+    const response = await fetch(`http://localhost:3001/cart/1`);
+    const data = await response.json();
+    return data;
+  }
+)
+
 const productsSlice = createSlice({
   name: "products",
-  initialState,
+  initialState: productsInitialState,
   reducers: {
-    setFilters: (state, action: PayloadAction<string[]>) => {
-      state.filters = action.payload;
+    setFilters: (state, action: PayloadAction<string>) => {
+      state.filter = action.payload;
     },
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
@@ -146,7 +168,7 @@ const productsSlice = createSlice({
       .addCase(fetchPriceEndPoints.fulfilled, (state, action) => {
         state.priceEndPoints = action.payload;
 
-        if (state.price === initialState.price) {
+        if (state.price === productsInitialState.price) {
           state.price = action.payload.max;
         }
       })
@@ -159,5 +181,26 @@ const productsSlice = createSlice({
   },
 });
 
+const cartSlice = createSlice({
+  name: "cart",
+  initialState: cartInitialState,
+  reducers: {
+    setCart: (state, action: PayloadAction<ICart>) => {
+      state.id = action.payload.id;
+      state.userEmail = action.payload.userEmail;
+      state.products = action.payload.products;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(fetchCart.fulfilled, (state, action) => {
+      state.id = action.payload.id;
+      state.userEmail = action.payload.userEmail;
+      state.products = action.payload.products;
+    });
+  },
+});
+
 export const { setFilters, setPrice, setPage } = productsSlice.actions;
+export const { setCart } = cartSlice.actions;
 export default productsSlice.reducer;
+export const cartReducer = cartSlice.reducer;

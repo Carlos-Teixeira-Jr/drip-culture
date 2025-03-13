@@ -3,20 +3,29 @@ import CartImage from "../../assets/icons/cart-icon.png";
 import UserImage from "../../assets/icons/user.png";
 import { Link } from "react-router-dom";
 import { useUser, useClerk } from "@clerk/clerk-react";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { AppDispatch, RootState } from "../../../store";
+import { fetchCart } from "../../slices/productsSlice";
 
 export function Header() {
   const { isSignedIn, user } = useUser();
-  const { signOut } = useClerk();
+  const dispatch = useDispatch<AppDispatch>();
+  const cart = useSelector((state: RootState) => state.cart);
 
-  // Todo: criar a featura desta oferta
+  // Todo: criar a feature desta oferta
   const handleOfferClick = () => {
-    console.log("clicou na oferta")
-  }
+    console.log("clicou na oferta");
+  };
+
+  useEffect(() => {
+    dispatch(fetchCart());
+  }, []);
 
   return (
     <header className="flex flex-col justify-center items-center">
       <section className="h-10 bg-neutral text-white flex justify-center items-center gap-2 w-full">
-        <div className="flex gap-2"onClick={handleOfferClick}>
+        <div className="flex gap-2" onClick={handleOfferClick}>
           <h6>Get 25% OFF on your first order.</h6>
           <h5>Order Now</h5>
         </div>
@@ -41,7 +50,14 @@ export function Header() {
           </h5>
         </div>
         <div className="flex gap-8 items-center">
-          <img src={CartImage} alt="logo" className="w-[18px] h-[18px]" />
+          <img
+            src={CartImage}
+            alt="logo"
+            className="w-[18px] h-[18px] relative"
+          />
+          <span className="absolute top-20 left-[1195px] bg-[#BE1313] text-white font-bold text-[10px] rounded-full w-3.5 h-3.5 flex justify-center items-center">
+            {cart?.products?.length}
+          </span>
           {isSignedIn && user ? (
             <Link to={"/my-account"}>
               <div className="bg-offWhite rounded-full p-3.5 shrink-0">

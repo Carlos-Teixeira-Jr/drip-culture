@@ -9,19 +9,23 @@ import MoreIcon from "../../../assets/icons/more-icon.png";
 import { RecomendedProducts } from "../recomendedProducts/RecomendedProducts";
 import ArrowRightIcon from "../../../assets/icons/arrow-right-icon.png";
 import { Toast } from "../../toasts/toast";
-import { useUser } from "@clerk/clerk-react";
-import { ICart } from "../../../interfaces/cart.interface";
+import { RootState } from "../../../../store";
+import { useSelector } from "react-redux";
 
-export function Product() {
+interface IProductProps {
+  onProductFetched: (product: IProduct) => void;
+}
+
+export function Product({ onProductFetched }: IProductProps) {
   const { pathname } = useLocation();
-  const { user } = useUser();
 
   const [product, setProduct] = useState<IProduct>();
   const productId = pathname.split("/")[2];
   const [quantity, setQuantity] = useState(1);
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
-  const [cart, setCart] = useState<ICart>();
+  const cart = useSelector((state: RootState) => state.cart);
+
   const [actualImage, setActualImage] = useState<{
     image: string;
     index: number;
@@ -46,6 +50,15 @@ export function Product() {
         );
         const data: IProduct[] = await response.json();
         setProduct(data[0]);
+
+        if (data[0].colors.length === 1) {
+          setSelectedColor(data[0].colors[0]);
+        }
+        if (data[0].sizes.length === 1) {
+          setSelectedSize(data[0].sizes[0]);
+        }
+
+        onProductFetched(data[0]);
         setActualImage({
           image: data[0].images[0].images[0],
           index: 0,
@@ -62,25 +75,6 @@ export function Product() {
     fetchProduct();
   }, []);
 
-  useEffect(() => {
-    const fetchCart = async () => {
-      try {
-        const response = await fetch(`http://localhost:3001/cart?userEmail=${user?.emailAddresses[0].emailAddress}`)
-
-        const cartData: ICart = await response.json();
-        setCart(cartData)
-      } catch (error) {
-        setShowToast({
-          show: true,
-          message: "Error fetching cart",
-          type: "error",
-        });
-      }
-    }
-
-    fetchCart()
-  }, [user])
-
   const handleAddProduct = () => {
     setQuantity(quantity + 1);
   };
@@ -91,71 +85,47 @@ export function Product() {
     }
   };
 
-  useEffect(() => {
-    handleAddToCart()
-  },[product, cart]);
-
   const handleAddToCart = async () => {
-    console.log("testeee")
+    if (!selectedColor || !selectedSize) {
+      const errorMessage =
+        !selectedColor && !selectedSize
+          ? "Select the color and size of your product"
+          : !selectedColor
+          ? "Select the color of your product"
+          : "Select the size of your product";
 
-    setErrorMessage("")
+      setErrorMessage(errorMessage);
+      return;
+    }
 
-    if (!selectedColor && !selectedSize) {
-      setErrorMessage("Select the color and size of yout product");
-    } else if (!selectedColor && selectedSize) {
-      setErrorMessage("Select the color of your product");
-    } else if (selectedColor && !selectedSize) {
-      setErrorMessage("Select the size of your product");
-    } else {
-      try {
-        console.log("🚀 ~ handleAddToCart ~ cart:", cart)
-
-        if (cart) {
-          let newCart: ICart = cart;
-
-          newCart?.products.push({
-            id: Number(productId),
-            title: product?.title,
-            price: product?.price,
-            quantity,
-            orderDate: new Date(),
-            image: product?.images.find((img) => img.color === selectedColor)
-              ?.images[0],
-          });
-
-          console.log("🚀 ~ handleAddToCart ~ newCart:", newCart)
-
-          const response = await fetch("http://localhost:3001/cart/", {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
+    try {
+      await fetch(`http://localhost:3001/cart/${cart?.id}`, {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          products: [
+            ...cart?.products,
+            {
+              id: Number(productId),
+              title: product?.title,
+              price: product?.price,
+              quantity,
+              orderDate: new Date(),
+              image: product?.images.find((img) => img.color === selectedColor)
+                ?.images[0],
             },
-            body: JSON.stringify(newCart),
-          });
-          
-          console.log("🚀 ~ handleAddToCart ~ response:", response)
-
-          if (response.ok) {
-            setShowToast({
-              show: true,
-              message: "Product added to cart",
-              type: "success",
-            });
-          } else {
-            setShowToast({
-              show: true,
-              message: "Error adding product to cart",
-              type: "error",
-            });
-          }
-        } else {
-          setShowToast({
-            show: true,
-            message: "An error ocurred on get cart data",
-            type: "error"
-          });
-        }
-      } catch (error) {}
+          ],
+        }),
+      });
+    } catch (error) {
+      console.error(error);
+      setShowToast({
+        show: true,
+        message: "An error ocurred on get cart data",
+        type: "error",
+      });
     }
   };
 
@@ -282,7 +252,9 @@ export function Product() {
               </div>
 
               <div className="border border-borderColor rounded-full px-4 py-0.5">
-                <p className="text-vividBlack">IN STOCK</p>
+                <p className="text-vividBlack">
+                  {product && product?.stock > 0 ? "IN STOCK" : "NO STOCK"}
+                </p>
               </div>
             </div>
 
@@ -290,78 +262,84 @@ export function Product() {
               ${product?.price}.00
             </p>
 
-            <div className="flex flex-col gap-2.5 mb-6.5">
-              <p className="text-vividBlack">AVAILABLE COLORS</p>
-              <div className="flex items-center gap-2.5">
-                {product?.colors.map((color, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => handleSelectColor(color)}
-                    className={`flex items-center justify-center gap-2 border cursor-pointer ${
-                      color === selectedColor
-                        ? "border-neutral"
-                        : "border-borderColor"
-                    } rounded-full w-8 h-8`}
-                  >
-                    <div
-                      className="w-7 h-7 rounded-full border border-white"
-                      style={{ background: color }}
+            {product && product.stock > 0 && (
+              <>
+                <div className="flex flex-col gap-2.5 mb-6.5">
+                  <p className="text-vividBlack">AVAILABLE COLORS</p>
+                  <div className="flex items-center gap-2.5">
+                    {product?.colors.map((color, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => handleSelectColor(color)}
+                        className={`flex items-center justify-center gap-2 border cursor-pointer ${
+                          color === selectedColor
+                            ? "border-neutral"
+                            : "border-borderColor"
+                        } rounded-full w-8 h-8`}
+                      >
+                        <div
+                          className="w-7 h-7 rounded-full border border-white"
+                          style={{ background: color }}
+                        />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2.5">
+                  <p className="text-vividBlack">SELECT SIZE</p>
+                  <div className="flex items-center gap-2">
+                    {product?.sizes.map((size, idx) => (
+                      <div
+                        key={idx}
+                        onClick={() => handleSelectedSize(size)}
+                        className={`flex items-center justify-center gap-2 border cursor-pointer ${
+                          size === selectedSize
+                            ? "border-neutral"
+                            : "border-borderColor"
+                        } rounded-sm w-10 h-10`}
+                      >
+                        <div className="w-7 h-7 border border-white flex items-center justify-center">
+                          <p className="text-center text-vividBlack">{size}</p>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-col gap-2.5 pt-8 pb-10">
+                  <p className="text-vividBlack">QUANTITY</p>
+                  <div className="flex items-center gap-2 px-4 py-3 border border-borderColor rounded-sm justify-between w-fit">
+                    <img
+                      src={MinusIcon}
+                      className="w-5 h-5 cursor-pointer"
+                      onClick={handleRemoveProduct}
+                    />
+                    <h5 className="text-neutral px-10.5">{quantity}</h5>
+                    <img
+                      src={PlusIcon}
+                      className="w-5 h-5 cursor-pointer"
+                      onClick={handleAddProduct}
                     />
                   </div>
-                ))}
-              </div>
-            </div>
+                </div>
 
-            <div className="flex flex-col gap-2.5">
-              <p className="text-vividBlack">SELECT SIZE</p>
-              <div className="flex items-center gap-2">
-                {product?.sizes.map((size, idx) => (
-                  <div
-                    key={idx}
-                    onClick={() => handleSelectedSize(size)}
-                    className={`flex items-center justify-center gap-2 border cursor-pointer ${
-                      size === selectedSize
-                        ? "border-neutral"
-                        : "border-borderColor"
-                    } rounded-sm w-10 h-10`}
+                <div className="pr-36.5">
+                  <button
+                    className="w-full hover:bg-slate-700 duration-200 transition ease-in-out"
+                    onClick={handleAddToCart}
                   >
-                    <div className="w-7 h-7 border border-white flex items-center justify-center">
-                      <p className="text-center text-vividBlack">{size}</p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2.5 pt-8 pb-10">
-              <p className="text-vividBlack">QUANTITY</p>
-              <div className="flex items-center gap-2 px-4 py-3 border border-borderColor rounded-sm justify-between w-fit">
-                <img
-                  src={MinusIcon}
-                  className="w-5 h-5 cursor-pointer"
-                  onClick={handleRemoveProduct}
-                />
-                <h5 className="text-neutral px-10.5">{quantity}</h5>
-                <img
-                  src={PlusIcon}
-                  className="w-5 h-5 cursor-pointer"
-                  onClick={handleAddProduct}
-                />
-              </div>
-            </div>
-
-            <div className="pr-36.5">
-              <button
-                className="w-full hover:bg-slate-700 duration-200 transition ease-in-out"
-                onClick={handleAddToCart}
-              >
-                Add to cart
-              </button>
-              {errorMessage && <span className="text-sm text-red-500">{errorMessage}</span>}
-              <p className="text-vividBlack pt-1">
-                — Free shipping on orders $100+
-              </p>
-            </div>
+                    Add to cart
+                  </button>
+                  {errorMessage && (
+                    <span className="text-sm text-red-500">{errorMessage}</span>
+                  )}
+                  <p className="text-vividBlack pt-1">
+                    — Free shipping on orders $100+
+                  </p>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "title": "Levi's - Men's 541 Athletic Fit Jeans",
       "description": "These Levi's jeans are designed with an athletic fit, making them perfect for guys with muscular builds. The stylish design and comfortable fit make them a great choice for everyday wear.",
       "price": 68,
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": "2",
       "title": "The North Face - Thermoball Jacket",
       "description": "The North Face Thermoball Jacket is a versatile and warm layer for outdoor enthusiasts. It features a DWR (durable water repellent) finish to help protect against the elements and a relaxed fit for easy layering.",
       "price": 130,
@@ -56,34 +56,135 @@
       "stock": 100,
       "brand": "The North Face",
       "category": "jackets",
-      "colors": ["black", "white", "blue"],
-      "sizes": ["S", "M", "L", "XL"],
+      "colors": ["black"],
+      "sizes": ["L"],
       "reviews": [
         {
           "author": "Alguém",
           "text": "Lorem ipsun"
         }
       ],
-      "thumbnail": "https://dummyjson.com/image/i/products/2/thumbnail.jpg",
+      "thumbnail": "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F2808209-628-628%2Fjaqueta-masculina-de-trekking-trek-100-preto-p2.jpg%3Fv%3D637617131704600000",
       "images": [
         {
           "color": "black",
           "images": [
             "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F2808209-628-628%2Fjaqueta-masculina-de-trekking-trek-100-preto-p2.jpg%3Fv%3D637617131704600000",
-            "https://static.netshoes.com.br/produtos/tenis-puma-carina-bdp-feminino/38/NWG-1371-038/NWG-1371-038_zoom4.jpg?ts=1711980846&ims=1088x",
-            "https://static.netshoes.com.br/produtos/tenis-puma-carina-bdp-feminino/91/NWG-1371-C91/NWG-1371-C91_zoom1.jpg?ts=1726675377&ims=1088x"
+            "https://thenorthface.vtexassets.com/arquivos/ids/221661/jaqueta-masculina-thermoball-eco-preta-5GLLJK3-2.png?v=638488026597500000",
+            "https://thenorthface.vtexassets.com/arquivos/ids/221667/jaqueta-masculina-thermoball-eco-preta-5GLLJK3-3.png?v=638488029012470000"
           ]
         }
       ]
     },
     {
-      "id": 3,
+      "id": "3",
+      "title": "Columbia - Whirlibird IV Interchange Jacket",
+      "description": "A jaqueta Columbia Whirlibird IV oferece versatilidade para todas as estações. Com sistema 3 em 1, ela combina uma camada interna quente com uma externa impermeável.",
+      "price": 180,
+      "discountPercentage": 15,
+      "rating": 4.8,
+      "stock": 75,
+      "brand": "Columbia",
+      "category": "jackets",
+      "colors": ["navy", "red"],
+      "sizes": ["M", "L", "XL"],
+      "reviews": [
+        {
+          "author": "Carlos Ferreira",
+          "text": "Excelente para viagens de inverno, muito confortável e resistente!"
+        }
+      ],
+      "thumbnail": "https://dummyjson.com/image/i/products/3/thumbnail.jpg",
+      "images": [
+        {
+          "color": "navy",
+          "images": [
+            "https://columbia.vtexassets.com/arquivos/ids/327401-800-auto?v=638739706241300000&width=800&height=auto&aspect=true",
+            "https://columbia.vtexassets.com/arquivos/ids/327402-800-auto?v=638739706241300000&width=800&height=auto&aspect=true"
+          ]
+        },
+        {
+          "color": "red",
+          "images": [
+            "https://columbia.vtexassets.com/arquivos/ids/321450-800-auto?v=638686949484870000&width=800&height=auto&aspect=true",
+            "https://columbia.vtexassets.com/arquivos/ids/321453-800-auto?v=638686949838400000&width=800&height=auto&aspect=true"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "title": "Patagonia - Nano Puff Jacket",
+      "description": "A jaqueta Nano Puff da Patagonia é ultraleve e isolada com material sustentável. Perfeita para atividades ao ar livre com proteção térmica eficiente.",
+      "price": 150,
+      "discountPercentage": 10,
+      "rating": 4.6,
+      "stock": 60,
+      "brand": "Patagonia",
+      "category": "jackets",
+      "colors": ["black"],
+      "sizes": ["S", "M", "L"],
+      "reviews": [
+        {
+          "author": "Ana Souza",
+          "text": "Material excelente, leve e protege muito bem contra o frio moderado."
+        }
+      ],
+      "thumbnail": "https://dummyjson.com/image/i/products/4/thumbnail.jpg",
+      "images": [
+        {
+          "color": "black",
+          "images": [
+            "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F164576780-628-628%2F17343694873414.jpg%3Fv%3D638701246632900000",
+            "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F164576775-628-628%2F17343694901925.jpg%3Fv%3D638701246632600000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "title": "Arc'teryx - Camosun Parka",
+      "description": "A Camosun Parka da Arc'teryx combina estilo urbano com alto desempenho térmico, perfeita para invernos rigorosos.",
+      "price": 400,
+      "discountPercentage": 5,
+      "rating": 4.9,
+      "stock": 30,
+      "brand": "Arc'teryx",
+      "category": "jackets",
+      "colors": ["blue", "black"],
+      "sizes": ["M", "L", "XL"],
+      "reviews": [
+        {
+          "author": "Pedro Lima",
+          "text": "Parka incrível! Quente e muito confortável, vale cada centavo."
+        }
+      ],
+      "thumbnail": "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F161586741-628-628%2Fss-veste-mt500-windwarm-2xl-azul-3g6.jpg%3Fv%3D638622759801370000",
+      "images": [
+        {
+          "color": "blue",
+          "images": [
+            "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F161586741-628-628%2Fss-veste-mt500-windwarm-2xl-azul-3g6.jpg%3Fv%3D638622759801370000",
+            "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F161586742-628-628%2Fss-veste-mt500-windwarm-2xl-azul-3g7.jpg%3Fv%3D638622759803730000"
+          ]
+        },
+        {
+          "color": "black",
+          "images": [
+            "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F161582885-628-628%2Fss-veste-mt500-windwarm-2xl-preta-3g1.jpg%3Fv%3D638622685355930000",
+            "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F161582887-628-628%2Fss-veste-mt500-windwarm-2xl-preta-3g3.jpg%3Fv%3D638622685357830000"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "6",
       "title": "Nike - Air Force 1 Low Sneakers",
       "description": "The Nike Air Force 1 Low Sneaker is a classic style that has been updated with modern materials and a sleek design. It features a low-profile sole and a comfortable fit that makes it perfect for everyday wear.",
       "price": 80,
       "discountPercentage": 10,
       "rating": 4.4,
-      "stock": 120,
+      "stock": 0,
       "brand": "Nike",
       "category": "sneakers",
       "colors": ["white", "black", "blue"],
@@ -115,7 +216,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": "7",
       "title": "Ray-Ban - RB3025 Aviator Sunglasses",
       "description": "The Ray-Ban RB3025 Aviator Sunglasses are a classic style that features a sleek and sophisticated design. They are made with high-quality materials and have a comfortable fit that makes them perfect for everyday wear.",
       "price": 150,
@@ -145,13 +246,13 @@
       ]
     },
     {
-      "id": 5,
+      "id": "8",
       "title": "Puma - Carina Sneakers",
       "description": "The Puma Carina Sneaker is a stylish and comfortable choice for everyday wear. It features a sleek design and a comfortable fit that makes it perfect for running errands or working out.",
       "price": 70,
       "discountPercentage": 10,
       "rating": 4.9,
-      "stock": 110,
+      "stock": 0,
       "brand": "Puma",
       "category": "sneakers",
       "colors": ["black", "white", "blue"],
@@ -175,7 +276,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": "9",
       "title": "Vans - Old Skool Sneakers",
       "description": "The Vans Old Skool Sneakers are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
       "price": 90,
@@ -205,13 +306,13 @@
       ]
     },
     {
-      "id": 7,
+      "id": "10",
       "title": "Adidas - Stan Smith Sneakers",
       "description": "The Adidas Stan Smith Sneakers are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
       "price": 120,
       "discountPercentage": 20,
       "rating": 4.6,
-      "stock": 85,
+      "stock": 0,
       "brand": "Adidas",
       "category": "sneakers",
       "colors": ["green", "white", "blue"],
@@ -235,7 +336,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": "11",
       "title": "New Balance - 574 Sneakers",
       "description": "The New Balance 574 Sneakers are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
       "price": 110,
@@ -265,7 +366,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": "12",
       "title": "Air Jordan 1 Mid Sneakers",
       "description": "The Air Jordan 1 Mid Sneakers are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
       "price": 150,
@@ -295,7 +396,7 @@
       ]
     },
     {
-      "id": 10,
+      "id": "13",
       "title": "Oakley - Men's 7mm Tortoise Sunglasses",
       "description": "The Oakley Men's 7mm Tortoise Sunglasses are a classic style that features a classic design and a comfortable fit that makes them perfect for everyday wear.",
       "price": 70,
@@ -345,7 +446,7 @@
   ],
   "cart": [
     {
-      "id": 1,
+      "id": "1",
       "userEmail": "yaagoub9117@uorak.com",
       "products": [
         {
@@ -355,6 +456,30 @@
           "quantity": 1,
           "orderDate": "2023-05-01",
           "image": "https://cdn.shopify.com/s/files/1/0532/6720/2223/files/levi-s-men-s-541-stretch-mid-rise-relaxed-fit-tapered-leg-jeans-husker-17__60522.jpg?v=1715271115"
+        },
+        {
+          "id": 1,
+          "title": "Levi's - Men's 541 Athletic Fit Jeans",
+          "price": 68,
+          "quantity": 1,
+          "orderDate": "2025-03-12T20:13:54.216Z",
+          "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSxC483Xq04peo0Fm44-DuyJfVY0P8nE310liPF2iB_2LxQanM15FiVyPM_apKr_-m6H5rbg1SGiXDVvg-qeuZG8aU8AG3kKU5plk2Fp3gr4gpHXdIRFyXI&usqp=CAE"
+        },
+        {
+          "id": 1,
+          "title": "Levi's - Men's 541 Athletic Fit Jeans",
+          "price": 68,
+          "quantity": 1,
+          "orderDate": "2025-03-12T21:18:21.630Z",
+          "image": "https://http2.mlstatic.com/D_NQ_NP_722412-MLB73327054656_122023-O.webp"
+        },
+        {
+          "id": 2,
+          "title": "The North Face - Thermoball Jacket",
+          "price": 130,
+          "quantity": 2,
+          "orderDate": "2025-03-12T23:05:36.682Z",
+          "image": "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F2808209-628-628%2Fjaqueta-masculina-de-trekking-trek-100-preto-p2.jpg%3Fv%3D637617131704600000"
         }
       ]
     }
