@@ -24,6 +24,10 @@ export function AuthBreadCrumb({ product }: IBreadCRumb) {
     breadCrumb = breadCrumb + " / Search";
   }
 
+  if (pathname.includes("cart")){
+    breadCrumb = breadCrumb + " / Cart";
+  }
+
   return (
     <section className="px-40 py-8.5 bg-offWhite flex flex-col gap-2">
       <div className="px-3 py-2">

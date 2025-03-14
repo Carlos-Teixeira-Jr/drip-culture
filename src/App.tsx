@@ -10,6 +10,7 @@ import { MyAccountPage } from './pages/MyAccountPage';
 import { AboutMePage } from './pages/AboutMePage';
 import { ShopPage } from './pages/ShopPage';
 import { ProductPage } from './pages/ProductPage';
+import { CartPage } from './pages/CartPage';
 
 const routes = [
   { path: "/" },
@@ -20,7 +21,8 @@ const routes = [
   { path: "/my-account" },
   { path: "/about-me" },
   { path: "/shop" },
-  { path: "/product/:id" }
+  { path: "/product/:id" },
+  { path:"/cart" }
 ];
 
 function RouteValidator() {
@@ -51,6 +53,7 @@ function App() {
         <Route path='/about-me' element={<AboutMePage />} />
         <Route path='/shop' element={<ShopPage />} />
         <Route path='/product/:id' element={<ProductPage />} />
+        <Route path='/cart' element={<CartPage/>} />
         <Route
           path="/my-account"
           element={
