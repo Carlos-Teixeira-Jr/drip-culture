@@ -11,6 +11,7 @@ import {
   fetchTotalProducts,
   setFilters,
   setPrice,
+  setTitleFilter,
 } from "../../../../slices/productsSlice";
 import { ProductCard } from "../../../cards/ProductCard";
 
@@ -38,7 +39,8 @@ export function ProductsListing() {
   };
 
   const handleTitleFilter = () => {
-    dispatch(setFilters(titleFilter));
+    dispatch(setTitleFilter(titleFilterInput));
+    dispatch(fetchProducts());
   };
 
   useEffect(() => {
@@ -84,7 +86,7 @@ export function ProductsListing() {
                 <img
                   src={SearchIcon}
                   alt="close"
-                  className="absolute left-2 top-2.5 w-6 h-6"
+                  className="absolute left-2 top-2.5 w-6 h-6 cursor-pointer"
                   onClick={handleTitleFilter}
                 />
               </div>
@@ -96,7 +98,7 @@ export function ProductsListing() {
         </div>
         <div className="grid grid-cols-3 gap-6">
           {products.map((product: IProduct) => (
-            <ProductCard product={product} />
+            <ProductCard product={product} key={product.id}/>
           ))}
         </div>
       </div>

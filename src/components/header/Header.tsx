@@ -50,14 +50,17 @@ export function Header() {
           </h5>
         </div>
         <div className="flex gap-8 items-center">
-          <img
-            src={CartImage}
-            alt="logo"
-            className="w-[18px] h-[18px] relative"
-          />
-          <span className="absolute top-20 left-[1195px] bg-[#BE1313] text-white font-bold text-[10px] rounded-full w-3.5 h-3.5 flex justify-center items-center">
-            {cart?.products?.length}
-          </span>
+          <div className="relative flex justify-center items-center">
+            <img
+              src={CartImage}
+              alt="logo"
+              className="w-[18px] h-[18px]"
+            />
+            <span className="absolute top-[10px] right-[-5px] bg-[#BE1313] text-white font-bold text-[10px] rounded-full w-3.5 h-3.5 flex justify-center items-center">
+              {cart?.products?.length}
+            </span>
+          </div>
+
           {isSignedIn && user ? (
             <Link to={"/my-account"}>
               <div className="bg-offWhite rounded-full p-3.5 shrink-0">

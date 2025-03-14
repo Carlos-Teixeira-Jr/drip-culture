@@ -6,6 +6,7 @@ import { ICart } from "../interfaces/cart.interface";
 export interface ProductsState {
   categories: Category[];
   filter: string;
+  titleFilter: string;
   products: IProduct[];
   page: number;
   totalProducts: number;
@@ -19,6 +20,7 @@ export interface ProductsState {
 const productsInitialState: ProductsState = {
   categories: [],
   filter: "",
+  titleFilter: "",
   products: [],
   page: 1,
   totalProducts: 0,
@@ -42,20 +44,20 @@ export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
   async (_, { getState }) => {
     const state = getState() as { products: ProductsState };
-    const { filter, page, price } = state.products;
+    const { filter, titleFilter, page, price } = state.products;
+    console.log("🚀 ~ titleFilter slice:", titleFilter)
 
-    const filterParams =
-      filter ? `&category=${filter}` : "";
+    const filterParams = filter ? `&category=${filter}` : "";
+    const titleFilterParam = titleFilter ? `&title=${titleFilter}` : "";
 
     const response = await fetch(
-      `http://localhost:3001/products?${filterParams}&price_lte=${price}&_page=${page}&_per_page=9`
+      `http://localhost:3001/products?${filterParams}${titleFilterParam}&price_lte=${price}&_page=${page}&_per_page=9`
     );
 
-    const fetcheData = await response.json();
-
-    const products = fetcheData.data;
-    const totalPages = fetcheData.pages;
-    const totalProducts = fetcheData.items;
+    const fetchedData = await response.json();
+    const products = fetchedData.data;
+    const totalPages = fetchedData.pages;
+    const totalProducts = fetchedData.items;
 
     return {
       products,
@@ -143,6 +145,9 @@ const productsSlice = createSlice({
     setFilters: (state, action: PayloadAction<string>) => {
       state.filter = action.payload;
     },
+    setTitleFilter: (state, action: PayloadAction<string>) => {
+      state.titleFilter = action.payload;
+    },
     setPage: (state, action: PayloadAction<number>) => {
       state.page = action.payload;
     },
@@ -200,7 +205,7 @@ const cartSlice = createSlice({
   },
 });
 
-export const { setFilters, setPrice, setPage } = productsSlice.actions;
+export const { setFilters, setPrice, setPage, setTitleFilter } = productsSlice.actions;
 export const { setCart } = cartSlice.actions;
 export default productsSlice.reducer;
 export const cartReducer = cartSlice.reducer;
