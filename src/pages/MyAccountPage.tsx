@@ -5,6 +5,7 @@ import {
   SideMenu,
 } from "../components/menus/sideMenu/SideMenu";
 import { OrdersContainer } from "../components/products/ordersContainer/OrdersContainer";
+import { AccountDetailsContainer } from "../components/user/accountDetails/AccountDetailsContainer";
 
 export function MyAccountPage() {
   const [selectedOption, setSelectedOption] = useState({
@@ -21,7 +22,7 @@ export function MyAccountPage() {
             setSelectedOption(selectedOption)
           }
         />
-        {selectedOption.orders ? <OrdersContainer /> : null}
+        {selectedOption.orders ? <OrdersContainer /> : <AccountDetailsContainer/>}
       </div>
     </>
   );

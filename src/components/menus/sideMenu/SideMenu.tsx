@@ -45,10 +45,11 @@ export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
   ];
 
   const handleSelectOption = (key: 'orders' | 'account') => {
-    if (!selectedOption[key]) {
-      setSelectedOption({ ...selectedOption, [key]: true });
-    } else {
-      setSelectedOption({ ...selectedOption, [key]: false });
+    if (key === 'orders' && !selectedOption[key]) {
+      setSelectedOption({ orders: true, account: false });
+    }
+    if (key === 'account' && !selectedOption[key]) {
+      setSelectedOption({ orders: false, account: true });
     }
   };
 
@@ -65,7 +66,7 @@ export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
   };
 
   return (
-    <nav className="pl-38 pr-9 pt-28.5 pb-[31rem] flex border-r-2 border-borderColor">
+    <nav className="pl-38 pr-9 pt-28.5 pb-[20rem] flex border-r-2 border-borderColor">
       <ul className="flex flex-col justify-center">
         {options.map((option) => (
           <li

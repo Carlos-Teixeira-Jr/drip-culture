@@ -1,6 +1,8 @@
+import { useNavigate } from 'react-router-dom';
 import heroImage from '../../../assets/heroImages/hero-image.png';
 
 export function NewCollectionBanner() {
+  const navigate = useNavigate();
   return (
     <main className="w-full h-[27.5rem] bg-offWhite px-[11rem] flex justify-between">
       <div>
@@ -10,7 +12,7 @@ export function NewCollectionBanner() {
             Discover Our Newest Collection Today.
           </h6>
         </div>
-        <button>View Collection</button>
+        <button onClick={() => navigate('/shop')}>View Collection</button>
       </div>
       <div className="mt-auto relative">
         <div className="rounded-full w-[21rem] h-[21rem] bg-lightBlue"/>

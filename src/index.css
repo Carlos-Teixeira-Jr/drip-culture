@@ -28,6 +28,7 @@
     @apply font-semibold text-[32px];
   }
 
+  /* 700 24px */
   h1 {
     @apply font-bold text-2xl;
   }
@@ -42,7 +43,7 @@
   }
 
   input {
-    @apply border border-[#E6E7E8] rounded-sm py-3 px-6 w-full;
+    @apply border border-[#E6E7E8] rounded-sm py-3 px-6 w-full h-11;
   }
 
   /* li hover bg  */

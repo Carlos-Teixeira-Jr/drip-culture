@@ -62,8 +62,6 @@ export function SignUpPage() {
 
     if (Object.values(signUpFormDataErrors).every((error) => error === "")) {
       const { name, email, password } = signUpFormData;
-      console.log("🚀 ~ handleSubmit ~ email:", email);
-      console.log("🚀 ~ handleSubmit ~ signUpFormData:", signUpFormData);
       if (isLoaded) {
         try {
           setLoading(true);

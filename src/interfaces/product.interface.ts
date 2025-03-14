@@ -1,3 +1,13 @@
+type Review = {
+  author: string,
+  text: string
+}
+
+type Image = {
+  color: string,
+  images: string[]
+}
+
 export interface IProduct {
   id: number;
   title: string;
@@ -8,5 +18,8 @@ export interface IProduct {
   stock: number;
   brand: string;
   category: string;
-  images: string[];
+  images: Image[];
+  colors: string[];
+  sizes: string[];
+  reviews: Review[]
 }

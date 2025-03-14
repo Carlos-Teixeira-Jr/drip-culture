@@ -1,16 +1,15 @@
-import { IChart } from "../../../../interfaces/chart.interface";
+import { ICart } from "../../../../interfaces/cart.interface";
 
-interface IChartProductsContainer {
-  chart: IChart;
+interface ICartProductsContainer {
+  cart: ICart;
 }
 
-export function ChartProductsContainer({ chart }: IChartProductsContainer) {
-  console.log("🚀 ~ ChartProductsContainer ~ chart:", chart);
+export function CartProductsContainer({ cart }: ICartProductsContainer) {
   return (
     <main>
       <h3 className="pb-14">Orders</h3>
 
-      {chart.products.map((product, idx) => (
+      {cart.products.map((product, idx) => (
         <div key={product.id} className="flex flex-col">
           <div className="flex gap-5 w-full items-center">
             <div className="flex w-full gap-8">
@@ -25,7 +24,7 @@ export function ChartProductsContainer({ chart }: IChartProductsContainer) {
             </div>
             <button className="bg-white text-black border border-neutral h-fit text-nowrap">View item</button>
           </div>
-          {idx !== chart.products.length - 1 && (
+          {idx !== cart.products.length - 1 && (
             <hr className="border border-borderColor my-8" />
           )}
         </div>
