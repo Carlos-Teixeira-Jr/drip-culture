@@ -30,10 +30,6 @@ const productsInitialState: ProductsState = {
   totalPages: 0,
 };
 
-export interface ICartState {
-  cart: ICart;
-}
-
 const cartInitialState: ICart = {
   id: 0,
   userEmail: "",
@@ -45,7 +41,6 @@ export const fetchProducts = createAsyncThunk(
   async (_, { getState }) => {
     const state = getState() as { products: ProductsState };
     const { filter, titleFilter, page, price } = state.products;
-    console.log("🚀 ~ titleFilter slice:", titleFilter)
 
     const filterParams = filter ? `&category=${filter}` : "";
     const titleFilterParam = titleFilter ? `&title=${titleFilter}` : "";
@@ -131,9 +126,22 @@ export const fetchCategories = createAsyncThunk(
 
 export const fetchCart = createAsyncThunk(
   "cart/fetchCart",
-  async () => {
+  async (_, { getState }) => {
+    const state = getState() as { cart: ICart };
+
+    console.log("🚀 ~ state?.cart.products:", state?.cart.products)
+
+    if (state?.cart.products?.length > 0) {
+      return state.cart.products;
+    }
+
+    console.log("🚀 ~ state:", state)
+
+
     const response = await fetch(`http://localhost:3001/cart/1`);
     const data = await response.json();
+    console.log("🚀 ~ response:", response)
+    console.log("🚀 ~ data:", data)
     return data;
   }
 )
