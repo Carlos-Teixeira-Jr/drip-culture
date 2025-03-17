@@ -16,7 +16,6 @@ export interface ProductsState {
   totalPages: number;
 }
 
-
 const productsInitialState: ProductsState = {
   categories: [],
   filter: "",
@@ -34,7 +33,7 @@ const cartInitialState: ICart = {
   id: 0,
   userEmail: "",
   products: [],
-}
+};
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -68,8 +67,7 @@ export const fetchPriceEndPoints = createAsyncThunk(
     const state = getState() as { products: ProductsState };
     const { filter } = state.products;
 
-    const filterParams =
-      filter ? `&category=${filter}` : "";
+    const filterParams = filter ? `&category=${filter}` : "";
 
     const response = await fetch(
       `http://localhost:3001/products?${filterParams}`
@@ -124,28 +122,6 @@ export const fetchCategories = createAsyncThunk(
   }
 );
 
-export const fetchCart = createAsyncThunk(
-  "cart/fetchCart",
-  async (_, { getState }) => {
-    const state = getState() as { cart: ICart };
-
-    console.log("🚀 ~ state?.cart.products:", state?.cart.products)
-
-    if (state?.cart.products?.length > 0) {
-      return state.cart.products;
-    }
-
-    console.log("🚀 ~ state:", state)
-
-
-    const response = await fetch(`http://localhost:3001/cart/1`);
-    const data = await response.json();
-    console.log("🚀 ~ response:", response)
-    console.log("🚀 ~ data:", data)
-    return data;
-  }
-)
-
 const productsSlice = createSlice({
   name: "products",
   initialState: productsInitialState,
@@ -194,26 +170,29 @@ const productsSlice = createSlice({
   },
 });
 
+const storedCartState = localStorage.getItem("cart");
+
+const cartState = storedCartState ? JSON.parse(storedCartState) : cartInitialState;
+
 const cartSlice = createSlice({
   name: "cart",
-  initialState: cartInitialState,
+  initialState: cartState,
   reducers: {
     setCart: (state, action: PayloadAction<ICart>) => {
       state.id = action.payload.id;
       state.userEmail = action.payload.userEmail;
-      state.products = action.payload.products;
+      state.products = action.payload.products.map((product) => ({
+        ...product,
+        orderDate: typeof product.orderDate === "string"
+          ? product.orderDate
+          : product?.orderDate?.toISOString(),
+      }));
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchCart.fulfilled, (state, action) => {
-      state.id = action.payload.id;
-      state.userEmail = action.payload.userEmail;
-      state.products = action.payload.products;
-    });
   },
 });
 
-export const { setFilters, setPrice, setPage, setTitleFilter } = productsSlice.actions;
+export const { setFilters, setPrice, setPage, setTitleFilter } =
+  productsSlice.actions;
 export const { setCart } = cartSlice.actions;
 export default productsSlice.reducer;
 export const cartReducer = cartSlice.reducer;

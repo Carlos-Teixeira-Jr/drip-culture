@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import { AuthBreadCrumb } from "../components/breadcrumbs/authBreadCrumb/AuthBreadCrumb";
 import { CartProductsComponent } from "../components/products/chart/cartProducts/CartProducts";
-import { RootState } from "../../store";
+import { RootState } from "../slices/store";
 import { ICart } from "../interfaces/cart.interface";
 import { OrderSummary } from "../components/checkout/OrderSummary";
 

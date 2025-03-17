@@ -4,7 +4,7 @@ import SearchIcon from "../../../../assets/icons/search-icon.png";
 import { IProduct } from "../../../../interfaces/product.interface";
 import { Pagination } from "../../pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../../../store";
+import { AppDispatch, RootState } from "../../../../slices/store";
 import {
   fetchPriceEndPoints,
   fetchProducts,

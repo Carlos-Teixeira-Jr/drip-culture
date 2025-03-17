@@ -2,25 +2,18 @@ import LogoImage from "../../assets/logos/logomark.png";
 import CartImage from "../../assets/icons/cart-icon.png";
 import UserImage from "../../assets/icons/user.png";
 import { Link } from "react-router-dom";
-import { useUser, useClerk } from "@clerk/clerk-react";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
-import { AppDispatch, RootState } from "../../../store";
-import { fetchCart } from "../../slices/productsSlice";
+import { useUser } from "@clerk/clerk-react";
+import { useSelector } from "react-redux";
+import { RootState } from "../../slices/store";
 
 export function Header() {
   const { isSignedIn, user } = useUser();
-  const dispatch = useDispatch<AppDispatch>();
-  const cart = useSelector((state: RootState) => state.cart);
+  const cart = useSelector((state: RootState) => state?.cart);
 
   // Todo: criar a feature desta oferta
   const handleOfferClick = () => {
     console.log("clicou na oferta");
   };
-
-  useEffect(() => {
-    dispatch(fetchCart());
-  }, []);
 
   return (
     <header className="flex flex-col justify-center items-center">
@@ -50,16 +43,14 @@ export function Header() {
           </h5>
         </div>
         <div className="flex gap-8 items-center">
-          <div className="relative flex justify-center items-center">
-            <img
-              src={CartImage}
-              alt="logo"
-              className="w-[18px] h-[18px]"
-            />
-            <span className="absolute top-[10px] right-[-5px] bg-[#BE1313] text-white font-bold text-[10px] rounded-full w-3.5 h-3.5 flex justify-center items-center">
-              {cart?.products?.length}
-            </span>
-          </div>
+          <Link to={"/cart"}>
+            <div className="relative flex justify-center items-center">
+              <img src={CartImage} alt="logo" className="w-[18px] h-[18px]" />
+              <span className="absolute top-[10px] right-[-5px] bg-[#BE1313] text-white font-bold text-[10px] rounded-full w-3.5 h-3.5 flex justify-center items-center">
+                {cart?.products?.length}
+              </span>
+            </div>
+          </Link>
 
           {isSignedIn && user ? (
             <Link to={"/my-account"}>

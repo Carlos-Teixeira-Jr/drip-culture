@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../../../store";
+import { AppDispatch, RootState } from "../../../../slices/store";
 import { fetchCategories, fetchPriceEndPoints, fetchProducts, setFilters, setPrice } from "../../../../slices/productsSlice";
 
 export type Category = {

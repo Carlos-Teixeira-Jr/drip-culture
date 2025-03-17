@@ -9,8 +9,10 @@ import MoreIcon from "../../../assets/icons/more-icon.png";
 import { RecomendedProducts } from "../recomendedProducts/RecomendedProducts";
 import ArrowRightIcon from "../../../assets/icons/arrow-right-icon.png";
 import { Toast } from "../../toasts/toast";
-import { RootState } from "../../../../store";
-import { useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../slices/store";
+import { useDispatch, useSelector } from "react-redux";
+import { setCart } from "../../../slices/productsSlice";
+import { CartProductType, ICart } from "../../../interfaces/cart.interface";
 
 interface IProductProps {
   onProductFetched: (product: IProduct) => void;
@@ -25,6 +27,7 @@ export function Product({ onProductFetched }: IProductProps) {
   const [selectedColor, setSelectedColor] = useState("");
   const [selectedSize, setSelectedSize] = useState("");
   const cart = useSelector((state: RootState) => state.cart);
+  const dispatch = useDispatch<AppDispatch>();
 
   const [actualImage, setActualImage] = useState<{
     image: string;
@@ -86,6 +89,7 @@ export function Product({ onProductFetched }: IProductProps) {
   };
 
   const handleAddToCart = async () => {
+    setErrorMessage("");
     if (!selectedColor || !selectedSize) {
       const errorMessage =
         !selectedColor && !selectedSize
@@ -99,26 +103,45 @@ export function Product({ onProductFetched }: IProductProps) {
     }
 
     try {
-      await fetch(`http://localhost:3001/cart/${cart?.id}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
+
+      const productIndex = cart.products.findIndex((item: CartProductType) => item.id === Number(productId));
+
+      if (productIndex !== -1) {
+        const updatedProducts = [...cart.products];
+        updatedProducts[productIndex].quantity = quantity;
+
+        const updatedCart = {
+          ...cart,
+          products: updatedProducts
+        }
+
+        dispatch(setCart(updatedCart))
+      } else {
+        const updatedCart: ICart = {
+          id: cart.id,
+          userEmail: cart.userEmail,
           products: [
-            ...cart?.products,
+            ...cart.products,
             {
               id: Number(productId),
               title: product?.title,
               price: product?.price,
               quantity,
               orderDate: new Date(),
-              image: product?.images.find((img) => img.color === selectedColor)
-                ?.images[0],
-            },
-          ],
-        }),
-      });
+              image: product?.images.find((img) => img.color === selectedColor)?.images[0] as unknown as string,
+              color: selectedColor,
+              size: selectedSize
+            }
+          ]
+        };
+  
+        dispatch(setCart(updatedCart))
+        setShowToast({
+          show: true,
+          message: "Product added to cart",
+          type: "success",
+        })
+      }
     } catch (error) {
       console.error(error);
       setShowToast({

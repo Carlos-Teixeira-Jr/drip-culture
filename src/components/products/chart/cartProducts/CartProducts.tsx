@@ -10,7 +10,7 @@ export function CartProductsComponent({cart}: ICartProducts) {
     <section>
       <h1 className="pb-4.5">Your cart</h1>
       <hr className="text-lightBlue pb-12"/>
-      <div className="flex flex-col gap-10">
+      <div className="flex flex-col gap-10 min-w-[528px]">
         {cart.products.map((product: any) => <CartProductCard key={product.id} {...product}/>)}
       </div>
     </section>
