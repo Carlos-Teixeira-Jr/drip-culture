@@ -1,19 +1,19 @@
 import { useSelector } from "react-redux";
-import { AuthBreadCrumb } from "../components/breadcrumbs/authBreadCrumb/AuthBreadCrumb";
+import { BreadCrumb } from "../components/breadcrumbs/breadCrumb/BreadCrumb";
 import { CartProductsComponent } from "../components/products/chart/cartProducts/CartProducts";
 import { RootState } from "../slices/store";
 import { ICart } from "../interfaces/cart.interface";
-import { OrderSummary } from "../components/checkout/OrderSummary";
+import { OrderSummary } from "../components/checkout/order/OrderSummary";
 
 export function CartPage() {
   const cart: ICart = useSelector((state: RootState) => state.cart) as ICart;
   console.log("🚀 ~ CartPage ~ cart:", cart);
   return (
     <main>
-      <AuthBreadCrumb />
+      <BreadCrumb />
       <div className="px-44 flex gap-30 pt-18 pb-34">
         <CartProductsComponent cart={cart} />
-        <OrderSummary cart={cart}/>
+        <OrderSummary/>
       </div>
     </main>
   );

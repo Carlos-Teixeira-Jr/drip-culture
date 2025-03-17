@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { AuthBreadCrumb } from "../components/breadcrumbs/authBreadCrumb/AuthBreadCrumb";
+import { BreadCrumb } from "../components/breadcrumbs/breadCrumb/BreadCrumb";
 import {
   SelectedOption,
   SideMenu,
@@ -15,7 +15,7 @@ export function MyAccountPage() {
 
   return (
     <>
-      <AuthBreadCrumb />
+      <BreadCrumb />
       <div className="flex my-14.5 w-full">
         <SideMenu
           onSelectedOptionChange={(selectedOption: SelectedOption) =>

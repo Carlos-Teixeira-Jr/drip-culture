@@ -1,35 +1,44 @@
 import { useEffect, useState } from "react";
-import { ICart } from "../../interfaces/cart.interface";
+import { useSelector } from "react-redux";
+import { useUser } from "@clerk/clerk-react";
+import { Link, Navigate } from "react-router-dom";
+import { ICart } from "../../../interfaces/cart.interface";
+import { RootState } from "../../../slices/store";
 
-interface IOrderSummary {
-  cart: ICart;
-}
-
-export function OrderSummary({ cart }: IOrderSummary) {
+export function OrderSummary() {
   const [subTotal, setSubtotal] = useState(0);
   const [total, setTotal] = useState(0);
-  const [cartData, setCartData] = useState(cart);
+  const cart = useSelector((state: RootState) => state.cart) as ICart;
+  const { isSignedIn } = useUser();
 
   useEffect(() => {
     let newSubTotal = 0;
-    cartData.products.forEach((p) => {
+    cart.products.forEach((p) => {
       if (p.price) {
-        newSubTotal += p.price;
+        if (p.quantity) {
+          newSubTotal += p.price * p.quantity;
+        } else {
+          newSubTotal += p.price;
+        }
       }
     });
     setSubtotal(newSubTotal);
-  }, [cartData]);
+  }, [cart]);
 
   useEffect(() => {
     let newTotal = 0;
-    cartData.products.forEach((p) => {
+    cart.products.forEach((p) => {
       if (p.price) {
-        newTotal += p.price;
+        if (p.quantity) {
+          newTotal += p.price * p.quantity;
+        } else {
+          newTotal += p.price;
+        }
       }
     });
     newTotal += 3;
     setTotal(newTotal);
-  }, [cartData]);
+  }, [cart]);
 
   const summarryItens = [
     {
@@ -69,10 +78,23 @@ export function OrderSummary({ cart }: IOrderSummary) {
         <h5>$ {total}</h5>
       </div>
 
-      <button className="w-full my-8">Checkout</button>
+      <button
+        className="w-full my-8"
+        onClick={() => {
+          isSignedIn
+            ? Navigate({ to: "/checkout" })
+            : Navigate({ to: "/login" });
+        }}
+      >
+        {isSignedIn ? "Checkout" : "Login to Checkout"}
+      </button>
 
       <div className="flex justify-center">
-        <p className="text-neutral underline cursor-pointer">Continue Shopping</p>
+        <Link to="/shop">
+          <p className="text-neutral underline cursor-pointer">
+            Continue Shopping
+          </p>
+        </Link>
       </div>
     </section>
   );

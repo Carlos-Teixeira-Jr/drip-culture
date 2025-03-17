@@ -6,7 +6,7 @@ interface IBreadCRumb {
   product?: IProduct | undefined;
 }
 
-export function AuthBreadCrumb({ product }: IBreadCRumb) {
+export function BreadCrumb({ product }: IBreadCRumb) {
   const { pathname } = useLocation();
   let pageName;
 

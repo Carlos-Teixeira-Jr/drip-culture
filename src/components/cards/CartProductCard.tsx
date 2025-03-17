@@ -109,7 +109,7 @@ export function CartProductCard(product: CartProductType) {
         <h5>${product.price}.00</h5>
       </div>
       <div className="flex flex-col gap-2.5 pl-8 pr-4">
-        <div className="flex items-center gap-2 px-4 py-3 border border-borderColor rounded-sm justify-between w-full">
+        <div className="flex items-center gap-2 px-4 py-3 border border-borderColor rounded-sm justify-between w-full min-w-[127px]">
           <img
             src={MinusIcon}
             className="w-4 h-4 cursor-pointer"
