@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../../../store";
+import { AppDispatch, RootState } from "../../../../slices/store";
 import { fetchCategories, fetchPriceEndPoints, fetchProducts, setFilters, setPrice } from "../../../../slices/productsSlice";
 
 export type Category = {
@@ -11,7 +11,7 @@ export type Category = {
 export function CategoriesSideMenu() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { categories, price, priceEndPoints, filters } = useSelector((state: RootState) => state.products);
+  const { categories, price, priceEndPoints, filter } = useSelector((state: RootState) => state.products);
 
   const [position, setPosition] = useState(0);
   const [loading, setIsLoading] = useState(true);
@@ -34,15 +34,11 @@ export function CategoriesSideMenu() {
   };
 
   const handleSelectFilter = (category: string) => {
-    let updatedFilters: string[];
-
-    if (!filters.includes(category)) {
-      updatedFilters = [...filters, category];
+    if (filter === category) {
+      dispatch(setFilters(""));
     } else {
-      updatedFilters = filters.filter((filter) => filter !== category);
+      dispatch(setFilters(category));
     }
-
-    dispatch(setFilters(updatedFilters));
   };
 
   useEffect(() => {
@@ -50,7 +46,7 @@ export function CategoriesSideMenu() {
     dispatch(fetchCategories());
     dispatch(fetchPriceEndPoints());
     setIsLoading(false);
-  },[dispatch, filters])
+  },[dispatch, filter])
 
   return (
     <section className="ml-44 border border-borderColor pt-6 pl-4.5 pr-3.5 w-60.5 rounded-md h-fit relative">
@@ -64,7 +60,7 @@ export function CategoriesSideMenu() {
           >
             <div
               className={`w-4.5 h-4.5 border-2 rounded-xs border-borderColor cursor-pointer ${
-                filters.includes(category.name) ? "bg-neutral" : ""
+                filter === category.name ? "bg-neutral" : ""
               }`}
             />
             <h6 className="text-slateBlack">{category.name}</h6>

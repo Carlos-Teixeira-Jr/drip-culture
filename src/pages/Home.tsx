@@ -5,6 +5,9 @@ import { NewCollectionBanner } from "../components/banners/newCollectionBanner/N
 import { BestSellingProducts } from "../components/products/bestSellingProducts/BestSellingProducts";
 import { OnOfferProducts } from "../components/products/onOfferProducts/OnOfferProducts";
 import { IProduct } from "../interfaces/product.interface";
+import { useDispatch, useSelector } from "react-redux";
+import { RootState } from "../slices/store";
+import { increment } from "../slices/productsSlice";
 
 export function Home() {
   const [bestSellingProduct, setBestSellingProducts] = useState<IProduct[]>([]);

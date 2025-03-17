@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import ArrowLeftIcon from "../../../assets/icons/arrow-left-icon.png";
 import ArrowRightIcon from "../../../assets/icons/arrow-right-icon.png";
-import { AppDispatch, RootState } from "../../../../store";
+import { AppDispatch, RootState } from "../../../slices/store";
 import { fetchProducts, setPage  } from "../../../slices/productsSlice";
 import { useEffect } from "react";
 
