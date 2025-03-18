@@ -153,10 +153,12 @@ export function Product({ onProductFetched }: IProductProps) {
   };
 
   const handleNextImage = (index: number) => {
+    console.log("🚀 ~ handleNextImage ~ index:", index)
     if (product) {
       const colorImageIndex = product?.images.findIndex(
         (img) => img.color === selectedColor
       );
+      console.log("🚀 ~ handleNextImage ~ colorImageIndex:", colorImageIndex)
       if (colorImageIndex !== -1) {
         if (
           product &&
@@ -219,15 +221,15 @@ export function Product({ onProductFetched }: IProductProps) {
   };
 
   return (
-    <section className="px-44 mt-4">
-      <div className="flex gap-28.5">
-        <div className="flex flex-col gap-24.5 pt-7 px-28.5 bg-offWhite relative">
+    <section className="md:px-44 mt-4">
+      <div className="flex flex-col md:flex-row gap-28.5">
+        <div className="flex flex-col gap-24.5 pt-7 md:px-28.5 bg-offWhite relative">
           <img
             src={actualImage.image}
             alt="product image"
-            className="w-72 h-[404px]"
+            className="w-72 h-[404px] mx-auto"
           />
-          <div className="absolute w-full flex gap-90 left-10 top-[40%]">
+          <div className="absolute w-[80%] md:w-full flex md:gap-90 left-10 top-[40%] justify-between">
             <img
               src={ArrowRightIcon}
               className="w-10 h-10 rotate-180 cursor-pointer hover:scale-120 transition duration-300 ease-in-out"
@@ -255,19 +257,19 @@ export function Product({ onProductFetched }: IProductProps) {
           </div>
         </div>
 
-        <div className="w-[27.5rem]">
-          <div className="flex justify-between">
+        <div className="md:w-[27.5rem] px-5 md:px-0">
+          <div className="flex flex-col md:flex-row justify-between">
             <h1>{product?.title}</h1>
             <img
               src={ShareIcon}
               alt="product image"
-              className="w-6 h-6 cursor-pointer"
+              className="w-6 h-6 cursor-pointer mt-2 md:mt-0"
               onClick={handleShareProduct}
             />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <div className="bg-offWhite flex justify-between items-center gap-2 px-4 py-0.5 rounded-full w-fit">
+              <div className="bg-offWhite flex justify-between items-center gap-2 md:px-4 py-0.5 rounded-full w-fit">
                 <img src={StarIcon} alt="product image" className="w-4 h-4" />
                 <p className="text-vividBlack">
                   {product?.rating} — {product?.reviews.length === 0} reviews
@@ -281,7 +283,7 @@ export function Product({ onProductFetched }: IProductProps) {
               </div>
             </div>
 
-            <p className="text-lg font-semibold pt-6 pb-8">
+            <p className="font-semibold pt-6 pb-8 text-3xl md:text-lg">
               ${product?.price}.00
             </p>
 
@@ -347,7 +349,7 @@ export function Product({ onProductFetched }: IProductProps) {
                   </div>
                 </div>
 
-                <div className="pr-36.5">
+                <div className="md:pr-36.5">
                   <button
                     className="w-full hover:bg-slate-700 duration-200 transition ease-in-out"
                     onClick={handleAddToCart}
@@ -357,7 +359,7 @@ export function Product({ onProductFetched }: IProductProps) {
                   {errorMessage && (
                     <span className="text-sm text-red-500">{errorMessage}</span>
                   )}
-                  <p className="text-vividBlack pt-1">
+                  <p className="text-vividBlack pt-1 text-center md:text-start">
                     — Free shipping on orders $100+
                   </p>
                 </div>
@@ -367,13 +369,13 @@ export function Product({ onProductFetched }: IProductProps) {
         </div>
       </div>
 
-      <div className="flex gap-8 pt-44 pb-36.5">
-        <div className="flex justify-center items-center gap-2.5">
+      <div className="flex flex-col md:flex-row gap-8 md:pt-44 pt-20 pb-15 md:pb-36.5">
+        <div className="flex md:justify-center justify-start items-center gap-2.5">
           <img src={MoreIcon} className="pl-6" />
-          <h5 className="text-neutral pr-32.5">Details</h5>
+          <h5 className="text-neutral md:pr-32.5">Details</h5>
         </div>
 
-        <div className="pr-64.5 flex flex-col gap-6">
+        <div className="md:pr-64.5 pl-5 flex flex-col gap-6">
           <h3 className="text-neutral">Detail</h3>
           <h6 className="text-vividBlack">{product?.description}</h6>
         </div>
