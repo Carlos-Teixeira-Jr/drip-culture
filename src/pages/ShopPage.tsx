@@ -8,7 +8,7 @@ export function ShopPage() {
   return (
     <main>
       <BreadCrumb />
-      <div className="flex mt-8 gap-7">
+      <div className="flex flex-col md:flex-row mt-8 gap-7">
         <CategoriesSideMenu/>
         <ProductsListing/>
       </div>

@@ -37,7 +37,7 @@ export function Pagination() {
   },[dispatch, page])
 
   return (
-    <div className="flex border border-borderColor rounded-sm p-2 gap-2 w-fit justify-between items-center">
+    <div className="flex border border-borderColor rounded-sm mt-10 md:mt-0 p-2 gap-2 w-fit justify-between items-center">
       <div className={`p-3 ${page === 1 ? "opacity-25" : "cursor-pointer"}`} onClick={handlePreviousPage}>
         <img src={ArrowLeftIcon} alt="" className="w-6 h-6" />
       </div>

@@ -502,15 +502,10 @@
       "brand": "Oakley",
       "category": "sunglasses",
       "colors": [
-        "black",
-        "white",
-        "blue"
+        "brown"
       ],
       "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
+        "M"
       ],
       "reviews": [
         {
@@ -521,11 +516,11 @@
       "thumbnail": "https://dummyjson.com/image/i/products/10/thumbnail.jpg",
       "images": [
         {
-          "color": "black",
+          "color": "brown",
           "images": [
-            "https://secure-static.vans.com.br/medias/sys_master/vans/vans/hc0/h13/h00/h00/12093797695518/1002001090117U-01-BASEIMAGE-Hires.jpg",
-            "https://secure-static.vans.com.br/medias/sys_master/vans/vans/hae/h3c/h00/h00/12093798088734/1002001090117U-03-BASEIMAGE-Hires.jpg",
-            "https://secure-static.vans.com.br/medias/sys_master/vans/vans/heb/hf7/h00/h00/12093798383646/1002001090117U-04-BASEIMAGE-Hires.jpg"
+            "https://static.dafiti.com.br/p/oakley-%C3%93culos-de-sol-oakley-frogskins-marrom-4282-11700621-1-zoom.jpg?ims=filters:quality(70)",
+            "https://static.netshoes.com.br/produtos/oculos-de-sol-oakley-frogskins-s-matte-tortoise-0353/38/PFO-1264-138/PFO-1264-138_zoom2.jpg?ts=1740148123&ims=1088x",
+            "https://static.netshoes.com.br/produtos/oculos-de-sol-oakley-frogskins-s-matte-tortoise-0353/38/PFO-1264-138/PFO-1264-138_zoom3.jpg?ts=1740148123&ims=1088x"
           ]
         }
       ]
