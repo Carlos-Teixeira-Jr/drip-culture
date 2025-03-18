@@ -66,8 +66,8 @@ export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
   };
 
   return (
-    <nav className="pl-38 pr-9 pt-28.5 pb-[20rem] flex border-r-2 border-borderColor">
-      <ul className="flex flex-col justify-center">
+    <nav className="pr-9 pt-28.5 pb-[20rem] flex border-r-2 border-borderColor">
+      <ul className="flex flex-col justify-center gap-4">
         {options.map((option) => (
           <li
             key={option.id}

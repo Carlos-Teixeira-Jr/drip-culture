@@ -16,7 +16,7 @@ export function MyAccountPage() {
   return (
     <>
       <BreadCrumb />
-      <div className="flex my-14.5 w-full">
+      <div className="flex my-14.5 w-full pr-89 pl-45">
         <SideMenu
           onSelectedOptionChange={(selectedOption: SelectedOption) =>
             setSelectedOption(selectedOption)

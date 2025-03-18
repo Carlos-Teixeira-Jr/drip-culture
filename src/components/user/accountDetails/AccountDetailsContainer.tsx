@@ -4,22 +4,17 @@ import { useState } from "react";
 export function AccountDetailsContainer() {
   const { user } = useUser();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-  });
-
   const inputs = [
     {
       id: 1,
       title: "Full Name",
-      value: formData.name,
+      value: user?.fullName as string,
       key: "name",
     },
     {
       id: 2,
       title: "Email",
-      value: formData.email,
+      value: user?.emailAddresses[0].emailAddress,
       key: "email",
     },
   ];
@@ -40,9 +35,6 @@ export function AccountDetailsContainer() {
             <h5 className="text-neutral">{input.title}</h5>
             <input
               value={input.value}
-              onChange={(e) =>
-                setFormData({ ...formData, [input.key]: e.target.value })
-              }
             />
           </div>
         ))}

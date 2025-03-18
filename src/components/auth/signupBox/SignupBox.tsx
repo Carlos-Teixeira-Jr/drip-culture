@@ -91,6 +91,7 @@ export function SignUpBox({
               key={input.id}
               name={input.name}
               value={input.name === "Password" ? hiddenPassword : input.value}
+              className="text-slateBlack"
               onChange={(e) => {
                 if (input.name === "Password") {
                   handlePasswordChange(e);

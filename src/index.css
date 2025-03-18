@@ -7,12 +7,12 @@
 
   /* 400 14px */
   h6 {
-    @apply text-sm font-normal;
+    @apply text-xl md:text-sm font-normal;
   }
 
   /* 500 14px */
   h5 {
-    @apply text-sm font-medium;
+    @apply text-2xl md:text-sm font-medium;
   }
 
   h4 {
@@ -21,7 +21,7 @@
 
   /* 600 16px */
   h3 {
-    @apply font-semibold text-base;
+    @apply font-semibold text-4xl md:text-base;
   }
 
   h2 {
@@ -30,16 +30,20 @@
 
   /* 700 24px */
   h1 {
-    @apply font-bold text-2xl;
+    @apply font-bold md:text-2xl text-4xl;
   }
 
   /* 500 12px */
   p {
-    @apply text-xs font-medium;
+    @apply text-lg md:text-xs font-medium;
+  }
+
+  a {
+    @apply cursor-pointer text-2xl md:text-sm font-medium;
   }
 
   button {
-    @apply cursor-pointer w-fit text-white bg-[#0E1422] py-3 px-6 rounded-sm;
+    @apply cursor-pointer w-full md:w-fit text-white bg-[#0E1422] py-3 px-6 rounded-sm;
   }
 
   input {

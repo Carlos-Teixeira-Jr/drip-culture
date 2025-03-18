@@ -12,20 +12,22 @@ export function BreadCrumb({ product }: IBreadCRumb) {
 
   let breadCrumb = "DripCulture";
 
-  if (pathname.includes("product")) {
-    breadCrumb = breadCrumb + " / " + product?.title;
-  }
-
-  if (pathname.includes("checkout")) {
-    pageName = "Checkout";
-  }
-
-  if (pathname.includes("shop")){
-    breadCrumb = breadCrumb + " / Search";
-  }
-
-  if (pathname.includes("cart")){
-    breadCrumb = breadCrumb + " / Cart";
+  switch (true) {
+    case pathname.includes("product"):
+      breadCrumb += ` / ${product?.title}`;
+      break;
+    case pathname.includes("checkout"):
+      pageName = "Checkout";
+      break;
+    case pathname.includes("shop"):
+      breadCrumb += " / Search";
+      break;
+    case pathname.includes("cart"):
+      breadCrumb += " / Cart";
+      break;
+    case pathname.includes("my-account"):
+      breadCrumb += " / My Account";
+      break;
   }
 
   return (

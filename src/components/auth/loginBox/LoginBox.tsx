@@ -18,10 +18,12 @@ export function LoginBox({
   onSubmit,
   isLoading,
 }: ILoginBox) {
+  
   const [authFormData, setAuthFormData] = useState({
     email: "",
     password: "",
   });
+  console.log("🚀 ~ authFormData:", authFormData)
 
   const [authFormDataErrors, setAuthFormDataErrors] = useState({
     email: "",
@@ -36,11 +38,13 @@ export function LoginBox({
     {
       id: 1,
       name: "Email",
+      key: "email",
       value: authFormData.email,
     },
     {
       id: 2,
       name: "Password",
+      key: "password",
       value: authFormData.password,
     },
   ];
@@ -77,27 +81,19 @@ export function LoginBox({
           <>
             <h5 className="text-slateBlack">{input.name}</h5>
             <input
-              key={input.id}
+              key={input.key}
               name={input.name}
-              value={input.name === "Password" ? hiddenPassword : input.value}
+              value={input.key === "password" ? hiddenPassword : input.value}
+              className="text-slateBlack"
               onChange={(e) => {
-                if (input.name === "Password") {
+                if (input.key === "password") {
                   handlePasswordChange(e);
                 } else {
                   setAuthFormData({
                     ...authFormData,
-                    [input.name]: e.target.value,
+                    [input.key]: e.target.value,
                   });
                 }
-              }}
-              onBlur={(e) => {
-                setAuthFormDataErrors({
-                  ...authFormDataErrors,
-                  [input.name]:
-                    e.target.value.length < 1
-                      ? "Please enter a valid email"
-                      : "",
-                });
               }}
             />
           </>

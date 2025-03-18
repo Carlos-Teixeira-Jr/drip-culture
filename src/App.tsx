@@ -13,6 +13,7 @@ import { ProductPage } from './pages/ProductPage';
 import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { AfterPaymentPage } from './pages/AfterPaymentPage';
+import { PageNotFound } from './pages/PageNotFound';
 
 const routes = [
   { path: "/" },
@@ -26,7 +27,8 @@ const routes = [
   { path: "/product/:id" },
   { path:"/cart" },
   { path: "/checkout" },
-  { path: "/after-payment" }
+  { path: "/after-payment" },
+  { path: "/page-not-found" }
 ];
 
 function RouteValidator() {
@@ -50,7 +52,7 @@ function App() {
       <RouteValidator />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="*" element={<h1>404</h1>} />
+        <Route path="*" element={<PageNotFound/>} />
         <Route path="/login" element={<LoginPage/>} />
         <Route path="/signup" element={<SignUpPage/>} />
         <Route path="/verify" element={<VerifyEmail />} />
