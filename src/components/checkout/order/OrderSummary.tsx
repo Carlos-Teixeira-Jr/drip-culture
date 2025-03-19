@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useUser } from "@clerk/clerk-react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { ICart } from "../../../interfaces/cart.interface";
 import { RootState } from "../../../slices/store";
 
@@ -10,6 +10,7 @@ export function OrderSummary() {
   const [total, setTotal] = useState(0);
   const cart = useSelector((state: RootState) => state.cart) as ICart;
   const { isSignedIn } = useUser();
+  const navigate = useNavigate();
 
   useEffect(() => {
     let newSubTotal = 0;
@@ -59,7 +60,7 @@ export function OrderSummary() {
   ];
 
   return (
-    <section className="w-[341px] border border-borderColor rounded-sm py-8 px-6 h-fit">
+    <section className="md:w-[341px] border border-borderColor rounded-sm py-8 px-6 h-fit">
       <h1 className="text-neutral">Order Summary</h1>
 
       <div>
@@ -82,8 +83,8 @@ export function OrderSummary() {
         className="w-full my-8"
         onClick={() => {
           isSignedIn
-            ? Navigate({ to: "/checkout" })
-            : Navigate({ to: "/login" });
+            ? navigate("/checkout")
+            : navigate("/login")
         }}
       >
         {isSignedIn ? "Checkout" : "Login to Checkout"}

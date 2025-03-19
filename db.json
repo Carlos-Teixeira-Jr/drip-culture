@@ -11,17 +11,8 @@
       "brand": "Levi's",
       "category": "men's jeans",
       "thumbnail": "https://dummyjson.com/image/i/products/1/thumbnail.jpg",
-      "colors": [
-        "darkBlue",
-        "lightBlue",
-        "black"
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["darkBlue", "lightBlue", "black"],
+      "sizes": ["S", "M", "L", "XL"],
       "reviews": [
         {
           "author": "Alguém",
@@ -65,12 +56,8 @@
       "stock": 100,
       "brand": "The North Face",
       "category": "jackets",
-      "colors": [
-        "black"
-      ],
-      "sizes": [
-        "L"
-      ],
+      "colors": ["black"],
+      "sizes": ["L"],
       "reviews": [
         {
           "author": "Alguém",
@@ -99,15 +86,8 @@
       "stock": 75,
       "brand": "Columbia",
       "category": "jackets",
-      "colors": [
-        "navy",
-        "red"
-      ],
-      "sizes": [
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["navy", "red"],
+      "sizes": ["M", "L", "XL"],
       "reviews": [
         {
           "author": "Carlos Ferreira",
@@ -142,14 +122,8 @@
       "stock": 60,
       "brand": "Patagonia",
       "category": "jackets",
-      "colors": [
-        "black"
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L"
-      ],
+      "colors": ["black"],
+      "sizes": ["S", "M", "L"],
       "reviews": [
         {
           "author": "Ana Souza",
@@ -177,15 +151,8 @@
       "stock": 30,
       "brand": "Arc'teryx",
       "category": "jackets",
-      "colors": [
-        "blue",
-        "black"
-      ],
-      "sizes": [
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["blue", "black"],
+      "sizes": ["M", "L", "XL"],
       "reviews": [
         {
           "author": "Pedro Lima",
@@ -220,17 +187,8 @@
       "stock": 0,
       "brand": "Nike",
       "category": "sneakers",
-      "colors": [
-        "white",
-        "black",
-        "blue"
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["white", "black", "blue"],
+      "sizes": ["S", "M", "L", "XL"],
       "reviews": [
         {
           "author": "Alguém",
@@ -267,17 +225,8 @@
       "stock": 80,
       "brand": "Ray-Ban",
       "category": "sunglasses",
-      "colors": [
-        "black",
-        "white",
-        "blue"
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["black", "white", "blue"],
+      "sizes": ["S", "M", "L", "XL"],
       "reviews": [
         {
           "author": "Alguém",
@@ -306,17 +255,8 @@
       "stock": 0,
       "brand": "Puma",
       "category": "sneakers",
-      "colors": [
-        "black",
-        "white",
-        "blue"
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["black", "white", "blue"],
+      "sizes": ["S", "M", "L", "XL"],
       "reviews": [
         {
           "author": "Alguém",
@@ -345,17 +285,8 @@
       "stock": 90,
       "brand": "Vans",
       "category": "sneakers",
-      "colors": [
-        "green",
-        "white",
-        "blue"
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["green", "white", "blue"],
+      "sizes": ["S", "M", "L", "XL"],
       "reviews": [
         {
           "author": "Alguém",
@@ -384,17 +315,8 @@
       "stock": 0,
       "brand": "Adidas",
       "category": "sneakers",
-      "colors": [
-        "green",
-        "white",
-        "blue"
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["green", "white", "blue"],
+      "sizes": ["S", "M", "L", "XL"],
       "reviews": [
         {
           "author": "Alguém",
@@ -423,17 +345,8 @@
       "stock": 95,
       "brand": "New Balance",
       "category": "sneakers",
-      "colors": [
-        "grey",
-        "white",
-        "blue"
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["grey", "white", "blue"],
+      "sizes": ["S", "M", "L", "XL"],
       "reviews": [
         {
           "author": "Alguém",
@@ -462,17 +375,8 @@
       "stock": 80,
       "brand": "Nike",
       "category": "sneakers",
-      "colors": [
-        "green",
-        "white",
-        "blue"
-      ],
-      "sizes": [
-        "S",
-        "M",
-        "L",
-        "XL"
-      ],
+      "colors": ["green", "white", "blue"],
+      "sizes": ["S", "M", "L", "XL"],
       "reviews": [
         {
           "author": "Alguém",
@@ -501,12 +405,8 @@
       "stock": 100,
       "brand": "Oakley",
       "category": "sunglasses",
-      "colors": [
-        "brown"
-      ],
-      "sizes": [
-        "M"
-      ],
+      "colors": ["brown"],
+      "sizes": ["M"],
       "reviews": [
         {
           "author": "Alguém",
@@ -566,6 +466,39 @@
     {
       "id": "2489",
       "email": "wwww@sss.com"
+    }
+  ],
+  "checkout": [
+    {
+      "id": "ade0",
+      "userEmail": "geane664@uorak.com",
+      "address": {
+        "zipcode": "9621514",
+        "country": "Parque Marinha",
+        "city": "Rio Grande",
+        "state": "RS",
+        "street": "Rua Ilhas Canarias"
+      },
+      "cart": {
+        "id": 0,
+        "userEmail": "",
+        "products": [
+          {
+            "id": 1,
+            "title": "Levi's - Men's 541 Athletic Fit Jeans",
+            "price": 68,
+            "quantity": 2,
+            "orderDate": "2025-03-17T16:31:58.956Z",
+            "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSxC483Xq04peo0Fm44-DuyJfVY0P8nE310liPF2iB_2LxQanM15FiVyPM_apKr_-m6H5rbg1SGiXDVvg-qeuZG8aU8AG3kKU5plk2Fp3gr4gpHXdIRFyXI&usqp=CAE",
+            "color": "darkBlue",
+            "size": "S"
+          }
+        ],
+        "_persist": {
+          "version": -1,
+          "rehydrated": true
+        }
+      }
     }
   ]
 }

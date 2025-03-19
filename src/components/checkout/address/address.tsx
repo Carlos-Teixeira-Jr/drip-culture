@@ -17,6 +17,7 @@ export function Address({onAddressChange}: IAddresProps) {
     state: "",
     street: "",
   });
+  console.log("🚀 ~ Address ~ addressFormData:", addressFormData)
 
   const [addresErrors, setAddressErrors] = useState<IAddress>({
     zipcode: "",
@@ -87,6 +88,10 @@ export function Address({onAddressChange}: IAddresProps) {
     }
   },[user])
 
+  useEffect(() => {
+    onAddressChange(addressFormData)
+  },[addressFormData])
+
   const handleAddressInputChange = async (
     e: React.ChangeEvent<HTMLInputElement>,
     input: string
@@ -126,9 +131,9 @@ export function Address({onAddressChange}: IAddresProps) {
   };
 
   return (
-    <section className="flex flex-col w-[719px]">
+    <section className="flex flex-col md:w-[719px]">
       <h1 className="pb-16">Shipping Address</h1>
-      <div className="grid grid-cols-2 gap-4">
+      <div className="md:grid md:grid-cols-2 flex flex-col gap-4">
         {addressInputs.map((input, idx) => (
           <div
             key={idx}
@@ -146,7 +151,7 @@ export function Address({onAddressChange}: IAddresProps) {
           </div>
         ))}
       </div>
-      <div className="flex space-x-4 py-13">
+      <div className="flex flex-col md:flex-row space-x-4 py-13">
         {userInputs.map((input, idx) => (
           <div key={idx} className="w-full">
             <h5 className="text-slateBlack">{input.label}</h5>

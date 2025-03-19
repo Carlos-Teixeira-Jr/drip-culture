@@ -11,7 +11,7 @@ export function CartPage() {
   return (
     <main>
       <BreadCrumb />
-      <div className="px-44 flex gap-30 pt-18 pb-34">
+      <div className="md:px-44 flex flex-col-reverse md:flex-row md:gap-30 gap-8 md:pt-18 md:pb-34 pb-10">
         <CartProductsComponent cart={cart} />
         <OrderSummary/>
       </div>

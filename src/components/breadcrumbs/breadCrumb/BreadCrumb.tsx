@@ -28,6 +28,17 @@ export function BreadCrumb({ product }: IBreadCRumb) {
     case pathname.includes("my-account"):
       breadCrumb += " / My Account";
       break;
+    case pathname.includes("about-me"):
+      breadCrumb += " / About Me";
+      break;
+    case pathname.includes("login"):
+      breadCrumb += " / Login";
+      break;
+    case pathname.includes("signup"):
+      breadCrumb += " / Sign Up";
+      break;
+    default:
+      break;
   }
 
   return (

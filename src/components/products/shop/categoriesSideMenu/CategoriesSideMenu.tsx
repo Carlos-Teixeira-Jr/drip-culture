@@ -8,6 +8,7 @@ import {
   setFilters,
   setPrice,
 } from "../../../../slices/productsSlice";
+import { useIsMobile } from "../../../../utils/hooks/useIsMobile";
 
 export type Category = {
   id: string;
@@ -25,23 +26,7 @@ export function CategoriesSideMenu() {
   const [loading, setIsLoading] = useState(true);
   const sliderRef = useRef<HTMLInputElement>(null);
 
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 768) {
-        setIsMobile(true);
-      } else {
-        setIsMobile(false);
-      }
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    handleResize();
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (sliderRef.current) {

@@ -46,24 +46,28 @@ export function Product({ onProductFetched }: IProductProps) {
   });
 
   useEffect(() => {
-    const fetchProduct = async () => {
+    const fetchProductById = async (id: string) => {
       try {
-        const response = await fetch(
-          `http://localhost:3001/products?id=${productId}`
-        );
-        const data: IProduct[] = await response.json();
-        setProduct(data[0]);
+        const response = await fetch(`http://localhost:3001/products?id=${id}`);
+        const products: IProduct[] = await response.json();
 
-        if (data[0].colors.length === 1) {
-          setSelectedColor(data[0].colors[0]);
-        }
-        if (data[0].sizes.length === 1) {
-          setSelectedSize(data[0].sizes[0]);
+        if (products.length === 0) {
+          throw new Error(`Product with id ${id} not found`);
         }
 
-        onProductFetched(data[0]);
+        const product = products[0];
+        setProduct(product);
+
+        setSelectedColor(product.colors[0]);
+
+        if (product.sizes.length === 1) {
+          setSelectedSize(product.sizes[0]);
+        }
+
+        onProductFetched(product);
+
         setActualImage({
-          image: data[0].images[0].images[0],
+          image: product.images[0].images[0],
           index: 0,
         });
       } catch (error) {
@@ -75,8 +79,8 @@ export function Product({ onProductFetched }: IProductProps) {
       }
     };
 
-    fetchProduct();
-  }, []);
+    fetchProductById(productId);
+  }, [productId]);
 
   const handleAddProduct = () => {
     setQuantity(quantity + 1);
@@ -103,8 +107,9 @@ export function Product({ onProductFetched }: IProductProps) {
     }
 
     try {
-
-      const productIndex = cart.products.findIndex((item: CartProductType) => item.id === Number(productId));
+      const productIndex = cart.products.findIndex(
+        (item: CartProductType) => item.id === Number(productId)
+      );
 
       if (productIndex !== -1) {
         const updatedProducts = [...cart.products];
@@ -112,10 +117,10 @@ export function Product({ onProductFetched }: IProductProps) {
 
         const updatedCart = {
           ...cart,
-          products: updatedProducts
-        }
+          products: updatedProducts,
+        };
 
-        dispatch(setCart(updatedCart))
+        dispatch(setCart(updatedCart));
       } else {
         const updatedCart: ICart = {
           id: cart.id,
@@ -128,19 +133,20 @@ export function Product({ onProductFetched }: IProductProps) {
               price: product?.price,
               quantity,
               orderDate: new Date(),
-              image: product?.images.find((img) => img.color === selectedColor)?.images[0] as unknown as string,
+              image: product?.images.find((img) => img.color === selectedColor)
+                ?.images[0] as unknown as string,
               color: selectedColor,
-              size: selectedSize
-            }
-          ]
+              size: selectedSize,
+            },
+          ],
         };
-  
-        dispatch(setCart(updatedCart))
+
+        dispatch(setCart(updatedCart));
         setShowToast({
           show: true,
           message: "Product added to cart",
           type: "success",
-        })
+        });
       }
     } catch (error) {
       console.error(error);
@@ -153,12 +159,12 @@ export function Product({ onProductFetched }: IProductProps) {
   };
 
   const handleNextImage = (index: number) => {
-    console.log("🚀 ~ handleNextImage ~ index:", index)
+    console.log("🚀 ~ handleNextImage ~ index:", index);
     if (product) {
       const colorImageIndex = product?.images.findIndex(
         (img) => img.color === selectedColor
       );
-      console.log("🚀 ~ handleNextImage ~ colorImageIndex:", colorImageIndex)
+      console.log("🚀 ~ handleNextImage ~ colorImageIndex:", colorImageIndex);
       if (colorImageIndex !== -1) {
         if (
           product &&
@@ -222,8 +228,8 @@ export function Product({ onProductFetched }: IProductProps) {
 
   return (
     <section className="md:px-44 mt-4">
-      <div className="flex flex-col md:flex-row gap-28.5">
-        <div className="flex flex-col gap-24.5 pt-7 md:px-28.5 bg-offWhite relative">
+      <div className="flex flex-col md:flex-row md:gap-28.5 gap-5">
+        <div className="flex flex-col md:gap-24.5 pt-7 md:px-28.5 bg-offWhite relative">
           <img
             src={actualImage.image}
             alt="product image"
@@ -369,7 +375,7 @@ export function Product({ onProductFetched }: IProductProps) {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8 md:pt-44 pt-20 pb-15 md:pb-36.5">
+      <div className="flex flex-col md:flex-row gap-8 md:pt-44 pt-15 pb-15 md:pb-36.5">
         <div className="flex md:justify-center justify-start items-center gap-2.5">
           <img src={MoreIcon} className="pl-6" />
           <h5 className="text-neutral md:pr-32.5">Details</h5>

@@ -1,17 +1,30 @@
-import { ICart } from "../../../interfaces/cart.interface";
-import { CartProductsContainer } from "../chart/chartProductsContainer/ChartProductsContainer";
 import { EmptyCartContainer } from "../chart/emptyChartContainer/EmptyCartContainer";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../slices/store";
+import { useEffect, useState } from "react";
+import { OrdersProductsContainer } from "../chart/chartProductsContainer/ChartProductsContainer";
+import { useUser } from "@clerk/clerk-react";
 
 
 export function OrdersContainer() {
 
-  const cart = useSelector((state: RootState) => state.cart) as ICart;
+  const [orders, setOrders] = useState();
+  const {user} = useUser()
+
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`);
+        const data = await response.json();
+        setOrders(data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchOrders()
+  },[user])
 
   return (
-    <main className="pl-12 w-2/3">
-      {!cart ? <EmptyCartContainer/> : <CartProductsContainer cart={cart}/>}
+    <main className="md:pl-12 md:w-2/3 px-5 md:px-0">
+      {!orders ? <EmptyCartContainer/> : <OrdersProductsContainer orders={orders}/>}
     </main>
   )
 }

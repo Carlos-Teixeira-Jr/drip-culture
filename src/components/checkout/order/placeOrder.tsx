@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { RootState } from "../../../slices/store";
 import { ICart } from "../../../interfaces/cart.interface";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { IAddress } from "../../../interfaces/address.interface";
 import { Toast } from "../../toasts/toast";
+import { setCart } from "../../../slices/productsSlice";
 
 interface IPlaceOrder {
   address: IAddress;
@@ -21,7 +22,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
   });
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart) as ICart;
 
   useEffect(() => {
@@ -83,6 +84,12 @@ export function PlaceOrder({ address }: IPlaceOrder) {
       });
 
       if (response.ok){
+        dispatch(setCart({
+          id: 0,
+          userEmail: "",
+          products: [],
+        }));
+        window.scrollTo({ top: 0 });
         navigate("/after-payment");
       }
     } catch (error) {
@@ -96,11 +103,11 @@ export function PlaceOrder({ address }: IPlaceOrder) {
   };
 
   return (
-    <section className="w-[341px] border-l-2 border-l-borderColor rounded-sm py-8 pl-16 h-fit">
+    <section className="md:w-[341px] md:border-l-2 border-l-borderColor rounded-sm py-8 md:pl-16 h-fit">
       <div className="flex flex-col">
         <h1 className="text-neutral">Your order</h1>
         <button
-          className="ml-auto bg-white border border-lightBtnBorder text-vividBlack px-6 py-3 text-sm font-medium my-16"
+          className="ml-auto bg-white border border-lightBtnBorder text-vividBlack px-6 py-3 md:text-sm font-medium md:my-16 my-10"
           onClick={() => navigate("/cart")}
         >
           Edit Cart

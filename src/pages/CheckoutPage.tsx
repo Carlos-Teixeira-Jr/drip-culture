@@ -16,7 +16,7 @@ export function CheckoutPage() {
   return (
     <main>
       <BreadCrumb/>
-      <div className="px-44 flex gap-30 pt-18 pb-34">
+      <div className="md:px-44 px-2 flex flex-col md:flex-row md:gap-30 md:pt-18 pt-10 md:pb-34">
         <Address onAddressChange={(address: IAddress) => setAddress(address)}/>
         <PlaceOrder address={address}/>
       </div>
