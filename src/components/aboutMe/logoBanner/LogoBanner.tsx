@@ -12,10 +12,10 @@ export function LogoBanner() {
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-l from-gray-200 to-white opacity-60" />
 
       <div className="absolute top-[35%] left-[25%] bg-cover bg-no-repeat bg-fixed scale-125 z-50">
-        <div className="flex items-center gap-5">
-          <h1 className="text-5xl font-normal text-neutral">C A R L O S •</h1>
-          <img src={Logo} alt="logo" className="w-40 h-40" />
-          <h1 className="text-5xl font-normal text-neutral">• T E I X E I R A</h1>
+        <div className="flex flex-col md:flex-row items-center gap-5">
+          <h1 className="md:text-5xl font-normal text-neutral">C A R L O S <p className="hidden md:block">•</p></h1>
+          <img src={Logo} alt="logo" className="md:w-40 md:h-40 w-10 h-10" />
+          <h1 className="md:text-5xl font-normal text-neutral"><p className="hidden md:block">•</p> T E I X E I R A</h1>
         </div>
       </div>
     </div>

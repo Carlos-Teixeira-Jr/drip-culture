@@ -1,8 +1,8 @@
 export function AboutSection() {
   return (
-    <section className="px-40 py-8.5 flex gap-52">
+    <section className="md:px-40 px-5 py-8.5 flex flex-col md:flex-row md:gap-52 gap-5">
       <div className="flex-1">
-        <h1 className="font-normal text-8xl">About Me</h1>
+        <h1 className="font-normal text-6xl md:text-8xl">About Me</h1>
       </div>
       <div className="flex-1">
         <h4 className="font-normal">

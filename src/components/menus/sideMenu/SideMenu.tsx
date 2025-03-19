@@ -66,8 +66,8 @@ export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
   };
 
   return (
-    <nav className="pl-38 pr-9 pt-28.5 pb-[20rem] flex border-r-2 border-borderColor">
-      <ul className="flex flex-col justify-center">
+    <nav className="md:pr-9 md:pt-28.5 py-10 md:pb-[20rem] flex md:border-r-2 border-borderColor">
+      <ul className="flex flex-col justify-center gap-4">
         {options.map((option) => (
           <li
             key={option.id}
@@ -80,7 +80,7 @@ export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
               }
             } }
           >
-            <img src={option.icon} alt="" />
+            <img src={option.icon} alt="" className="w-6 h-6"/>
             <h5>{option.title}</h5>
           </li>
         ))}

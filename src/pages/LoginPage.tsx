@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { AuthFormData, LoginBox } from "../components/auth/loginBox/LoginBox";
-import { AuthBreadCrumb } from "../components/breadcrumbs/authBreadCrumb/AuthBreadCrumb";
+import { BreadCrumb } from "../components/breadcrumbs/breadCrumb/BreadCrumb";
 import { useSignIn, useUser } from "@clerk/clerk-react";
 import { FormEvent, useEffect, useState } from "react";
 import { validateEmail } from "../utils/validators/emailValidator/emailValidator";
@@ -99,7 +99,7 @@ export function LoginPage() {
 
   return (
     <>
-      <AuthBreadCrumb />
+      <BreadCrumb />
       <LoginBox
         onAuthFormDataChange={(authFormData: AuthFormData) =>
           setAuthFormData(authFormData)

@@ -8,7 +8,7 @@ import { useSignUp } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 import { validateName } from "../utils/validators/nameValidator/nameValidator";
 import { Toast } from "../components/toasts/toast";
-import { AuthBreadCrumb } from "../components/breadcrumbs/authBreadCrumb/AuthBreadCrumb";
+import { BreadCrumb } from "../components/breadcrumbs/breadCrumb/BreadCrumb";
 
 export function SignUpPage() {
   const navigate = useNavigate();
@@ -109,7 +109,7 @@ export function SignUpPage() {
 
   return (
     <>
-      <AuthBreadCrumb />
+      <BreadCrumb />
       <SignUpBox
         onSignUpFormDataChange={(signUpFormData: SignUpFormData) =>
           setSignUpFormData(signUpFormData)

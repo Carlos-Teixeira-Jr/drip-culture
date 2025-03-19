@@ -4,7 +4,7 @@ import SearchIcon from "../../../../assets/icons/search-icon.png";
 import { IProduct } from "../../../../interfaces/product.interface";
 import { Pagination } from "../../pagination/Pagination";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../../../../../store";
+import { AppDispatch, RootState } from "../../../../slices/store";
 import {
   fetchPriceEndPoints,
   fetchProducts,
@@ -50,15 +50,15 @@ export function ProductsListing() {
   }, [dispatch, filter, price]);
 
   return (
-    <section className="flex flex-col justify-center items-center pb-32">
-      <div>
+    <section className="flex flex-col justify-center items-center pb-10 md:pb-32 px-5 md:px-0">
+      <div className="w-full">
         <div className="flex flex-col gap-3">
           <h5>Applied Filter:</h5>
-          <div className="flex gap-3">
-            <div>
+          <div className="flex flex-col md:flex-row gap-3">
+            <div className="w-full">
               {filter && (
                 <div
-                  className="flex gap-2 px-4 py-0.5 rounded-full border border-borderColor cursor-pointer"
+                  className="flex gap-2 px-4 py-0.5 rounded-full border border-borderColor cursor-pointer w-fit"
                   onClick={handleCloseFilters}
                 >
                   <p className="text-neutral">{filter}</p>
@@ -76,9 +76,9 @@ export function ProductsListing() {
               )}
             </div>
             <div className="w-full">
-              <div className="relative w-fit ml-auto">
+              <div className="relative md:w-fit ml-auto">
                 <input
-                  className="float-right w-64.5 pl-12 font-medium text-sm"
+                  className="md:float-right w-full md:w-64.5 pl-12 font-medium text-sm"
                   placeholder="Search products"
                   value={titleFilterInput}
                   onChange={(e) => setTitleFilterInput(e.target.value)}
@@ -96,7 +96,7 @@ export function ProductsListing() {
             Showing {page}-{products.length} of {totalProducts} results.
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="md:grid md:grid-cols-3 flex flex-col gap-10">
           {products.map((product: IProduct) => (
             <ProductCard product={product} key={product.id}/>
           ))}

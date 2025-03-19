@@ -25,11 +25,11 @@ export function RecomendedProducts({ category }: IRecomendedProducts) {
   },[category])
 
   return (
-    <section className="flex flex-col gap-2">
+    <section className="flex flex-col px-5 md:px-0 gap-2">
       <h1 className="text-neutral pt-4">You might also like</h1>
       <p className="text-slateGrey">SIMILAR PRODUCTS</p>
 
-      <div className="flex gap-5 pt-14 pb-32.5">
+      <div className="flex flex-col md:flex-row gap-5 pt-14 pb-15 md:pb-32.5">
         {similarProducts?.map((product) => (
           <ProductCard product={product} key={product.id}/>
         ))}

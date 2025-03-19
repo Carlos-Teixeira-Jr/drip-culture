@@ -26,14 +26,14 @@ export function AdvantagesBanner() {
   ]
 
   return (
-    <main className="w-[1092px] px-[11rem] py-[4.5rem] flex justify-between items-center gap-14 mx-auto">
+    <main className="md:w-[1092px] md:px-[11rem] px-5 py-[4.5rem] flex md:flex-row flex-col justify-between items-center gap-14 mx-auto">
       {advantages.map((advantage) => (
-        <div key={advantage.id} className="flex flex-col gap-3 pt-[8.5rem] pb-12">
-          <div className="bg-offWhite rounded-full w-10 h-10 flex justify-center items-center p-[5px] shrink-0">
-            <img src={advantage.icon} alt="logo" className="w-5 h-5" />
+        <div key={advantage.id} className="flex flex-col gap-3 md:pt-[8.5rem] md:pb-12">
+          <div className="bg-offWhite rounded-full w-20 h-20 mx-auto md:mx-0 md:w-10 md:h-10 flex justify-center items-center p-[5px] shrink-0">
+            <img src={advantage.icon} alt="logo" className="md:w-5 md:h-5 w-10 h-10" />
           </div>
-          <h3 className="text-neutral-800">{advantage.title}</h3>
-          <h6 className="text-neutral-800">
+          <h3 className="text-neutral-800 text-center md:text-start">{advantage.title}</h3>
+          <h6 className="text-neutral-800 text-center md:text-start">
             {advantage.description}
           </h6>
         </div>
