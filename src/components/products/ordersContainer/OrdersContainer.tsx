@@ -1,39 +1,30 @@
-import { useEffect, useState } from "react";
-import { ICart } from "../../../interfaces/cart.interface";
-import { CartProductsContainer } from "../chart/chartProductsContainer/ChartProductsContainer";
 import { EmptyCartContainer } from "../chart/emptyChartContainer/EmptyCartContainer";
+import { useEffect, useState } from "react";
+import { OrdersProductsContainer } from "../chart/chartProductsContainer/ChartProductsContainer";
+import { useUser } from "@clerk/clerk-react";
 
 
 export function OrdersContainer() {
 
-  const [cart, setCart] = useState<ICart | null>(null);
+  const [orders, setOrders] = useState();
+  const {user} = useUser()
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await fetch(`http://localhost:3001/cart?userEmail=I0zTt@example.com`, {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-            },
-          });
-  
-          if (response.ok) {
-            const data = await response.json();
-            // setCart(data[0]);
-          } else {
-            console.error("Error fetching data:", response.statusText);
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      };
-      fetchData();
-    }, []);
+  useEffect(() => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`);
+        const data = await response.json();
+        setOrders(data[0]);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchOrders()
+  },[user])
 
   return (
-    <main className="pl-12 w-2/3">
-      {!cart ? <EmptyCartContainer/> : <CartProductsContainer cart={cart}/>}
+    <main className="md:pl-12 md:w-2/3 px-5 md:px-0">
+      {!orders ? <EmptyCartContainer/> : <OrdersProductsContainer orders={orders}/>}
     </main>
   )
 }

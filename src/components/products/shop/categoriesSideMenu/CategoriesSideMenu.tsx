@@ -1,7 +1,14 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../slices/store";
-import { fetchCategories, fetchPriceEndPoints, fetchProducts, setFilters, setPrice } from "../../../../slices/productsSlice";
+import {
+  fetchCategories,
+  fetchPriceEndPoints,
+  fetchProducts,
+  setFilters,
+  setPrice,
+} from "../../../../slices/productsSlice";
+import { useIsMobile } from "../../../../utils/hooks/useIsMobile";
 
 export type Category = {
   id: string;
@@ -11,11 +18,15 @@ export type Category = {
 export function CategoriesSideMenu() {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { categories, price, priceEndPoints, filter } = useSelector((state: RootState) => state.products);
+  const { categories, price, priceEndPoints, filter } = useSelector(
+    (state: RootState) => state.products
+  );
 
   const [position, setPosition] = useState(0);
   const [loading, setIsLoading] = useState(true);
   const sliderRef = useRef<HTMLInputElement>(null);
+
+  const isMobile = useIsMobile();
 
   useEffect(() => {
     if (sliderRef.current) {
@@ -24,7 +35,18 @@ export function CategoriesSideMenu() {
         (price - Number(slider.min)) /
         (Number(slider.max) - Number(slider.min));
       const newPosition = percent * slider.clientWidth;
-      setPosition(newPosition);
+
+      const tooltipWidth = 1;
+      const adjustedPosition = Math.min(
+        Math.max(newPosition - tooltipWidth / 2, 0),
+        slider.clientWidth - tooltipWidth
+      );
+
+      if (isMobile) {
+        setPosition(adjustedPosition + 40);
+      } else {
+        setPosition(adjustedPosition + 38);
+      }
     }
   }, [price]);
 
@@ -46,10 +68,10 @@ export function CategoriesSideMenu() {
     dispatch(fetchCategories());
     dispatch(fetchPriceEndPoints());
     setIsLoading(false);
-  },[dispatch, filter])
+  }, [dispatch, filter]);
 
   return (
-    <section className="ml-44 border border-borderColor pt-6 pl-4.5 pr-3.5 w-60.5 rounded-md h-fit relative">
+    <section className="md:ml-44 border border-borderColor pt-6 pl-4.5 pr-3.5 w-full md:w-60.5 rounded-md h-fit relative">
       <div className="mb-10">
         <h5 className="mb-4">Categories</h5>
         {categories.map((category: Category) => (
@@ -59,11 +81,13 @@ export function CategoriesSideMenu() {
             onClick={() => handleSelectFilter(category.name)}
           >
             <div
-              className={`w-4.5 h-4.5 border-2 rounded-xs border-borderColor cursor-pointer ${
+              className={`md:w-4.5 md:h-4.5 w-10 h-10 border-2 rounded-xs border-borderColor cursor-pointer ${
                 filter === category.name ? "bg-neutral" : ""
               }`}
             />
-            <h6 className="text-slateBlack">{category.name}</h6>
+            <h6 className="text-slateBlack text-2xl md:text-sm">
+              {category.name}
+            </h6>
           </div>
         ))}
       </div>
@@ -79,18 +103,20 @@ export function CategoriesSideMenu() {
             max={priceEndPoints.max}
             step={1}
             value={price}
-            className="px-0 accent-slateGrey cursor-pointer w-full"
+            className="px-0 accent-slateGrey cursor-pointer w-[85%] md:w-[80%] mx-auto"
             onChange={handlePriceChange}
           />
           <div
-            className="bg-neutral text-white text-xs w-fit py-1 px-2 rounded-sm absolute bottom-6 transform -translate-x-1/8"
+            // className="bg-neutral text-white text-xs w-fit py-1 px-2 rounded-sm absolute bottom-6 transform -translate-x-1/8"
+            className={`bg-neutral text-white text-xs w-fit py-1 px-2 rounded-sm absolute bottom-1 md:bottom-6 left-0 transform -translate-x-1/2`}
             style={{ left: `${position}px` }}
           >
             <p className="relative z-50">$ {price}</p>
 
             <div
               data-popper-arrow
-              className="absolute top-[-0.2rem] right-3.5 w-3 h-3 rotate-45 bg-neutral z-10"
+              // className="absolute top-[-0.2rem] right-3.5 w-3 h-3 rotate-45 bg-neutral z-10"
+              className="absolute top-[-0.2rem] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-neutral z-10"
             />
           </div>
         </div>

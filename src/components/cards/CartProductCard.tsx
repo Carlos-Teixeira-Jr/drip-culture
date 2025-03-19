@@ -7,9 +7,11 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../slices/store";
 import { setCart } from "../../slices/productsSlice";
+import { useIsMobile } from "../../utils/hooks/useIsMobile";
 
 export function CartProductCard(product: CartProductType) {
   const cart = useSelector((state: RootState) => state.cart) as ICart;
+  const isMobile = useIsMobile();
 
   const dispatch = useDispatch<AppDispatch>();
   const [quantity, setQuantity] = useState(1);
@@ -82,19 +84,19 @@ export function CartProductCard(product: CartProductType) {
   };
 
   return (
-    <div className="flex justify-between items-center">
+    <div className="flex md:flex-row flex-col justify-between items-center">
       <Link to={`/product/${product.id}`}>
-        <div className="bg-offWhite px-2.5 w-20 min-w-20 h-20 flex justify-center items-center">
+        <div className="bg-offWhite md:px-2.5 md:w-20 md:min-w-20 md:h-20 flex justify-center items-center">
           <img
             src={product?.image && product?.image}
             alt={product.title}
-            className="w-11 h-16"
+            className="md:w-11 md:h-16 w-56 p-5"
           />
         </div>
       </Link>
 
-      <div className="flex flex-col gap-1.5 justify-between w-42">
-        <h5 className="text-neutral">{product.title}</h5>
+      <div className="flex flex-col gap-1.5 justify-between md:w-42 w-full">
+        <h5 className="text-neutral text-xl">{product.title}</h5>
         <div className="flex justify-between w-fit gap-2 items-center">
           <p className="text-vividBlack">Color:</p>
           <div
@@ -105,11 +107,11 @@ export function CartProductCard(product: CartProductType) {
           <p className="text-vividBlack">Size: {product.size}</p>
         </div>
       </div>
-      <div>
+      <div className="flex justify-start w-full">
         <h5>${product.price}.00</h5>
       </div>
-      <div className="flex flex-col gap-2.5 pl-8 pr-4">
-        <div className="flex items-center gap-2 px-4 py-3 border border-borderColor rounded-sm justify-between w-full">
+      <div className="flex gap-2.5 md:pl-8 md:pr-4 mr-auto py-5">
+        <div className="flex items-center gap-2 px-4 py-3 border border-borderColor rounded-sm justify-between w-full min-w-[127px]">
           <img
             src={MinusIcon}
             className="w-4 h-4 cursor-pointer"
@@ -128,13 +130,23 @@ export function CartProductCard(product: CartProductType) {
             onClick={handleAddProduct}
           />
         </div>
+        {isMobile && (
+          <div
+            className="rounded-sm p-2.5 bg-offWhite shrink-0 h-fit my-auto"
+            onClick={handleRemoveProduct}
+          >
+            <img src={CloseIcon} className="w-5 h-5 cursor-pointer" />
+          </div>
+        )}
       </div>
-      <div
-        className="rounded-sm p-2.5 bg-offWhite shrink-0"
-        onClick={handleRemoveProduct}
-      >
-        <img src={CloseIcon} className="w-5 h-5 cursor-pointer" />
-      </div>
+      {!isMobile && (
+        <div
+          className="rounded-sm p-2.5 bg-offWhite shrink-0"
+          onClick={handleRemoveProduct}
+        >
+          <img src={CloseIcon} className="w-5 h-5 cursor-pointer" />
+        </div>
+      )}
     </div>
   );
 }

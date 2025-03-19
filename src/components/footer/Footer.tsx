@@ -105,13 +105,13 @@ export function Footer() {
 
   return (
     <footer>
-      <section className="w-full bg-offWhite px-[11rem] flex justify-between items-center gap-[16rem]">
-        <div className="flex flex-col gap-6 max-w-[29rem] pt-[3rem] pb-[4.5rem]">
+      <section className="w-full bg-offWhite px-5 md:px-[11rem] flex flex-col md:flex-row justify-between items-center md:gap-[16rem]">
+        <div className="flex flex-col gap-6 md:max-w-[29rem] pt-[3rem] pb-[4.5rem]">
           <h1 className="text-neutral">Join Our Newsletter</h1>
           <h6>We love to surprise our subscribers with occasional gifts.</h6>
         </div>
-        <div className="flex gap-4 w-[28rem]">
-          <div>
+        <div className="flex flex-col md:flex-row gap-4 w-full md:w-[28rem] px-5 md:px-0">
+          <div className="w-full">
             <input
               placeholder="Your email address"
               onChange={(e) => setEmail(e.target.value)}
@@ -126,7 +126,7 @@ export function Footer() {
         )}
       </section>
 
-      <section className="flex justify-between px-[11rem] pt-20">
+      <section className="flex flex-col md:flex-row justify-between px-5 md:px-[11rem] md:pt-20">
         <div className="flex flex-col py-18 gap-3">
           <div className="flex gap-2 items-center">
             <div className="border border-borderColor rounded-md px-3 py-2">
@@ -145,13 +145,13 @@ export function Footer() {
                 <img
                   src={icon.icon}
                   alt={icon.name}
-                  className="w-5 h-5"
+                  className="w-10 h-10 md:w-5 md:h-5"
                 />
               </Link>
             ))}
           </div>
         </div>
-        <div className="flex justify-between gap-[4.5rem]">
+        <div className="flex flex-col md:flex-row justify-between gap-[4.5rem]">
           <div className="flex flex-col gap-7">
             <h5 className="text-slateGrey">SUPPORT</h5>
             <ul className="flex flex-col gap-4 text-vividBlack">
@@ -192,7 +192,7 @@ export function Footer() {
                 to={"/my-account"}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               >
-                <li>My Account</li>
+                <li className="text-normal">My Account</li>
               </Link>
               <Link
                 to={"/checkout"}
@@ -209,7 +209,7 @@ export function Footer() {
             </ul>
           </div>
         </div>
-        <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-10 py-20 md:py-0">
           <h5 className="text-slateGrey">ACCEPTED PAYMENTS</h5>
           <div className="flex gap-6 shrink-0 w-10">
             {creditCardIcons.map((icon, idx) => (
@@ -225,7 +225,7 @@ export function Footer() {
           </div>
         </div>
       </section>
-      <div className="flex justify-center items-center py-6">
+      <div className="flex justify-center items-center p-5 md:py-6">
         <h6 className="text-vividBlack">
           © {year} DevCut. All rights reserved.
         </h6>

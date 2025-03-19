@@ -8,22 +8,21 @@ export function OnOfferProducts({
   products,
 }: IBestSellingProduct) {
   return (
-    <main className="flex flex-col justify-center items-center py-[4.5] px-44 pb-[10.5rem] pt-[9.5rem]">
-      <div className="pb-20">
+    <main className="flex flex-col justify-center items-center py-[4.5] md:px-44 pb-10 md:pb-[10.5rem] pt-[9.5rem]">
+      <div className="pb-10 md:pb-20">
         <div className="border border-borderColor rounded-full px-4 py-0.5">
-          <p className="text-neutral">On Offer</p>
+          <p className="text-neutral text-4xl">On Offer</p>
         </div>
       </div>
-s
-      <div className="flex gap-5">
+      <div className="flex flex-col md:flex-row gap-5">
         {products.map((product) => (
-          <div key={product.id} className="flex flex-col">
+          <div key={product.id} className="flex flex-col md:justify-start justify-center items-center px-5 md:px-0">
             <img
               src={product.images[0].images[0]}
               alt={product.title}
               className="w-[15rem] h-[19.5rem] object-cover"
             />
-            <h3 className="py-3">{product.title}</h3>
+            <h3 className="py-3 text-center md:text-start">{product.title}</h3>
             <div className="flex items-center gap-4">
               <div className="border border-borderColor rounded-full px-4 py-0.5">
                 <p className="text-neutral">IN STOCK</p>

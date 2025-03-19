@@ -1,30 +1,53 @@
-import { ICart } from "../../../../interfaces/cart.interface";
+import { useNavigate } from "react-router-dom";
+import { dateFormatter } from "../../../../utils/formatters/dateFomatter";
+import { IOrders } from "../../../../interfaces/orders.interface";
+import { useEffect, useState } from "react";
 
-interface ICartProductsContainer {
-  cart: ICart;
+interface IOrdersProductsContainer {
+  orders: IOrders;
 }
 
-export function CartProductsContainer({ cart }: ICartProductsContainer) {
+export function OrdersProductsContainer({ orders }: IOrdersProductsContainer) {
+  console.log("🚀 ~ OrdersProductsContainer ~ orders:", orders)
+  const navigate = useNavigate();
+
   return (
     <main>
       <h3 className="pb-14">Orders</h3>
 
-      {cart.products.map((product, idx) => (
+      {orders.cart.products.map((product, idx) => (
         <div key={product.id} className="flex flex-col">
-          <div className="flex gap-5 w-full items-center">
-            <div className="flex w-full gap-8">
-              <img src={product.image} alt={product.title} className="w-20 h-20" />
+          <div className="flex flex-col md:flex-row gap-5 w-full items-center">
+            <div className="flex flex-col md:flex-row gap-8 w-full">
+              <div className="md:w-20 md:h-20 bg-offWhite flex justify-center items-center">
+                <img
+                  src={product.image}
+                  alt={product.title}
+                  className="md:w-11 md:h-15"
+                />
+              </div>
+
               <div className="flex flex-col justify-between">
-                <h5>{product.title}</h5>
+                <h5 className="text-neutral">{product.title}</h5>
                 <div className="flex">
-                  <p>Ordered On: {product.orderDate}</p>
+                  <p className="text-vividBlack">
+                    Ordered On: {dateFormatter(product.orderDate)}
+                  </p>
                 </div>
-                <p>$ {product.price}.00</p>
+                <p className="text-neutral">$ {product.price}.00</p>
               </div>
             </div>
-            <button className="bg-white text-black border border-neutral h-fit text-nowrap">View item</button>
+            <button
+              className="bg-white text-neutral border border-neutral h-fit text-nowrap"
+              onClick={() => {
+                window.scrollTo({ top: 0 });
+                navigate(`/product/${product.id}`);
+              }}
+            >
+              View item
+            </button>
           </div>
-          {idx !== cart.products.length - 1 && (
+          {idx !== orders.cart.products.length - 1 && (
             <hr className="border border-borderColor my-8" />
           )}
         </div>

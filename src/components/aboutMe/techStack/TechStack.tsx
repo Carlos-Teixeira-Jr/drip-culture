@@ -136,29 +136,33 @@ export function TechStack() {
     } else {
       setIsSelected({ ...isSelected, [tech.key]: true });
       setSelectedResume(tech.resume);
+      const resumeDiv = document.getElementById("resume");
+      if (resumeDiv) {
+        resumeDiv.scrollIntoView({ behavior: "smooth" });
+      }
     }
   };
 
   return (
-    <section className="flex flex-col gap-4 px-40 py-12 justify-center items-center">
-      <div className="flex gap-4 justify-between items-center w-full">
+    <section className="flex flex-col gap-4 md:px-40 px-5 py-12 justify-center items-center">
+      <div className="md:flex grid grid-cols-2 space-y-10 gap-4 justify-between items-center w-full">
         {techs.map((tech) => (
           <div
             key={tech.id}
-            className="flex flex-col items-center justify-between h-30 cursor-pointer"
+            className="flex flex-col items-center justify-around md:justify-between md:h-30 h-15 cursor-pointer"
             onClick={() => handleSelectTech(tech)}
           >
             <img
               src={tech.image}
               alt={tech.name}
-              className="w-20"
+              className="md:w-20 w-10"
               style={{ width: tech.width }}
             />
-            <h5>{tech.name}</h5>
+            <h5 className="hidden md:block">{tech.name}</h5>
           </div>
         ))}
       </div>
-      <div className="w-2/3 py-8">
+      <div id="resume" className="md:w-2/3 py-8">
         <h4 className="font-normal">{selectedResume}</h4>
       </div>
     </section>
