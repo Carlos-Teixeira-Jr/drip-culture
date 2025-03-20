@@ -42,7 +42,7 @@ export function BreadCrumb({ product }: IBreadCRumb) {
   }
 
   return (
-    <section className="md:px-40 py-8.5 bg-offWhite flex flex-col gap-2">
+    <section className="md:px-40 py-8.5 offWhite-div flex flex-col gap-2">
       <div className="px-3 py-2">
         {pageName && <h5>{pageName}</h5>}
         <div className="flex gap-1">
@@ -50,7 +50,7 @@ export function BreadCrumb({ product }: IBreadCRumb) {
             <div key={index} className="flex items-center max-w-[250px]">
               <h5
                 className={`truncate ${
-                  index === 0 ? "text-vividBlack" : "text-neutral"
+                  index === 0 ? "text-vividBlack" : ""
                 }`}
                 style={{ maxWidth: "100%" }}
               >

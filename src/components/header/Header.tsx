@@ -1,18 +1,12 @@
 import LogoImage from "../../assets/logos/logomark.png";
-import CartImage from "../../assets/icons/cart-icon.png";
-import UserImage from "../../assets/icons/user.png";
 import MenuIcon from "../../assets/icons/menu-icon.svg";
 import { Link } from "react-router-dom";
-import { useUser } from "@clerk/clerk-react";
-import { useSelector } from "react-redux";
-import { RootState } from "../../slices/store";
 import { useState } from "react";
 import { HeaderComponents } from "./headerComponents/HeaderComponents";
 import { useIsMobile } from "../../utils/hooks/useIsMobile";
+import { DarkModeToggle } from "../toggles/DarkModeToogle";
 
 export function Header() {
-  // const { isSignedIn, user } = useUser();
-  const cart = useSelector((state: RootState) => state?.cart);
   const isMobile = useIsMobile();
   const [menuIsOpen, setMenuIsOpen] = useState(false);
 
@@ -23,7 +17,7 @@ export function Header() {
 
   return (
     <header className="flex flex-col justify-center items-center">
-      <section className="h-10 bg-neutral text-white flex justify-center items-center gap-2 w-full">
+      <section className="h-10 black-div text-white flex justify-center items-center gap-2 w-full">
         <div className="flex gap-2" onClick={handleOfferClick}>
           <h6 className="text-lg md:text-sm">
             Get 25% OFF on your first order.
@@ -32,7 +26,7 @@ export function Header() {
         </div>
       </section>
       <nav
-        className={`bg-white flex justify-between md:items-center w-full md:px-41 ${
+        className={`flex justify-between md:items-center w-full md:px-41 ${
           menuIsOpen ? "flex-col h-fit items-end" : "h-20"
         }`}
       >
@@ -52,6 +46,9 @@ export function Header() {
             <img src={MenuIcon} className="w-10 h-10" />
           </div>
         </Link>
+
+        <DarkModeToggle />
+
 
         <div
           className={`md:flex gap-8 ${

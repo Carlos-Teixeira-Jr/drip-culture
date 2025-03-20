@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
-import ArrowIcon from "../assets/icons/arrowIcon";
 import Logo from "../assets/logos/Logomark-big.png";
 import BackgroundColor from "../assets/heroImages/banner-about-me.jpg";
+import { useNavigate } from "react-router-dom";
+import ArrowIcon from "../assets/icons/arrowIcon";
 
-export function PageNotFound() {
+export function ForbiddenPage() {
   const navigate = useNavigate();
   return (
     <main className="relative h-screen overflow-hidden">
@@ -30,12 +30,17 @@ export function PageNotFound() {
               alt="logo"
               className="md:w-35 md:h-35 w-6 h-6 mt-4"
             />
-            <h1 className="text-[11rem]  scale-x-[-1]"style={{
+            <h1
+              className="text-[11rem] "
+              style={{
                 textShadow: "2px 2px 4px rgba(0, 0, 0, 0.5)",
-              }}>4</h1>
+              }}
+            >
+              3
+            </h1>
           </div>
           <h1 className="text-4xl font-primary text-center font-normal  px-5 md:px-0">
-            Page not found!
+            You don&apos;t have permission to access this page!
           </h1>
           <button
             className="text-xl flex items-center"

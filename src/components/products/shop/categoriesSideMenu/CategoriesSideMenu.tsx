@@ -85,7 +85,7 @@ export function CategoriesSideMenu() {
                 filter === category.name ? "bg-neutral" : ""
               }`}
             />
-            <h6 className="text-slateBlack text-2xl md:text-sm">
+            <h6 className=" text-2xl md:text-sm">
               {category.name}
             </h6>
           </div>
@@ -107,16 +107,14 @@ export function CategoriesSideMenu() {
             onChange={handlePriceChange}
           />
           <div
-            // className="bg-neutral text-white text-xs w-fit py-1 px-2 rounded-sm absolute bottom-6 transform -translate-x-1/8"
-            className={`bg-neutral text-white text-xs w-fit py-1 px-2 rounded-sm absolute bottom-1 md:bottom-6 left-0 transform -translate-x-1/2`}
+            className={`neutral-div text-white text-xs w-fit py-1 px-2 rounded-sm absolute bottom-1 md:bottom-6 left-0 transform -translate-x-1/2`}
             style={{ left: `${position}px` }}
           >
-            <p className="relative z-50">$ {price}</p>
+            <p className="relative z-50 text-white">$ {price}</p>
 
             <div
               data-popper-arrow
-              // className="absolute top-[-0.2rem] right-3.5 w-3 h-3 rotate-45 bg-neutral z-10"
-              className="absolute top-[-0.2rem] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 bg-neutral z-10"
+              className="absolute top-[-0.2rem] left-1/2 -translate-x-1/2 w-3 h-3 rotate-45 neutral-div z-10"
             />
           </div>
         </div>

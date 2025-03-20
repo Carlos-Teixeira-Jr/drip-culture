@@ -191,8 +191,20 @@ const cartSlice = createSlice({
   },
 });
 
+const loadingSlice = createSlice({
+  name: "loading",
+  initialState: {loading: true},
+  reducers: {
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    }
+  }
+})
+
 export const { setFilters, setPrice, setPage, setTitleFilter } =
   productsSlice.actions;
 export const { setCart } = cartSlice.actions;
+export const { setLoading } = loadingSlice.actions;
 export default productsSlice.reducer;
 export const cartReducer = cartSlice.reducer;
+export const loadingReducer = loadingSlice.reducer;

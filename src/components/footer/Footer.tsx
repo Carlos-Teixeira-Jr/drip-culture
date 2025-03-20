@@ -105,9 +105,9 @@ export function Footer() {
 
   return (
     <footer>
-      <section className="w-full bg-offWhite px-5 md:px-[11rem] flex flex-col md:flex-row justify-between items-center md:gap-[16rem]">
+      <section className="w-full offWhite-div px-5 md:px-[11rem] flex flex-col md:flex-row justify-between items-center md:gap-[16rem]">
         <div className="flex flex-col gap-6 md:max-w-[29rem] pt-[3rem] pb-[4.5rem]">
-          <h1 className="text-neutral">Join Our Newsletter</h1>
+          <h1 className="">Join Our Newsletter</h1>
           <h6>We love to surprise our subscribers with occasional gifts.</h6>
         </div>
         <div className="flex flex-col md:flex-row gap-4 w-full md:w-[28rem] px-5 md:px-0">
@@ -132,11 +132,11 @@ export function Footer() {
             <div className="border border-borderColor rounded-md px-3 py-2">
               <img src={Logo} alt="logo" />
             </div>
-            <div className="font-extrabold text-neutral text-xl">
+            <h1 className="font-extrabold text-xl">
               DripCulture
-            </div>
+            </h1>
           </div>
-          <p className="text-neutral">
+          <p className="">
             DevCut is a YouTube channel for practical project-based learning.
           </p>
           <div className="flex gap-6 shrink-0">
@@ -154,7 +154,7 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between gap-[4.5rem]">
           <div className="flex flex-col gap-7">
             <h5 className="text-slateGrey">SUPPORT</h5>
-            <ul className="flex flex-col gap-4 text-vividBlack">
+            <ul className="flex flex-col gap-4 ">
               <Link to={"/page-not-found"}>
                 <li>FAQ</li>
               </Link>
@@ -169,7 +169,7 @@ export function Footer() {
 
           <div className="flex flex-col gap-7">
             <h5 className="text-slateGrey">COMPANY</h5>
-            <ul className="flex flex-col gap-4 text-vividBlack">
+            <ul className="flex flex-col gap-4 ">
               <Link
                 to={"/about-me"}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -187,7 +187,7 @@ export function Footer() {
 
           <div className="flex flex-col gap-7">
             <h5 className="text-slateGrey">SHOP</h5>
-            <ul className="flex flex-col gap-4 text-vividBlack">
+            <ul className="flex flex-col gap-4 ">
               <Link
                 to={"/my-account"}
                 onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
@@ -226,7 +226,7 @@ export function Footer() {
         </div>
       </section>
       <div className="flex justify-center items-center p-5 md:py-6">
-        <h6 className="text-vividBlack">
+        <h6 className="">
           © {year} DevCut. All rights reserved.
         </h6>
       </div>

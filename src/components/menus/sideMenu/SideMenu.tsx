@@ -3,24 +3,27 @@ import UserImage from "../../../assets/icons/user.png";
 import LogOutImage from "../../../assets/icons/logout-icon.png";
 import { useEffect, useState } from "react";
 import { useClerk } from "@clerk/clerk-react";
+import { setLoading } from "../../../slices/productsSlice";
+import { useDispatch } from "react-redux";
 
 export type SelectedOption = {
-  orders: boolean,
-  account: boolean
-}
+  orders: boolean;
+  account: boolean;
+};
 
 interface ISideMenu {
   onSelectedOptionChange: (key: SelectedOption) => void;
 }
 
-export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
+export function SideMenu({
+  onSelectedOptionChange,
+}: ISideMenu) {
   const [selectedOption, setSelectedOption] = useState<SelectedOption>({
     orders: true,
     account: false,
   });
-
-  const [loading, setLoading] = useState(false);
-
+  const [optionName, setOptionName] = useState("orders");
+  const dispatch = useDispatch();
   const { signOut } = useClerk();
 
   const options = [
@@ -44,25 +47,25 @@ export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
     },
   ];
 
-  const handleSelectOption = (key: 'orders' | 'account') => {
-    if (key === 'orders' && !selectedOption[key]) {
+  const handleSelectOption = (key: "orders" | "account") => {
+    if (key === "orders" && !selectedOption[key]) {
       setSelectedOption({ orders: true, account: false });
     }
-    if (key === 'account' && !selectedOption[key]) {
+    if (key === "account" && !selectedOption[key]) {
       setSelectedOption({ orders: false, account: true });
     }
+    setOptionName(key);
   };
 
   useEffect(() => {
     onSelectedOptionChange(selectedOption);
-  },[selectedOption])
+  }, [selectedOption]);
 
   const handleLogOut = () => {
-    setSelectedOption({ orders: false, account: false });
-    setTimeout(() => {
-      setLoading(true)
-    }, 3000)
-    signOut();
+    dispatch(setLoading(true))
+    signOut({
+      redirectUrl: "/",
+    });
   };
 
   return (
@@ -74,17 +77,24 @@ export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
             className="side-menu-option"
             onClick={() => {
               if (option.key !== "logout") {
-                handleSelectOption(option.key as 'orders' | 'account')
+                handleSelectOption(option.key as "orders" | "account");
               } else {
-                handleLogOut()
+                handleLogOut();
               }
-            } }
+            }}
           >
-            <img src={option.icon} alt="" className="w-6 h-6"/>
-            <h5>{option.title}</h5>
+            <img src={option.icon} alt="" className="w-6 h-6" />
+            <h5
+              className={`${
+                option.key === optionName ? "text-neutral" : "text-vividBlack"
+              }`}
+            >
+              {option.title}
+            </h5>
           </li>
         ))}
       </ul>
     </nav>
   );
 }
+

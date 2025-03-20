@@ -61,7 +61,7 @@ export function ProductsListing() {
                   className="flex gap-2 px-4 py-0.5 rounded-full border border-borderColor cursor-pointer w-fit"
                   onClick={handleCloseFilters}
                 >
-                  <p className="text-neutral">{filter}</p>
+                  <p className="">{filter}</p>
                   <img src={CloseIcon} alt="close" />
                 </div>
               )}
@@ -70,7 +70,7 @@ export function ProductsListing() {
                   className="flex gap-2 px-4 py-0.5 rounded-full border border-borderColor cursor-pointer"
                   onClick={handleResetPriceFilter}
                 >
-                  <p className="text-neutral">${price}.00</p>
+                  <p className="">${price}.00</p>
                   <img src={CloseIcon} alt="close" />
                 </div>
               )}
@@ -92,7 +92,7 @@ export function ProductsListing() {
               </div>
             </div>
           </div>
-          <p className="text-vividBlack py-5.5">
+          <p className=" py-5.5">
             Showing {page}-{products.length} of {totalProducts} results.
           </p>
         </div>

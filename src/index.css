@@ -2,40 +2,67 @@
 
 @layer base {
   body {
-    @apply mx-auto;
+    @apply mx-auto bg-white;
   }
 
-  /* 400 14px */
+  html.dark body {
+    @apply bg-[#0e1422];
+  }
+
   h6 {
-    @apply text-xl md:text-sm font-normal;
+    @apply text-xl md:text-sm font-normal ;
   }
 
-  /* 500 14px */
+  html.dark h6 {
+    @apply text-white;
+  }
+
   h5 {
     @apply text-2xl md:text-sm font-medium;
   }
 
-  h4 {
-    @apply font-extrabold text-xl text-[#0E1422];
+  html.dark h5 {
+    @apply text-white;
   }
 
-  /* 600 16px */
+  h4 {
+    @apply font-extrabold text-xl text-[#202533];
+  }
+
+  html.dark h4 {
+    @apply text-white;
+  }
+
   h3 {
-    @apply font-semibold text-4xl md:text-base;
+    @apply font-semibold text-4xl md:text-base text-white;
+  }
+
+  html.dark h3 {
+    @apply text-white;
   }
 
   h2 {
-    @apply font-semibold text-[32px];
+    @apply font-semibold text-[32px] text-[#0e1422];
   }
 
-  /* 700 24px */
+  html.dark h2 {
+    @apply text-white;
+  }
+
   h1 {
-    @apply font-bold md:text-2xl text-4xl;
+    @apply font-bold md:text-2xl text-4xl text-[#0E1422];
   }
 
-  /* 500 12px */
+  html.dark h1 {
+    @apply text-white;
+  }
+
   p {
-    @apply text-lg md:text-xs font-medium;
+    @apply text-lg md:text-xs font-medium text-[#0E1422];
+  }
+
+  html.dark p {
+    @apply text-white;
   }
 
   a {
@@ -46,13 +73,84 @@
     @apply cursor-pointer w-full md:w-fit text-white bg-[#0E1422] py-3 px-6 rounded-sm;
   }
 
+  html.dark button {
+    @apply bg-[#f6f6f6] text-[#0E1422];
+  }
+
   input {
     @apply border border-[#E6E7E8] rounded-sm py-3 px-6 w-full h-11;
   }
 
-  /* li hover bg  */
+  html.dark input {
+    @apply  bg-[#363f5e] text-white;
+  }
+
   .side-menu-option {
-    @apply flex px-6 py-2 gap-2.5 cursor-pointer hover:bg-offWhite rounded-lg text-vividBlack hover:text-[#0e1422] transition-all duration-300 ease-in-out;
+    @apply flex px-6 py-2 gap-2.5 cursor-pointer hover:bg-offWhite rounded-lg  hover:text-[#0e1422] transition-all duration-300 ease-in-out;
+  }
+
+  .off-white-div {
+    @apply bg-[#f6f6f6];
+  }
+
+  html.dark .off-white-div {
+    @apply bg-[#5c5f6a];
+  }
+
+  .black-div {
+    @apply bg-[#000000];
+  }
+
+  html.dark .black-div {
+    @apply bg-[#1f2125];
+  }
+
+  a {
+    @apply cursor-pointer text-[#5C5F6A];
+  }
+
+  html.dark a {
+    @apply text-white;
+  }
+
+  .lightBlue-div {
+    @apply bg-[#e9e9eb];
+  }
+
+  html.dark .lightBlue-div {
+    @apply bg-[#363f5e];
+  }
+
+  .gradient-div {
+    @apply bg-gradient-to-r from-[#f6f6f6] to-white;
+  }
+
+  html.dark .gradient-div {
+    @apply bg-gradient-to-r from-[#363f5e] to-[#1f2125];
+  }
+
+  .offWhite-div {
+    @apply bg-[#f6f6f6];
+  }
+
+  html.dark .offWhite-div {
+    @apply bg-[#363f5e];
+  }
+
+  .neutral-div {
+    @apply bg-[#0e1422];
+  }
+
+  html.dark .neutral-div {
+    @apply bg-[#1f2125];
+  }
+
+  .light-btn {
+    @apply bg-white border border-[#0E1422] h-fit text-nowrap text-[#0E1422];
+  }
+
+  html.dark .light-btn {
+    @apply bg-[#363f5e] border border-white h-fit text-nowrap text-white;
   }
 }
 

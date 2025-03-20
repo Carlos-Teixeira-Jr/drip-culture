@@ -15,12 +15,12 @@ export function BestSellingProducts({ products }: IBestSellingProduct) {
 
       <div className="flex flex-col md:flex-row gap-5">
         {products.map((product) => (
-          <div key={product.id} className="flex flex-col">
+          <div key={product.id} className="flex flex-col max-w-62">
             <img src={product.images[0].images[0]} alt={product.title} className="w-[15rem] h-[19.5rem] object-cover md:mx-0 mx-auto"/>
-            <h3 className="py-3 text-center md:text-start">{product.title}</h3>
+            <h3 className="py-3 text-center md:text-start truncate w-full">{product.title}</h3>
             <div className="flex items-center md:justify-start justify-center gap-4">
-              <div className="border border-borderColor rounded-full px-4 py-0.5"><p className="text-neutral">IN STOCK</p></div>
-              <h6 className="text-slateBlack">${product.price}</h6>
+              <div className="border border-borderColor rounded-full px-4 py-0.5"><p className="">IN STOCK</p></div>
+              <h6 className="">${product.price}</h6>
             </div>
           </div>
         ))}
