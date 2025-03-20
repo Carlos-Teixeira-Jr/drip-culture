@@ -1,8 +1,6 @@
 import LogoImage from "../../assets/logos/logomark.png";
 import MenuIcon from "../../assets/icons/menu-icon.svg";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
-import { RootState } from "../../slices/store";
 import { useState } from "react";
 import { HeaderComponents } from "./headerComponents/HeaderComponents";
 import { useIsMobile } from "../../utils/hooks/useIsMobile";

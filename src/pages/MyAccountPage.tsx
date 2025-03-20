@@ -7,6 +7,8 @@ import {
 import { OrdersContainer } from "../components/products/ordersContainer/OrdersContainer";
 import { AccountDetailsContainer } from "../components/user/accountDetails/AccountDetailsContainer";
 import { Loading } from "../components/loading/Loading";
+import { useSelector } from "react-redux";
+import { RootState } from "../slices/store";
 
 export function MyAccountPage() {
   const [selectedOption, setSelectedOption] = useState({
@@ -14,7 +16,7 @@ export function MyAccountPage() {
     account: false,
   });
 
-  const [loading, setLoading] = useState(false);
+  const {loading} = useSelector((state: RootState) => state.loading);
 
   return (
     <>
@@ -28,7 +30,6 @@ export function MyAccountPage() {
               onSelectedOptionChange={(selectedOption: SelectedOption) =>
                 setSelectedOption(selectedOption)
               }
-              onLoadingChange={(loading: boolean) => setLoading(loading)}
             />
             {selectedOption.orders ? <OrdersContainer /> : <AccountDetailsContainer />}
           </div>

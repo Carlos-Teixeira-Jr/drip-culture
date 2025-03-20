@@ -45,7 +45,7 @@ export function HeaderComponents() {
           </div>
         </Link>
       ) : (
-        <Link to={"/my-account"}>
+        <Link to={"/login"}>
           {isLoaded && (
             <img
               src={userProfileImg}

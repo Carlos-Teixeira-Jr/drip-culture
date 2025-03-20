@@ -50,7 +50,7 @@ export function BreadCrumb({ product }: IBreadCRumb) {
             <div key={index} className="flex items-center max-w-[250px]">
               <h5
                 className={`truncate ${
-                  index === 0 ? "" : ""
+                  index === 0 ? "text-vividBlack" : ""
                 }`}
                 style={{ maxWidth: "100%" }}
               >

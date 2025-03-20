@@ -23,10 +23,10 @@ export function AccountDetailsContainer() {
     <main className="md:pl-12 px-5 flex flex-col gap-8 md:max-w-80 w-full">
       <h3 className="">Account Details</h3>
       <div className="offWhite-div rounded-full p-3.5 shrink-0 md:w-12 md:h-12 w-20 h-20 flex justify-center items-center">
-        <h5 className="text-blue-400 text-4xl">{`${
+        <p className="text-blue-400 text-sm font-normal">{`${
           (user?.firstName as string)[0].toUpperCase() +
           (user?.lastName as string)[0].toUpperCase()
-        }`}</h5>
+        }`}</p>
       </div>
 
       <div className="flex flex-col gap-4 w-full">
@@ -35,6 +35,7 @@ export function AccountDetailsContainer() {
             <h5 className="">{input.title}</h5>
             <input
               value={input.value}
+              className="text-vividBlack"
             />
           </div>
         ))}

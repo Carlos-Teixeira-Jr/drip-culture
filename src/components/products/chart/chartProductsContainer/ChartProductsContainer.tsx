@@ -8,7 +8,6 @@ interface IOrdersProductsContainer {
 }
 
 export function OrdersProductsContainer({ orders }: IOrdersProductsContainer) {
-  console.log("🚀 ~ OrdersProductsContainer ~ orders:", orders)
   const navigate = useNavigate();
 
   return (
@@ -17,7 +16,7 @@ export function OrdersProductsContainer({ orders }: IOrdersProductsContainer) {
 
       {orders.cart.products.map((product, idx) => (
         <div key={product.id} className="flex flex-col">
-          <div className="flex flex-col md:flex-row gap-5 w-full items-center">
+          <div className="flex flex-col md:flex-row gap-5 w-full items-center justify-between max-w-[6627px] min-w-[627px]">
             <div className="flex flex-col md:flex-row gap-8 w-full">
               <div className="md:w-20 md:h-20 bg-offWhite flex justify-center items-center">
                 <img
@@ -28,9 +27,9 @@ export function OrdersProductsContainer({ orders }: IOrdersProductsContainer) {
               </div>
 
               <div className="flex flex-col justify-between">
-                <h5 className="">{product.title}</h5>
+                <h5 className="truncate w-full">{product.title}</h5>
                 <div className="flex">
-                  <p className="">
+                  <p className="text-vividBlack">
                     Ordered On: {dateFormatter(product.orderDate)}
                   </p>
                 </div>

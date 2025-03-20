@@ -82,7 +82,7 @@ export function LoginBox({
 
   return (
     <form onSubmit={onSubmit} className="md:py-32 py-12 px-5 md:px-[35rem] flex flex-col gap-8">
-      <button type="button" className="border border-lightBtnBorder bg-white w-full  flex justify-center items-center gap-2" onClick={handleGoogleLogin}>
+      <button type="button" className="border border-lightBtnBorder bg-white w-full text-vividBlack flex justify-center items-center gap-2" onClick={handleGoogleLogin}>
         <img src={googleImage} alt="google" className="w-5 h-5"/>
         Continue with Google
       </button>
