@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../slices/store";
 import {
-  fetchCategories,
   fetchPriceEndPoints,
   fetchProducts,
   setFilters,
@@ -15,15 +14,19 @@ export type Category = {
   name: string;
 };
 
-export function CategoriesSideMenu() {
+interface ICategoriesSideMenu {
+  categories: Category[]
+}
+
+export function CategoriesSideMenu({categories}: ICategoriesSideMenu) {
   const dispatch = useDispatch<AppDispatch>();
 
-  const { categories, price, priceEndPoints, filter } = useSelector(
+  const { price, priceEndPoints, filter } = useSelector(
     (state: RootState) => state.products
   );
+  console.log("🚀 ~ CategoriesSideMenu ~ priceEndPoints:", priceEndPoints)
 
   const [position, setPosition] = useState(0);
-  const [loading, setIsLoading] = useState(true);
   const sliderRef = useRef<HTMLInputElement>(null);
 
   const isMobile = useIsMobile();
@@ -64,10 +67,8 @@ export function CategoriesSideMenu() {
   };
 
   useEffect(() => {
-    dispatch(fetchProducts());
-    dispatch(fetchCategories());
+    dispatch(fetchProducts({}));
     dispatch(fetchPriceEndPoints());
-    setIsLoading(false);
   }, [dispatch, filter]);
 
   return (

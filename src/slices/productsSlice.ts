@@ -2,6 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IProduct } from "../interfaces/product.interface";
 import { Category } from "../components/products/shop/categoriesSideMenu/CategoriesSideMenu";
 import { ICart } from "../interfaces/cart.interface";
+import { parseLinkHeader } from "../utils/formatters/parsePaginationLinks";
 
 export interface ProductsState {
   categories: Category[];
@@ -13,7 +14,7 @@ export interface ProductsState {
   priceEndPoints: { min: number; max: number };
   price: number;
   loading: boolean;
-  totalPages: number;
+  pagination: any;
 }
 
 const productsInitialState: ProductsState = {
@@ -26,7 +27,7 @@ const productsInitialState: ProductsState = {
   priceEndPoints: { min: 0, max: 0 },
   price: 0,
   loading: true,
-  totalPages: 0,
+  pagination: null,
 };
 
 const cartInitialState: ICart = {
@@ -37,26 +38,55 @@ const cartInitialState: ICart = {
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async (_, { getState }) => {
+  async ({ customUrl }: { customUrl?: string }, { getState, dispatch }) => {
     const state = getState() as { products: ProductsState };
-    const { filter, titleFilter, page, price } = state.products;
+    let { filter, titleFilter, page, price, categories } = state.products;
 
     const filterParams = filter ? `&category=${filter}` : "";
-    const titleFilterParam = titleFilter ? `&title=${titleFilter}` : "";
+    const titleFilterParam = titleFilter ? `&title_like=${titleFilter}` : "";
 
-    const response = await fetch(
-      `http://localhost:3001/products?${filterParams}${titleFilterParam}&price_lte=${price}&_page=${page}&_per_page=9`
-    );
+    if (price === 0) {
+      const allDataResponse = await fetch(
+        "http://localhost:3001/products?_sort=price&_order=desc"
+      );
+      const allDataJson = await allDataResponse.json();
+      if (allDataJson.length > 0) {
+        price = allDataJson[0].price;
+        dispatch(setPrice(price));
+      }
+    }
+
+    if (categories.length === 0) {
+      const categoriesResponse = await fetch(
+        "http://localhost:3001/categories"
+      );
+      const categoriesJson = await categoriesResponse.json();
+      categories = categoriesJson;
+      dispatch(setCategories(categories));
+    }
+
+    const url =
+      customUrl ||
+      `http://localhost:3001/products?${filterParams}${titleFilterParam}&price_lte=${price}&_page=${page}&_limit=9`;
+
+    const response = await fetch(url);
+
+    const paginationHeader = response.headers.get("Link");
+    const parsedPaginationHeader = paginationHeader
+      ? parseLinkHeader(paginationHeader)
+      : null;
+    const totalCount = response.headers.get("X-Total-Count");
 
     const fetchedData = await response.json();
-    const products = fetchedData.data;
-    const totalPages = fetchedData.pages;
-    const totalProducts = fetchedData.items;
 
     return {
-      products,
-      totalPages,
-      totalProducts,
+      products: fetchedData,
+      categories,
+      pagination: {
+        links: parsedPaginationHeader,
+        totalItems: Number(totalCount),
+      },
+      totalProducts: Number(totalCount),
     };
   }
 );
@@ -95,33 +125,6 @@ export const fetchPriceEndPoints = createAsyncThunk(
   }
 );
 
-export const fetchTotalProducts = createAsyncThunk(
-  "products/fetchTotalProducts",
-  async (_, { getState }) => {
-    const state = getState() as { products: ProductsState };
-
-    const filterParams =
-      state.products.filter.length > 0
-        ? `&category=${state.products.filter}`
-        : "";
-
-    const response = await fetch(
-      `http://localhost:3001/products?${filterParams}`
-    );
-    const allProducts: IProduct[] = await response.json();
-
-    return allProducts.length;
-  }
-);
-
-export const fetchCategories = createAsyncThunk(
-  "products/fetchCategories",
-  async () => {
-    const response = await fetch("http://localhost:3001/categories");
-    return response.json();
-  }
-);
-
 const productsSlice = createSlice({
   name: "products",
   initialState: productsInitialState,
@@ -141,6 +144,15 @@ const productsSlice = createSlice({
     setTotalProducts: (state, action: PayloadAction<number>) => {
       state.totalProducts = action.payload;
     },
+    setCategories: (state, action: PayloadAction<Category[]>) => {
+      state.categories = action.payload;
+    },
+    setPriceEndPoints: (
+      state,
+      action: PayloadAction<{ min: number; max: number }>
+    ) => {
+      state.priceEndPoints = action.payload;
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -151,8 +163,9 @@ const productsSlice = createSlice({
         const products: IProduct[] = action.payload.products;
         state.products = products;
         state.totalProducts = action.payload.totalProducts;
-        state.totalPages = action.payload.totalPages;
+        state.pagination = action.payload.pagination;
         state.loading = false;
+        state.categories = action.payload.categories;
       })
       .addCase(fetchPriceEndPoints.fulfilled, (state, action) => {
         state.priceEndPoints = action.payload;
@@ -161,18 +174,14 @@ const productsSlice = createSlice({
           state.price = action.payload.max;
         }
       })
-      .addCase(fetchCategories.fulfilled, (state, action) => {
-        state.categories = action.payload;
-      })
-      .addCase(fetchTotalProducts.fulfilled, (state, action) => {
-        state.totalProducts = action.payload;
-      });
   },
 });
 
 const storedCartState = localStorage.getItem("cart");
 
-const cartState = storedCartState ? JSON.parse(storedCartState) : cartInitialState;
+const cartState = storedCartState
+  ? JSON.parse(storedCartState)
+  : cartInitialState;
 
 const cartSlice = createSlice({
   name: "cart",
@@ -183,9 +192,10 @@ const cartSlice = createSlice({
       state.userEmail = action.payload.userEmail;
       state.products = action.payload.products.map((product) => ({
         ...product,
-        orderDate: typeof product.orderDate === "string"
-          ? product.orderDate
-          : product?.orderDate?.toISOString(),
+        orderDate:
+          typeof product.orderDate === "string"
+            ? product.orderDate
+            : product?.orderDate?.toISOString(),
       }));
     },
   },
@@ -193,16 +203,22 @@ const cartSlice = createSlice({
 
 const loadingSlice = createSlice({
   name: "loading",
-  initialState: {loading: true},
+  initialState: { loading: true },
   reducers: {
     setLoading: (state, action: PayloadAction<boolean>) => {
       state.loading = action.payload;
-    }
-  }
-})
+    },
+  },
+});
 
-export const { setFilters, setPrice, setPage, setTitleFilter } =
-  productsSlice.actions;
+export const {
+  setFilters,
+  setPrice,
+  setPage,
+  setTitleFilter,
+  setCategories,
+  setPriceEndPoints,
+} = productsSlice.actions;
 export const { setCart } = cartSlice.actions;
 export const { setLoading } = loadingSlice.actions;
 export default productsSlice.reducer;

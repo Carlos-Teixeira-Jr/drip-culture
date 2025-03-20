@@ -3,7 +3,6 @@ import UserImage from "../../../assets/icons/user.png";
 import LogOutImage from "../../../assets/icons/logout-icon.png";
 import { useEffect, useState } from "react";
 import { useClerk } from "@clerk/clerk-react";
-import { setLoading } from "../../../slices/productsSlice";
 import { useDispatch } from "react-redux";
 
 export type SelectedOption = {
@@ -62,7 +61,6 @@ export function SideMenu({
   }, [selectedOption]);
 
   const handleLogOut = () => {
-    dispatch(setLoading(true))
     signOut({
       redirectUrl: "/",
     });
