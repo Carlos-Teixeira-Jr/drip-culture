@@ -28,17 +28,17 @@ export function OrdersProductsContainer({ orders }: IOrdersProductsContainer) {
               </div>
 
               <div className="flex flex-col justify-between">
-                <h5 className="text-neutral">{product.title}</h5>
+                <h5 className="">{product.title}</h5>
                 <div className="flex">
-                  <p className="text-vividBlack">
+                  <p className="">
                     Ordered On: {dateFormatter(product.orderDate)}
                   </p>
                 </div>
-                <p className="text-neutral">$ {product.price}.00</p>
+                <p className="">$ {product.price}.00</p>
               </div>
             </div>
             <button
-              className="bg-white text-neutral border border-neutral h-fit text-nowrap"
+              className="light-btn"
               onClick={() => {
                 window.scrollTo({ top: 0 });
                 navigate(`/product/${product.id}`);

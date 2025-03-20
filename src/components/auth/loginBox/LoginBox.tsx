@@ -1,6 +1,7 @@
 import { FormEvent, useEffect, useState } from "react";
 import googleImage from "../../../assets/socialMediaIcons/google-icon.png";
 import { Link } from "react-router-dom";
+import { useSignIn } from "@clerk/clerk-react";
 
 export type AuthFormData = {
   email: string;
@@ -18,12 +19,13 @@ export function LoginBox({
   onSubmit,
   isLoading,
 }: ILoginBox) {
+  const { signIn, isLoaded } = useSignIn();
+
   
   const [authFormData, setAuthFormData] = useState({
     email: "",
     password: "",
   });
-  console.log("🚀 ~ authFormData:", authFormData)
 
   const [authFormDataErrors, setAuthFormDataErrors] = useState({
     email: "",
@@ -63,28 +65,43 @@ export function LoginBox({
     setHiddenPassword("*".repeat(actualPassword.length));
   };
 
+  const handleGoogleLogin = async () => {
+    console.log("clicou")
+    try {
+      if (isLoaded) {
+        await signIn.authenticateWithRedirect({
+          strategy: 'oauth_google',
+          redirectUrl: 'google-callback',
+          redirectUrlComplete:'/'
+        })
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   return (
     <form onSubmit={onSubmit} className="md:py-32 py-12 px-5 md:px-[35rem] flex flex-col gap-8">
-      <button className="border border-lightBtnBorder bg-white w-full text-vividBlack flex justify-center items-center gap-2">
-        <img src={googleImage} alt="google" className="w-5 h-5" />
+      <button type="button" className="border border-lightBtnBorder bg-white w-full  flex justify-center items-center gap-2" onClick={handleGoogleLogin}>
+        <img src={googleImage} alt="google" className="w-5 h-5"/>
         Continue with Google
       </button>
 
       <div className="flex justify-center items-center gap-4">
         <hr className="w-full border border-borderColor" />
-        <p className="text-neutral">Or</p>
+        <p className="">Or</p>
         <hr className="w-full border border-borderColor" />
       </div>
 
       <div className="flex flex-col gap-4">
         {inputs.map((input) => (
           <>
-            <h5 className="text-slateBlack">{input.name}</h5>
+            <h5 className="">{input.name}</h5>
             <input
               key={input.key}
               name={input.name}
               value={input.key === "password" ? hiddenPassword : input.value}
-              className="text-slateBlack"
+              className=""
               onChange={(e) => {
                 if (input.key === "password") {
                   handlePasswordChange(e);
@@ -99,12 +116,12 @@ export function LoginBox({
           </>
         ))}
       </div>
-      <p className="text-neutral ml-auto cursor-pointer">Forgot Password?</p>
+      <p className=" ml-auto cursor-pointer">Forgot Password?</p>
       <button className="w-full" type="submit">
         Login
       </button>
       <Link to={"/signup"} className="flex justify-center items-center">
-        <h6 className="text-vividBlack">
+        <h6 className="">
           Don't have an account? Sign up
         </h6>
       </Link>

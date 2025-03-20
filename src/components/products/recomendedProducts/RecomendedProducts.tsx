@@ -26,7 +26,7 @@ export function RecomendedProducts({ category }: IRecomendedProducts) {
 
   return (
     <section className="flex flex-col px-5 md:px-0 gap-2">
-      <h1 className="text-neutral pt-4">You might also like</h1>
+      <h1 className=" pt-4">You might also like</h1>
       <p className="text-slateGrey">SIMILAR PRODUCTS</p>
 
       <div className="flex flex-col md:flex-row gap-5 pt-14 pb-15 md:pb-32.5">

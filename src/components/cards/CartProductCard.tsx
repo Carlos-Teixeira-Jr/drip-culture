@@ -90,24 +90,24 @@ export function CartProductCard(product: CartProductType) {
           <img
             src={product?.image && product?.image}
             alt={product.title}
-            className="md:w-11 md:h-16 w-56 p-5"
+            className="md:w-11 md:h-16 w-56"
           />
         </div>
       </Link>
 
-      <div className="flex flex-col gap-1.5 justify-between md:w-42 w-full">
-        <h5 className="text-neutral text-xl">{product.title}</h5>
+      <div className="flex flex-col gap-1.5 justify-between w-full max-w-42 pl-8.5">
+        <p className="text-sm w-full truncate">{product.title}</p>
         <div className="flex justify-between w-fit gap-2 items-center">
-          <p className="text-vividBlack">Color:</p>
+          <p className="">Color:</p>
           <div
             className={`rounded-full w-3 h-3`}
             style={{ backgroundColor: product.color }}
           />
-          <p className="text-vividBlack">—</p>
-          <p className="text-vividBlack">Size: {product.size}</p>
+          <p className="">—</p>
+          <p className="">Size: {product.size}</p>
         </div>
       </div>
-      <div className="flex justify-start w-full">
+      <div className="flex justify-start w-full pl-27">
         <h5>${product.price}.00</h5>
       </div>
       <div className="flex gap-2.5 md:pl-8 md:pr-4 mr-auto py-5">
@@ -117,7 +117,7 @@ export function CartProductCard(product: CartProductType) {
             className="w-4 h-4 cursor-pointer"
             onClick={handleDecrementProduct}
           />
-          <h5 className="text-neutral px-4.5">
+          <h5 className=" px-4.5">
             {
               cart.products.find(
                 (item: CartProductType) => item.id === product.id

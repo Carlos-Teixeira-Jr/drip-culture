@@ -5,10 +5,14 @@ import { NewCollectionBanner } from "../components/banners/newCollectionBanner/N
 import { BestSellingProducts } from "../components/products/bestSellingProducts/BestSellingProducts";
 import { OnOfferProducts } from "../components/products/onOfferProducts/OnOfferProducts";
 import { IProduct } from "../interfaces/product.interface";
+import { useUser } from "@clerk/clerk-react";
 
 export function Home() {
   const [bestSellingProduct, setBestSellingProducts] = useState<IProduct[]>([]);
   const [productsOnOffer, setProductsOnOffer] = useState<IProduct[]>([]);
+
+  const {user} = useUser()
+  console.log("🚀 ~ Home ~ user:", user)
 
   useEffect(() => {
     const fetchData = async () => {

@@ -105,9 +105,9 @@ export function PlaceOrder({ address }: IPlaceOrder) {
   return (
     <section className="md:w-[341px] md:border-l-2 border-l-borderColor rounded-sm py-8 md:pl-16 h-fit">
       <div className="flex flex-col">
-        <h1 className="text-neutral">Your order</h1>
+        <h1 className="">Your order</h1>
         <button
-          className="ml-auto bg-white border border-lightBtnBorder text-vividBlack px-6 py-3 md:text-sm font-medium md:my-16 my-10"
+          className="ml-auto bg-white border border-lightBtnBorder  px-6 py-3 md:text-sm font-medium md:my-16 my-10"
           onClick={() => navigate("/cart")}
         >
           Edit Cart
@@ -117,7 +117,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
       <div>
         {summarryItens.map((item) => (
           <div key={item.id} className="flex justify-between my-4">
-            <h5 className="text-vividBlack">{item.name}</h5>
+            <h5 className="">{item.name}</h5>
             <h5>$ {item.price}</h5>
           </div>
         ))}
@@ -126,7 +126,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
       <hr className="text-borderColor" />
 
       <div className="flex justify-between my-4">
-        <h5 className="text-vividBlack">Total</h5>
+        <h5 className="">Total</h5>
         <h5>$ {total}</h5>
       </div>
 

@@ -1,14 +1,16 @@
 import { useSearchParams } from "react-router-dom";
 import { VerifiedEmailPage } from "./VerifyEmailPage";
+import Logo from "../../assets/logos/Logomark-big.png";
+import BackgroundColor from "../../assets/heroImages/banner-about-me.jpg"
 
 export function VerifyEmail() {
   const [searchParams] = useSearchParams();
-  const __clerk_status = searchParams.get("__clerk_status");
+  // const __clerk_status = searchParams.get("__clerk_status");
+  const __clerk_status = "verified";
+
 
   if (__clerk_status === "verified") {
-    return (
-      <VerifiedEmailPage />
-    );
+    return <VerifiedEmailPage />;
   }
   if (__clerk_status === "expired") {
     return <h2>The verification link has expired</h2>;
@@ -21,19 +23,29 @@ export function VerifyEmail() {
   }
 
   return (
-    <main className="flex flex-col justify-center items-center h-screen gap-5">
-      <h1 className="text-xl font-primary font-normal text-gray-500 px-5 md:px-0 md:w-1/3">
-        An email verification link has been sent to your email. Please check
-        your inbox and click on the verification button to access your account.
-      </h1>
+    <main className="relative h-screen overflow-hidden">
+      <div
+        className="absolute inset-0 bg-cover bg-center bg-fixed"
+        style={{
+          backgroundImage: `url(${BackgroundColor})`,
+        }}
+      />
 
-      <h2 className="font-primary text-primary text-2xl font-semibold">
-        Aguardando
-      </h2>
-      <div className="flex gap-2">
-        <div className="animate-bounce rounded-full h-5 w-5 border-2 border-emerald-900 bg-emerald-900"></div>
-        <div className="animate-bounce rounded-full h-5 w-5 border-2 border-emerald-900 bg-emerald-900 motion-safe:[animation-delay:200ms]"></div>
-        <div className="animate-bounce rounded-full h-5 w-5 border-2 border-emerald-900 bg-emerald-900 motion-safe:[animation-delay:400ms]"></div>
+      <div className="relative z-10 flex flex-col justify-center items-center h-full gap-5">
+        <div className="flex flex-col justify-center items-center gap-10 w-1/2 border border-borderColor p-20 rounded-md drop-shadow-md shadow-2xl shadow-slateGrey bg-white/80 backdrop-blur-md">
+          <div>
+            <img
+              src={Logo}
+              alt="logo"
+              className="md:w-35 md:h-35 w-6 h-6 animate-pulse"
+            />
+          </div>
+          <h1 className="text-2xl font-primary text-center font-normal  px-5 md:px-0">
+            An email verification link has been sent to your email. Please check
+            your inbox and click on the verification button to access your
+            account.
+          </h1>
+        </div>
       </div>
     </main>
   );

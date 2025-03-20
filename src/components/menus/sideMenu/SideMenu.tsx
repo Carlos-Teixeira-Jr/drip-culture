@@ -11,15 +11,14 @@ export type SelectedOption = {
 
 interface ISideMenu {
   onSelectedOptionChange: (key: SelectedOption) => void;
+  onLoadingChange: (loading: boolean) => void
 }
 
-export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
+export function SideMenu({ onSelectedOptionChange, onLoadingChange }: ISideMenu) {
   const [selectedOption, setSelectedOption] = useState<SelectedOption>({
     orders: true,
     account: false,
   });
-
-  const [loading, setLoading] = useState(false);
 
   const { signOut } = useClerk();
 
@@ -60,7 +59,7 @@ export function SideMenu({ onSelectedOptionChange }: ISideMenu) {
   const handleLogOut = () => {
     setSelectedOption({ orders: false, account: false });
     setTimeout(() => {
-      setLoading(true)
+      onLoadingChange(true)
     }, 3000)
     signOut();
   };

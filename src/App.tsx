@@ -14,6 +14,8 @@ import { CartPage } from './pages/CartPage';
 import { CheckoutPage } from './pages/CheckoutPage';
 import { AfterPaymentPage } from './pages/AfterPaymentPage';
 import { PageNotFound } from './pages/PageNotFound';
+import { GoogleSignInCallback } from './components/auth/google/GoogleSignInCallback';
+import { ForbiddenPage } from './pages/ForbiddenPage';
 
 const routes = [
   { path: "/" },
@@ -28,7 +30,9 @@ const routes = [
   { path:"/cart" },
   { path: "/checkout" },
   { path: "/after-payment" },
-  { path: "/page-not-found" }
+  { path: "/page-not-found" },
+  { path: "/forbidden-page" },
+  { path: "/google-callback"}
 ];
 
 function RouteValidator() {
@@ -63,6 +67,8 @@ function App() {
         {/* REMOVER */}
         <Route path='/checkout' element={<CheckoutPage/>} />
         <Route path='/after-payment' element={<AfterPaymentPage/>} />
+        <Route path='/google-callback' element={<GoogleSignInCallback/>} />
+        <Route path='/forbidden-page' element={<ForbiddenPage/>} />
         <Route
           path="/my-account"
           element={

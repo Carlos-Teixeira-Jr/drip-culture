@@ -20,7 +20,7 @@ export function ProductCard({ product }: IProductCard) {
             <div className="flex border border-borderColor rounded-full px-4 py-0.5">
               <p>IN STOCK</p>
             </div>
-            <h6 className="text-slateBlack">$ {product.price}.00</h6>
+            <h6 className="">$ {product.price}.00</h6>
           </div>
         </div>
       </div>

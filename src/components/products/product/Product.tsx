@@ -119,6 +119,7 @@ export function Product({ onProductFetched }: IProductProps) {
           ...cart,
           products: updatedProducts,
         };
+        console.log("🚀 ~ handleAddToCart ~ updatedCart:", updatedCart)
 
         dispatch(setCart(updatedCart));
       } else {
@@ -253,7 +254,7 @@ export function Product({ onProductFetched }: IProductProps) {
                 key={index}
                 className={`text-5xl ${
                   index === actualImage.index
-                    ? "text-neutral"
+                    ? ""
                     : "text-slateGrey"
                 }`}
               >
@@ -264,7 +265,7 @@ export function Product({ onProductFetched }: IProductProps) {
         </div>
 
         <div className="md:w-[27.5rem] px-5 md:px-0">
-          <div className="flex flex-col md:flex-row justify-between">
+          <div className="flex flex-col md:flex-row justify-between items-center pb-3">
             <h1>{product?.title}</h1>
             <img
               src={ShareIcon}
@@ -277,13 +278,13 @@ export function Product({ onProductFetched }: IProductProps) {
             <div className="flex items-center gap-2">
               <div className="bg-offWhite flex justify-between items-center gap-2 md:px-4 py-0.5 rounded-full w-fit">
                 <img src={StarIcon} alt="product image" className="w-4 h-4" />
-                <p className="text-vividBlack">
+                <p className="">
                   {product?.rating} — {product?.reviews.length === 0} reviews
                 </p>
               </div>
 
               <div className="border border-borderColor rounded-full px-4 py-0.5">
-                <p className="text-vividBlack">
+                <p className="">
                   {product && product?.stock > 0 ? "IN STOCK" : "NO STOCK"}
                 </p>
               </div>
@@ -296,7 +297,7 @@ export function Product({ onProductFetched }: IProductProps) {
             {product && product.stock > 0 && (
               <>
                 <div className="flex flex-col gap-2.5 mb-6.5">
-                  <p className="text-vividBlack">AVAILABLE COLORS</p>
+                  <p className="">AVAILABLE COLORS</p>
                   <div className="flex items-center gap-2.5">
                     {product?.colors.map((color, idx) => (
                       <div
@@ -318,7 +319,7 @@ export function Product({ onProductFetched }: IProductProps) {
                 </div>
 
                 <div className="flex flex-col gap-2.5">
-                  <p className="text-vividBlack">SELECT SIZE</p>
+                  <p className="">SELECT SIZE</p>
                   <div className="flex items-center gap-2">
                     {product?.sizes.map((size, idx) => (
                       <div
@@ -331,7 +332,7 @@ export function Product({ onProductFetched }: IProductProps) {
                         } rounded-sm w-10 h-10`}
                       >
                         <div className="w-7 h-7 border border-white flex items-center justify-center">
-                          <p className="text-center text-vividBlack">{size}</p>
+                          <p className="text-center ">{size}</p>
                         </div>
                       </div>
                     ))}
@@ -339,14 +340,14 @@ export function Product({ onProductFetched }: IProductProps) {
                 </div>
 
                 <div className="flex flex-col gap-2.5 pt-8 pb-10">
-                  <p className="text-vividBlack">QUANTITY</p>
+                  <p className="">QUANTITY</p>
                   <div className="flex items-center gap-2 px-4 py-3 border border-borderColor rounded-sm justify-between w-fit">
                     <img
                       src={MinusIcon}
                       className="w-5 h-5 cursor-pointer"
                       onClick={handleRemoveProduct}
                     />
-                    <h5 className="text-neutral px-10.5">{quantity}</h5>
+                    <h5 className=" px-10.5">{quantity}</h5>
                     <img
                       src={PlusIcon}
                       className="w-5 h-5 cursor-pointer"
@@ -365,7 +366,7 @@ export function Product({ onProductFetched }: IProductProps) {
                   {errorMessage && (
                     <span className="text-sm text-red-500">{errorMessage}</span>
                   )}
-                  <p className="text-vividBlack pt-1 text-center md:text-start">
+                  <p className=" pt-1 text-center md:text-start">
                     — Free shipping on orders $100+
                   </p>
                 </div>
@@ -378,12 +379,12 @@ export function Product({ onProductFetched }: IProductProps) {
       <div className="flex flex-col md:flex-row gap-8 md:pt-44 pt-15 pb-15 md:pb-36.5">
         <div className="flex md:justify-center justify-start items-center gap-2.5">
           <img src={MoreIcon} className="pl-6" />
-          <h5 className="text-neutral md:pr-32.5">Details</h5>
+          <h5 className=" md:pr-32.5">Details</h5>
         </div>
 
         <div className="md:pr-64.5 pl-5 flex flex-col gap-6">
-          <h3 className="text-neutral">Detail</h3>
-          <h6 className="text-vividBlack">{product?.description}</h6>
+          <h3 className="">Detail</h3>
+          <h6 className="">{product?.description}</h6>
         </div>
       </div>
 
