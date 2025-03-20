@@ -21,20 +21,21 @@ export function AccountDetailsContainer() {
 
   return (
     <main className="md:pl-12 px-5 flex flex-col gap-8 md:max-w-80 w-full">
-      <h3 className="text-neutral">Account Details</h3>
-      <div className="bg-offWhite rounded-full p-3.5 shrink-0 md:w-12 md:h-12 w-20 h-20 flex justify-center items-center">
-        <h5 className="text-blue-400 text-4xl">{`${
+      <h3 className="">Account Details</h3>
+      <div className="offWhite-div rounded-full p-3.5 shrink-0 md:w-12 md:h-12 w-20 h-20 flex justify-center items-center">
+        <p className="text-blue-400 text-sm font-normal">{`${
           (user?.firstName as string)[0].toUpperCase() +
           (user?.lastName as string)[0].toUpperCase()
-        }`}</h5>
+        }`}</p>
       </div>
 
       <div className="flex flex-col gap-4 w-full">
         {inputs.map((input) => (
-          <div key={input.id} className="flex flex-col  gap-2 text-slateBlack">
-            <h5 className="text-neutral">{input.title}</h5>
+          <div key={input.id} className="flex flex-col  gap-2 ">
+            <h5 className="">{input.title}</h5>
             <input
               value={input.value}
+              className="text-vividBlack"
             />
           </div>
         ))}

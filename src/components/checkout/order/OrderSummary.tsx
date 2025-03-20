@@ -61,12 +61,12 @@ export function OrderSummary() {
 
   return (
     <section className="md:w-[341px] border border-borderColor rounded-sm py-8 px-6 h-fit">
-      <h1 className="text-neutral">Order Summary</h1>
+      <h1 className="">Order Summary</h1>
 
       <div>
         {summarryItens.map((item) => (
           <div key={item.id} className="flex justify-between my-4">
-            <h5 className="text-vividBlack">{item.name}</h5>
+            <h5 className="">{item.name}</h5>
             <h5>$ {item.price}</h5>
           </div>
         ))}
@@ -75,7 +75,7 @@ export function OrderSummary() {
       <hr className="text-borderColor" />
 
       <div className="flex justify-between my-4">
-        <h5 className="text-vividBlack">Total</h5>
+        <h5 className="">Total</h5>
         <h5>$ {total}</h5>
       </div>
 
@@ -92,7 +92,7 @@ export function OrderSummary() {
 
       <div className="flex justify-center">
         <Link to="/shop">
-          <p className="text-neutral underline cursor-pointer">
+          <p className=" underline cursor-pointer">
             Continue Shopping
           </p>
         </Link>

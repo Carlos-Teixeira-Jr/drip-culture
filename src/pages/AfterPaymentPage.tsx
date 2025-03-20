@@ -15,8 +15,8 @@ export function AfterPaymentPage() {
           alt="package-icon"
           className="w-35.5 h-30.5 mb-5"
         />
-        <h1 className="pb-4 text-neutral text-center">Thank you for shopping</h1>
-        <h6 className="max-w-95 flex justify-center text-center text-vividBlack">
+        <h1 className="pb-4  text-center">Thank you for shopping</h1>
+        <h6 className="max-w-95 flex justify-center text-center ">
           Your order has been successfully placed and is now being processed.
         </h6>
         <button className="flex my-12 gap-1.5 w-fit items-center" onClick={() => navigate("/my-account")}>

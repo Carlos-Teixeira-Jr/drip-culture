@@ -141,11 +141,11 @@ export function Address({onAddressChange}: IAddresProps) {
               idx === addressInputs.length - 1 ? "col-span-2" : ""
             }`}
           >
-            <h5 className="text-slateBlack">{input.label}</h5>
+            <h5 className="">{input.label}</h5>
             <input
               name={input.name}
               value={input.value}
-              className="w-full text-slateBlack"
+              className="w-full "
               onChange={(e) => handleAddressInputChange(e, input.name)}
             />
           </div>
@@ -154,7 +154,7 @@ export function Address({onAddressChange}: IAddresProps) {
       <div className="flex flex-col md:flex-row space-x-4 py-13">
         {userInputs.map((input, idx) => (
           <div key={idx} className="w-full">
-            <h5 className="text-slateBlack">{input.label}</h5>
+            <h5 className="">{input.label}</h5>
             <input
               name={input.name}
               value={input.value}

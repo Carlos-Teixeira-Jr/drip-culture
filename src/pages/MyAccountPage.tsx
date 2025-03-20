@@ -6,6 +6,9 @@ import {
 } from "../components/menus/sideMenu/SideMenu";
 import { OrdersContainer } from "../components/products/ordersContainer/OrdersContainer";
 import { AccountDetailsContainer } from "../components/user/accountDetails/AccountDetailsContainer";
+import { Loading } from "../components/loading/Loading";
+import { useSelector } from "react-redux";
+import { RootState } from "../slices/store";
 
 export function MyAccountPage() {
   const [selectedOption, setSelectedOption] = useState({
@@ -13,17 +16,25 @@ export function MyAccountPage() {
     account: false,
   });
 
+  const {loading} = useSelector((state: RootState) => state.loading);
+
   return (
     <>
-      <BreadCrumb />
-      <div className="flex flex-col md:flex-row md:my-14.5 w-full md:pr-89 md:pl-45">
-          <SideMenu
-            onSelectedOptionChange={(selectedOption: SelectedOption) =>
-              setSelectedOption(selectedOption)
-            }
-          />
-          {selectedOption.orders ? <OrdersContainer /> : <AccountDetailsContainer/>}
-      </div>
+      {loading ? (
+        <Loading/>
+      ) : (
+        <>
+          <BreadCrumb />
+          <div className="flex flex-col md:flex-row md:my-14.5 w-full md:pr-89 md:pl-45">
+            <SideMenu
+              onSelectedOptionChange={(selectedOption: SelectedOption) =>
+                setSelectedOption(selectedOption)
+              }
+            />
+            {selectedOption.orders ? <OrdersContainer /> : <AccountDetailsContainer />}
+          </div>
+        </>
+      )}
     </>
   );
 }

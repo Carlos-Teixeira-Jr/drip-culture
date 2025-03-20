@@ -79,19 +79,19 @@ export function SignUpBox({
 
       <div className="flex justify-center items-center gap-4">
         <hr className="w-full border border-borderColor" />
-        <p className="text-neutral">Or</p>
+        <p className="">Or</p>
         <hr className="w-full border border-borderColor" />
       </div>
 
       <div className="flex flex-col gap-4">
         {inputs.map((input) => (
           <>
-            <h5 className="text-slateBlack">{input.name}</h5>
+            <h5 className="">{input.name}</h5>
             <input
               key={input.id}
               name={input.name}
               value={input.name === "Password" ? hiddenPassword : input.value}
-              className="text-slateBlack"
+              className=""
               onChange={(e) => {
                 if (input.name === "Password") {
                   handlePasswordChange(e);
@@ -106,7 +106,7 @@ export function SignUpBox({
           </>
         ))}
       </div>
-      <p className="text-neutral ml-auto cursor-pointer">
+      <p className=" ml-auto cursor-pointer">
         By creating an account you agree with our Terms of Service, Privacy
         Policy.
       </p>
@@ -114,7 +114,7 @@ export function SignUpBox({
         Create account
       </button>
       <Link to={"/login"} className="flex justify-center items-center">
-        <h6 className="text-vividBlack mx-auto">
+        <h6 className=" mx-auto">
           Already have an account? Log in
         </h6>
       </Link>
