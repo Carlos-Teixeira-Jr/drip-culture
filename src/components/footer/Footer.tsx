@@ -1,7 +1,7 @@
 import Logo from "../../assets/logos/logo-white-background.png";
-import gitHubIcon from "../../assets/socialMediaIcons/github-icon.png";
-import instagramIcon from "../../assets/socialMediaIcons/instagram-icon.png";
-import youtubeIcon from "../../assets/socialMediaIcons/youtube-icon.png";
+import gitHubIcon from "../../assets/socialMediaIcons/github-icon.svg";
+import instagramIcon from "../../assets/socialMediaIcons/instagram-icon.svg";
+import youtubeIcon from "../../assets/socialMediaIcons/youtube-icon.svg";
 import masterCardIcon from "../../assets/creditCardIcons/mastercard-icon.png";
 import amexIcon from "../../assets/creditCardIcons/amex-icon.png";
 import visaIcon from "../../assets/creditCardIcons/visa-icon.png";
@@ -25,7 +25,7 @@ export function Footer() {
     {
       name: "github",
       link: "https://www.github.com/",
-      icons: gitHubIcon,
+      icon: gitHubIcon,
     },
     {
       name: "instagram",
@@ -105,10 +105,10 @@ export function Footer() {
 
   return (
     <footer>
-      <section className="w-full offWhite-div px-5 md:px-[11rem] flex flex-col md:flex-row justify-between items-center md:gap-[16rem]">
-        <div className="flex flex-col gap-6 md:max-w-[29rem] pt-[3rem] pb-[4.5rem]">
+      <section className="w-full offWhite-div px-5 md:px-[11rem] flex flex-col md:flex-row justify-between items-center md:gap-[15.9rem]">
+        <div className="flex flex-col gap-6 pt-[3rem] pb-[4.5rem] md:min-w-sm">
           <h1 className="">Join Our Newsletter</h1>
-          <h6>We love to surprise our subscribers with occasional gifts.</h6>
+          <h6 className="text-vividBlack">We love to surprise our subscribers with occasional gifts.</h6>
         </div>
         <div className="flex flex-col md:flex-row gap-4 w-full md:w-[28rem] px-5 md:px-0">
           <div className="w-full">
@@ -127,26 +127,26 @@ export function Footer() {
       </section>
 
       <section className="flex flex-col md:flex-row justify-between px-5 md:px-[11rem] md:pt-20">
-        <div className="flex flex-col py-18 gap-3">
+        <div className="flex flex-col gap-3">
           <div className="flex gap-2 items-center">
             <div className="border border-borderColor rounded-md px-3 py-2">
               <img src={Logo} alt="logo" />
             </div>
-            <h1 className="font-extrabold text-xl">
-              DripCulture
-            </h1>
+            <h1 className="font-extrabold text-xl">DripCulture</h1>
           </div>
-          <p className="">
+          <p className="text-vividBlack max-w-68 pt-3">
             DevCut is a YouTube channel for practical project-based learning.
           </p>
-          <div className="flex gap-6 shrink-0">
+          <div className="flex gap-6 pt-8">
             {socialMediaIcons.map((icon, idx) => (
               <Link to={icon.link} target="_blank" key={idx}>
-                <img
-                  src={icon.icon}
-                  alt={icon.name}
-                  className="w-10 h-10 md:w-5 md:h-5"
-                />
+                <div className="w-11 h-11 md:w-6 md:h-6">
+                  <img
+                    src={icon.icon}
+                    alt={icon.name}
+                    className="w-10 h-10 md:w-5 md:h-5"
+                  />
+                </div>
               </Link>
             ))}
           </div>
@@ -155,13 +155,13 @@ export function Footer() {
           <div className="flex flex-col gap-7">
             <h5 className="text-slateGrey">SUPPORT</h5>
             <ul className="flex flex-col gap-4 ">
-              <Link to={"/page-not-found"}>
+              <Link to={"/faq"}>
                 <li>FAQ</li>
               </Link>
-              <Link to={"/page-not-found"}>
+              <Link to={"/terms-of-use"}>
                 <li>Terms of use</li>
               </Link>
-              <Link to={"/page-not-found"}>
+              <Link to={"/policy"}>
                 <li>Privacy Policy</li>
               </Link>
             </ul>
@@ -172,14 +172,13 @@ export function Footer() {
             <ul className="flex flex-col gap-4 ">
               <Link
                 to={"/about-me"}
-                onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
               >
                 <li>About me</li>
               </Link>
-              <Link to={"/page-not-found"}>
+              <Link to={"/contact"}>
                 <li>Contact</li>
               </Link>
-              <Link to={"/page-not-found"}>
+              <Link to={"/carreers"}>
                 <li>Carreers</li>
               </Link>
             </ul>
@@ -226,9 +225,7 @@ export function Footer() {
         </div>
       </section>
       <div className="flex justify-center items-center p-5 md:py-6">
-        <h6 className="">
-          © {year} DevCut. All rights reserved.
-        </h6>
+        <h6 className="text-vividBlack">© {year} DevCut. All rights reserved.</h6>
       </div>
     </footer>
   );

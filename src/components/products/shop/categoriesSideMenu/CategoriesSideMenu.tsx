@@ -24,6 +24,7 @@ export function CategoriesSideMenu({categories}: ICategoriesSideMenu) {
   const { price, priceEndPoints, filter } = useSelector(
     (state: RootState) => state.products
   );
+  console.log("🚀 ~ CategoriesSideMenu ~ price:", price)
   console.log("🚀 ~ CategoriesSideMenu ~ priceEndPoints:", priceEndPoints)
 
   const [position, setPosition] = useState(0);
@@ -51,7 +52,7 @@ export function CategoriesSideMenu({categories}: ICategoriesSideMenu) {
         setPosition(adjustedPosition + 38);
       }
     }
-  }, [price]);
+  }, [price, priceEndPoints]);
 
   const handlePriceChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newPrice = Number(e.target.value);
@@ -86,7 +87,7 @@ export function CategoriesSideMenu({categories}: ICategoriesSideMenu) {
                 filter === category.name ? "bg-neutral" : ""
               }`}
             />
-            <h6 className=" text-2xl md:text-sm">
+            <h6 className=" text-2xl md:text-sm text-slateBlack">
               {category.name}
             </h6>
           </div>

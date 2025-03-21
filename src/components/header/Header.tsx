@@ -55,13 +55,13 @@ export function Header() {
             menuIsOpen ? "flex-col pr-5 pb-5" : "hidden"
           }`}
         >
-          <h5 className="text-[#5C5F6A]">
-            <a href="/">Home</a>
+          <h5 className="text-[#5C5F6A] hover-style">
+            <a href="/" className="hover-style">Home</a>
           </h5>
-          <h5 className="text-[#5C5F6A]">
+          <h5 className="text-[#5C5F6A] hover-style">
             <a href="/shop">Shop</a>
           </h5>
-          <h5 className="text-[#5C5F6A]">
+          <h5 className="text-[#5C5F6A] hover-style">
             <a href="/about-me">About Me</a>
           </h5>
         </div>

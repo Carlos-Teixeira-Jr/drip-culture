@@ -66,7 +66,7 @@ export function OrderSummary() {
       <div>
         {summarryItens.map((item) => (
           <div key={item.id} className="flex justify-between my-4">
-            <h5 className="">{item.name}</h5>
+            <h5 className="text-vividBlack">{item.name}</h5>
             <h5>$ {item.price}</h5>
           </div>
         ))}
@@ -80,7 +80,8 @@ export function OrderSummary() {
       </div>
 
       <button
-        className="w-full my-8"
+        className="w-full my-8 disabled:opacity-25 disabled:cursor-auto"
+        disabled={cart.products.length === 0}
         onClick={() => {
           isSignedIn
             ? navigate("/checkout")

@@ -14,6 +14,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../../slices/productsSlice";
 import { CartProductType, ICart } from "../../../interfaces/cart.interface";
 
+type Image = {
+  image: string,
+  index: number
+}
+
 interface IProductProps {
   onProductFetched: (product: IProduct) => void;
 }
@@ -29,10 +34,7 @@ export function Product({ onProductFetched }: IProductProps) {
   const cart = useSelector((state: RootState) => state.cart);
   const dispatch = useDispatch<AppDispatch>();
 
-  const [actualImage, setActualImage] = useState<{
-    image: string;
-    index: number;
-  }>({
+  const [actualImage, setActualImage] = useState<Image>({
     image: "",
     index: 0,
   });
@@ -119,7 +121,6 @@ export function Product({ onProductFetched }: IProductProps) {
           ...cart,
           products: updatedProducts,
         };
-        console.log("🚀 ~ handleAddToCart ~ updatedCart:", updatedCart)
 
         dispatch(setCart(updatedCart));
       } else {
@@ -160,12 +161,10 @@ export function Product({ onProductFetched }: IProductProps) {
   };
 
   const handleNextImage = (index: number) => {
-    console.log("🚀 ~ handleNextImage ~ index:", index);
     if (product) {
       const colorImageIndex = product?.images.findIndex(
         (img) => img.color === selectedColor
       );
-      console.log("🚀 ~ handleNextImage ~ colorImageIndex:", colorImageIndex);
       if (colorImageIndex !== -1) {
         if (
           product &&
@@ -234,7 +233,7 @@ export function Product({ onProductFetched }: IProductProps) {
           <img
             src={actualImage.image}
             alt="product image"
-            className="w-72 h-[404px] mx-auto"
+            className="w-72 h-[404px] mx-auto object-cover"
           />
           <div className="absolute w-[80%] md:w-full flex md:gap-90 left-10 top-[40%] justify-between">
             <img
@@ -376,15 +375,15 @@ export function Product({ onProductFetched }: IProductProps) {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row gap-8 md:pt-44 pt-15 pb-15 md:pb-36.5">
-        <div className="flex md:justify-center justify-start items-center gap-2.5">
+      <div className="flex flex-col items-center md:flex-row gap-8 md:pt-44 pt-15 pb-15 md:pb-36.5">
+        <div className="flex md:justify-center justify-start items-center gap-2.5 bg-offWhite rounded mt-10 py-1.5 h-fit">
           <img src={MoreIcon} className="pl-6" />
-          <h5 className=" md:pr-32.5">Details</h5>
+          <h5 className="text-neutral md:pr-32.5">Details</h5>
         </div>
 
         <div className="md:pr-64.5 pl-5 flex flex-col gap-6">
-          <h3 className="">Detail</h3>
-          <h6 className="">{product?.description}</h6>
+          <h3 className="text-neutral">Detail</h3>
+          <h6 className="text-vividBlack">{product?.description}</h6>
         </div>
       </div>
 

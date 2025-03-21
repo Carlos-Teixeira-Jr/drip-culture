@@ -37,7 +37,7 @@ export function OrdersProductsContainer({ orders }: IOrdersProductsContainer) {
               </div>
             </div>
             <button
-              className="light-btn"
+              className="light-btn hover:bg-gray-200 transition-colors durantion-300 ease-in-out"
               onClick={() => {
                 window.scrollTo({ top: 0 });
                 navigate(`/product/${product.id}`);

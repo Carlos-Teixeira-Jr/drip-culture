@@ -53,13 +53,13 @@ export function ProductsListing({ products }: IProductList) {
             <div className="flex flex-col gap-3">
               <h5>Applied Filter:</h5>
               <div className="flex flex-col md:flex-row gap-3">
-                <div className="w-full">
+                <div className="w-full flex gap-3 items-center">
                   {filter && (
                     <div
-                      className="flex gap-2 px-4 py-0.5 rounded-full border border-borderColor cursor-pointer w-fit"
+                      className="flex gap-2 px-4 py-1 rounded-full border border-borderColor cursor-pointer w-fit"
                       onClick={handleCloseFilters}
                     >
-                      <p className="">{filter}</p>
+                      <p className="text-neutral">{filter}</p>
                       <img src={CloseIcon} alt="close" />
                     </div>
                   )}
@@ -68,8 +68,8 @@ export function ProductsListing({ products }: IProductList) {
                       className="flex gap-2 px-4 py-0.5 rounded-full border border-borderColor cursor-pointer"
                       onClick={handleResetPriceFilter}
                     >
-                      <p className="">${price}.00</p>
-                      <img src={CloseIcon} alt="close" />
+                      <p className="">$ {price}.00</p>
+                      <img src={CloseIcon} alt="close" className="w-5 h-5"/>
                     </div>
                   )}
                 </div>
@@ -90,7 +90,7 @@ export function ProductsListing({ products }: IProductList) {
                   </div>
                 </div>
               </div>
-              <p className=" py-5.5">
+              <p className="text-vividBlack py-5.5">
                 Showing {page}-{products.length} of {totalProducts} results.
               </p>
             </div>

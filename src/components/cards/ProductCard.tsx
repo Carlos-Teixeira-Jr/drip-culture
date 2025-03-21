@@ -15,7 +15,7 @@ export function ProductCard({ product }: IProductCard) {
           className="h-80"
         />
         <div className="flex flex-col gap-3 justify-between">
-          <h5>{product.title}</h5>
+          <h5 className="truncate">{product.title}</h5>
           <div className="flex gap-4">
             <div className="flex border border-borderColor rounded-full px-4 py-0.5">
               <p>IN STOCK</p>

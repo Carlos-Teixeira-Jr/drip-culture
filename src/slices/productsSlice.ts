@@ -93,7 +93,7 @@ export const fetchProducts = createAsyncThunk(
 
 export const fetchPriceEndPoints = createAsyncThunk(
   "products/fetchPriceEndPoints",
-  async (_, { getState }) => {
+  async (_, { getState, dispatch }) => {
     const state = getState() as { products: ProductsState };
     const { filter } = state.products;
 
@@ -117,6 +117,7 @@ export const fetchPriceEndPoints = createAsyncThunk(
         }
         if (allDataJson[i].price > maxPrice) {
           maxPrice = allDataJson[i].price;
+          dispatch(setPrice(maxPrice))
         }
       }
     }

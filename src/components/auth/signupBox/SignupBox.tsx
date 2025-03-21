@@ -83,7 +83,7 @@ export function SignUpBox({
         <hr className="w-full border border-borderColor" />
       </div>
 
-      <div className="flex flex-col gap-4">
+      <div className="flex flex-col gap-4 text-vividBlack">
         {inputs.map((input) => (
           <>
             <h5 className="">{input.name}</h5>
