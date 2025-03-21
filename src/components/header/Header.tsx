@@ -54,6 +54,10 @@ export function Header() {
               </div>
             </Link>
 
+            <div className="flex items-center justify-center px-0 md:px-5">
+              <DarkModeToggle />
+            </div>
+
             <div
               className={`md:flex gap-8 ${
                 menuIsOpen ? "flex-col pr-5 pb-5" : "hidden"
@@ -74,7 +78,6 @@ export function Header() {
             {!isMobile && (
               <>
                 <HeaderComponents />
-                <DarkModeToggle />
               </>
             )}
           </nav>
