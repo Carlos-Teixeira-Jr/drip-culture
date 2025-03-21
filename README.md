@@ -1,54 +1,53 @@
-# React + TypeScript + Vite
+# **E-commerce de Roupas e Acessórios de Moda**
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este projeto é uma simulação de um **e-commerce** para uma loja de **roupas e acessórios de moda**, desenvolvido com **React, TypeScript, Tailwind CSS, Clerk (autenticação) e Json-Server (Banco de Dados simulado para fins de desenvolvimento) e Redux (gerecniamento de estados)**. A aplicação permite:
 
-Currently, two official plugins are available:
+- **Cadastro e edição de usuários**.
+- **Visualização de produtos cadastrados em uma galeria**.
+- **Crição de um carrinho de compras com os produtos selecionados**.
+- **Suporte a modo escuro (Dark Mode)**.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Para simular um ambiente de backend, foi utilizada uma **API falsa** com `json-server`, e o sistema de autenticação foi implementado com **Clerk**.
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## **Tecnologias Utilizadas**
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+- **Frontend:** React, TypeScript, Tailwind CSS, Redux
+- **Backend Fake:** json-server
+- **Autenticação:** Clerk
+
+---
+
+## **Instalação e Execução**
+
+Siga os passos abaixo para rodar o projeto localmente:
+
+### 1. **Clonar o repositório**
+
+```bash
+git clone https://github.com/Carlos-Teixeira-Jr/aws_react_dez24_d03.git
+cd aws_react_dez24_d03
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. **Instalar dependências**
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+```bash
+npm install
 ```
+
+### 3. **Rodar a aplicação frontend**
+
+```bash
+npm run dev
+```
+
+### 4. **Rodar o servidor json-server**
+
+```bash
+npm run server
+```
+
+## **Contato**
+
+- **Carlos Teixeira:** teixeirahist1988@gmail.com
