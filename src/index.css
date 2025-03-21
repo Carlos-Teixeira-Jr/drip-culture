@@ -70,7 +70,7 @@
   }
 
   button {
-    @apply cursor-pointer w-full md:w-fit text-white bg-[#0E1422] py-3 px-6 rounded-sm;
+    @apply cursor-pointer w-full md:w-fit text-white bg-[#0E1422] py-3 px-6 rounded-sm hover:bg-[#2a3245] transition-all duration-300 ease-in-out;
   }
 
   html.dark button {
@@ -78,7 +78,7 @@
   }
 
   input {
-    @apply border border-[#E6E7E8] rounded-sm py-3 px-6 w-full h-11;
+    @apply border border-[#E6E7E8] rounded-sm py-3 px-6 w-full h-11 text-slateGrey;
   }
 
   html.dark input {
@@ -86,7 +86,11 @@
   }
 
   .side-menu-option {
-    @apply flex px-6 py-2 gap-2.5 cursor-pointer hover:bg-offWhite rounded-lg  hover:text-[#0e1422] transition-all duration-300 ease-in-out;
+    @apply flex px-6 py-2 gap-2.5 cursor-pointer hover:bg-offWhite rounded-lg hover:text-[#0e1422] transition-all duration-300 ease-in-out;
+  }
+
+  html.dark .side-menu-option {
+    @apply hover:text-offWhite hover:bg-vividBlack
   }
 
   .off-white-div {
@@ -151,6 +155,10 @@
 
   html.dark .light-btn {
     @apply bg-[#363f5e] border border-white h-fit text-nowrap text-white;
+  }
+
+  .hover-style {
+    @apply hover:text-[#42444] transition-all duration-300 ease-in-out hover:scale-110;
   }
 }
 

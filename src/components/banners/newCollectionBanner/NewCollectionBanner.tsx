@@ -8,7 +8,7 @@ export function NewCollectionBanner() {
       <div>
         <div className="flex flex-col gap-3 pt-5 md:pt-[8.5rem] pb-12">
           <h2>Fresh Arrivals Online</h2>
-          <h6>
+          <h6 className="text-slateBlack">
             Discover Our Newest Collection Today.
           </h6>
         </div>

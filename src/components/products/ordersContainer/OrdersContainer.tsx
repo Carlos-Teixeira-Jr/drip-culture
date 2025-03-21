@@ -8,13 +8,14 @@ export function OrdersContainer() {
 
   const [orders, setOrders] = useState();
   const {user} = useUser()
+  console.log("🚀 ~ fetchOrders ~ user?.emailAddresses[0].emailAddress:", user?.emailAddresses[0].emailAddress)
 
   useEffect(() => {
     const fetchOrders = async () => {
       try {
         const response = await fetch(`http://localhost:3001/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`);
         const data = await response.json();
-        setOrders(data[0]);
+        setOrders(data[data.length - 1]);
       } catch (error) {
         console.log(error);
       }

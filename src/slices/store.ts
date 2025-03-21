@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productsReducer, { cartReducer, loadingReducer } from "./productsSlice";
+import productsReducer, { cartReducer } from "./productsSlice";
 import storage from "redux-persist/lib/storage";
 import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from "redux-persist";
 
@@ -14,7 +14,6 @@ export const store = configureStore({
   reducer: {
     cart: persistedReducer,
     products: productsReducer,
-    loading: loadingReducer
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware({ serializableCheck: {
     ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],

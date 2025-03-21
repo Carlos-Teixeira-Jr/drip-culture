@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 
 export function HeaderComponents() {
   const { isSignedIn, user, isLoaded } = useUser();
+  console.log("🚀 ~ HeaderComponents ~ isSignedIn:", isSignedIn);
+  console.log("🚀 ~ HeaderComponents ~ user:", user);
   const cart = useSelector((state: RootState) => state?.cart);
 
   const [userProfileImg, setUserProfileImg] = useState<string>(UserImage);
@@ -21,36 +23,34 @@ export function HeaderComponents() {
   return (
     <div className="flex gap-8 items-center">
       <Link to={"/cart"}>
-        <div className="relative flex justify-center items-center">
+        <div className="relative flex justify-center items-center hover-style">
           <img
             src={CartImage}
             alt="logo"
             className="md:w-[18px] md:h-[18px] w-6 h-6"
           />
-          {isSignedIn && (
-            <span className="absolute top-[10px] right-[-5px] bg-[#BE1313] text-white font-bold text-[10px] rounded-full w-3.5 h-3.5 flex justify-center items-center leading-24 pr-0.5 md:pr-0">
-              {cart?.products?.length}
-            </span>
-          )}
+          <span className="absolute top-[10px] right-[-5px] bg-[#BE1313] text-white font-bold text-[10px] rounded-full w-3.5 h-3.5 flex justify-center items-center leading-24 pr-0.5 md:pr-0">
+            {cart?.products?.length}
+          </span>
         </div>
       </Link>
 
-      {isSignedIn && !user.imageUrl ? (
+      {isSignedIn && !user.hasImage ? (
         <Link to={"/my-account"}>
-          <div className="bg-offWhite rounded-full p-3.5 shrink-0 w-9 h-9 flex justify-center items-center">
-            <h5 className="text-blue-400 text-lg">{`${
+          <div className="bg-offWhite rounded-full p-3.5 shrink-0 w-9 h-9 flex justify-center items-center hover-style">
+            <h5 className="text-blue-400 text-sm font-normal">{`${
               (user?.firstName as string)[0].toUpperCase() +
               (user?.lastName as string)[0].toUpperCase()
             }`}</h5>
           </div>
         </Link>
       ) : (
-        <Link to={"/login"}>
+        <Link to={isSignedIn ? "/my-account" : "/login"}>
           {isLoaded && (
             <img
               src={userProfileImg}
               alt="logo"
-              className="md:w-6 md:h-w-6 w-6 h-6 rounded-full"
+              className={`w-6 h-6 rounded-full hover-style ${isSignedIn ? "md:w-12 md:h-12" : ""}`}
             />
           )}
         </Link>

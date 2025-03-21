@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { IAddress } from "../../../interfaces/address.interface";
 import { Toast } from "../../toasts/toast";
 import { setCart } from "../../../slices/productsSlice";
+import { useUser } from "@clerk/clerk-react";
 
 interface IPlaceOrder {
   address: IAddress;
@@ -24,6 +25,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const cart = useSelector((state: RootState) => state.cart) as ICart;
+  const {user} = useUser()
 
   useEffect(() => {
     const hasEmptyValues = Object.values(address).some((value) => !value);
@@ -78,6 +80,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          userEmail: user?.emailAddresses[0].emailAddress,
           address,
           cart,
         }),
@@ -89,7 +92,6 @@ export function PlaceOrder({ address }: IPlaceOrder) {
           userEmail: "",
           products: [],
         }));
-        window.scrollTo({ top: 0 });
         navigate("/after-payment");
       }
     } catch (error) {
@@ -107,7 +109,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
       <div className="flex flex-col">
         <h1 className="">Your order</h1>
         <button
-          className="ml-auto bg-white border border-lightBtnBorder  px-6 py-3 md:text-sm font-medium md:my-16 my-10"
+          className="ml-auto hover:bg-gray-200 transition-colors duration-300 ease-in-out bg-white border text-vividBlack border-lightBtnBorder px-6 py-3 md:text-sm font-medium md:my-16 my-10"
           onClick={() => navigate("/cart")}
         >
           Edit Cart
@@ -117,7 +119,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
       <div>
         {summarryItens.map((item) => (
           <div key={item.id} className="flex justify-between my-4">
-            <h5 className="">{item.name}</h5>
+            <h5 className="text-vividBlack">{item.name}</h5>
             <h5>$ {item.price}</h5>
           </div>
         ))}

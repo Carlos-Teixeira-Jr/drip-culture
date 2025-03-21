@@ -171,7 +171,7 @@
       "id": "5",
       "title": "Arc'teryx - Camosun Parka",
       "description": "A Camosun Parka da Arc'teryx combina estilo urbano com alto desempenho térmico, perfeita para invernos rigorosos.",
-      "price": 400,
+      "price": 210,
       "discountPercentage": 5,
       "rating": 4.9,
       "stock": 30,
@@ -566,6 +566,10 @@
     {
       "id": "2489",
       "email": "wwww@sss.com"
+    },
+    {
+      "email": "david4651@uorak.com",
+      "id": "MwmOL6m"
     }
   ],
   "checkout": [
@@ -601,7 +605,7 @@
       }
     },
     {
-      "id": "77c0",
+      "userEmail": "teixeirahist1988@gmail.com",
       "address": {
         "zipcode": "9621514",
         "country": "Parque Marinha",
@@ -614,31 +618,53 @@
         "userEmail": "",
         "products": [
           {
-            "id": 1,
-            "title": "Levi's - Men's 541 Athletic Fit Jeans",
-            "price": 68,
-            "quantity": 1,
-            "orderDate": "2025-03-17T16:31:58.956Z",
-            "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSxC483Xq04peo0Fm44-DuyJfVY0P8nE310liPF2iB_2LxQanM15FiVyPM_apKr_-m6H5rbg1SGiXDVvg-qeuZG8aU8AG3kKU5plk2Fp3gr4gpHXdIRFyXI&usqp=CAE",
-            "color": "darkBlue",
+            "id": 11,
+            "title": "New Balance - 574 Sneakers",
+            "price": 110,
+            "quantity": 2,
+            "orderDate": "2025-03-21T13:28:30.072Z",
+            "image": "http://newbrasil.vtexassets.com/arquivos/ids/169777/U574G_U574GBG.jpg?v=638506122391000000",
+            "color": "grey",
             "size": "S"
-          },
-          {
-            "id": 3,
-            "title": "Columbia - Whirlibird IV Interchange Jacket",
-            "price": 180,
-            "quantity": 1,
-            "orderDate": "2025-03-20T00:52:25.062Z",
-            "image": "https://columbia.vtexassets.com/arquivos/ids/327401-800-auto?v=638739706241300000&width=800&height=auto&aspect=true",
-            "color": "navy",
-            "size": "M"
           }
         ],
         "_persist": {
           "version": -1,
           "rehydrated": true
         }
-      }
+      },
+      "id": "xuodHsh"
+    },
+    {
+      "userEmail": "teixeirahist1988@gmail.com",
+      "address": {
+        "zipcode": "9621514",
+        "country": "Parque Marinha",
+        "city": "Rio Grande",
+        "state": "RS",
+        "street": "Rua Ilhas Canarias"
+      },
+      "cart": {
+        "id": 0,
+        "userEmail": "",
+        "products": [
+          {
+            "id": 9,
+            "title": "Vans - Old Skool Sneakers",
+            "price": 90,
+            "quantity": 1,
+            "orderDate": "2025-03-21T13:35:00.976Z",
+            "image": "https://secure-static.vans.com.br/medias/sys_master/vans/vans/hc0/h13/h00/h00/12093797695518/1002001090117U-01-BASEIMAGE-Hires.jpg",
+            "color": "green",
+            "size": "XL"
+          }
+        ],
+        "_persist": {
+          "version": -1,
+          "rehydrated": true
+        }
+      },
+      "id": "DN6v02X"
     }
   ]
 }

@@ -16,6 +16,7 @@ import { AfterPaymentPage } from './pages/AfterPaymentPage';
 import { PageNotFound } from './pages/PageNotFound';
 import { GoogleSignInCallback } from './components/auth/google/GoogleSignInCallback';
 import { ForbiddenPage } from './pages/ForbiddenPage';
+import ScrollToTop from './utils/utilComponents/ScrollToTop';
 
 const routes = [
   { path: "/" },
@@ -54,6 +55,7 @@ function App() {
   return (
     <>
       <RouteValidator />
+      <ScrollToTop/>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="*" element={<PageNotFound/>} />
@@ -64,27 +66,22 @@ function App() {
         <Route path='/shop' element={<ShopPage />} />
         <Route path='/product/:id' element={<ProductPage />} />
         <Route path='/cart' element={<CartPage/>} />
-        {/* REMOVER */}
-        <Route path='/checkout' element={<CheckoutPage/>} />
         <Route path='/after-payment' element={<AfterPaymentPage/>} />
         <Route path='/google-callback' element={<GoogleSignInCallback/>} />
         <Route path='/forbidden-page' element={<ForbiddenPage/>} />
+        <Route path="/my-account" element={
+          <PrivateRoute>
+            <MyAccountPage />
+          </PrivateRoute>
+        } />
         <Route
-          path="/my-account"
-          element={
-            <PrivateRoute>
-              <MyAccountPage />
-            </PrivateRoute>
-          }
-        />
-        {/* <Route
           path="/checkout"
           element={
             <PrivateRoute>
               <CheckoutPage />
             </PrivateRoute>
           }
-        /> */}
+        />
       </Routes>
     </>
   )

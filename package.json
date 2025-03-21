@@ -14,7 +14,7 @@
     "@clerk/clerk-react": "^5.24.1",
     "@reduxjs/toolkit": "^2.6.1",
     "@tailwindcss/vite": "^4.0.11",
-    "json-server": "^1.0.0-beta.3",
+    "json-server": "0.17.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-redux": "^9.2.0",
