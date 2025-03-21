@@ -8,7 +8,6 @@ export function OrdersContainer() {
 
   const [orders, setOrders] = useState();
   const {user} = useUser()
-  console.log("🚀 ~ fetchOrders ~ user?.emailAddresses[0].emailAddress:", user?.emailAddresses[0].emailAddress)
 
   useEffect(() => {
     const fetchOrders = async () => {

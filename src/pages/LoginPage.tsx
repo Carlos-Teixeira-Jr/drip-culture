@@ -31,7 +31,7 @@ export function LoginPage() {
 
   useEffect(() => {
     if (isSignedIn) {
-      navigate("/products");
+      navigate("/");
     }
   }, [isSignedIn, navigate]);
 

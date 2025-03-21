@@ -8,8 +8,7 @@ import { useEffect, useState } from "react";
 
 export function HeaderComponents() {
   const { isSignedIn, user, isLoaded } = useUser();
-  console.log("🚀 ~ HeaderComponents ~ isSignedIn:", isSignedIn);
-  console.log("🚀 ~ HeaderComponents ~ user:", user);
+
   const cart = useSelector((state: RootState) => state?.cart);
 
   const [userProfileImg, setUserProfileImg] = useState<string>(UserImage);
@@ -21,7 +20,7 @@ export function HeaderComponents() {
   }, [user, isLoaded]);
 
   return (
-    <div className="flex gap-8 items-center">
+    <div className="flex gap-5 md:gap-8 items-center">
       <Link to={"/cart"}>
         <div className="relative flex justify-center items-center hover-style">
           <img

@@ -16,6 +16,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
   const [subTotal, setSubTotal] = useState(0);
   const [total, setTotal] = useState(0);
   const [btnIsDisabled, setBtnIsDisabled] = useState(true);
+  const [isFirstOrder, setIsFirstOrder] = useState(false);
   const [showToast, setShowToast] = useState({
     show: false,
     message: "",
@@ -50,9 +51,26 @@ export function PlaceOrder({ address }: IPlaceOrder) {
       }
     });
     newTotal += 3;
+    if (isFirstOrder) {
+      let discount = (25 * newTotal) / 100;
+      newTotal -= discount;
+    }
     setSubTotal(newSubTotal);
     setTotal(newTotal);
-  }, [cart]);
+  }, [cart, isFirstOrder]);
+
+  useEffect(()  => {
+    const fetchOrders = async () => {
+      try {
+        const response = await fetch(`http://localhost:3001/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`);
+        const data = await response.json();
+        setIsFirstOrder(data.length < 1);
+      } catch (error) {
+        console.log(error);
+      }
+    }
+    fetchOrders()
+  },[user])
 
   const summarryItens = [
     {
@@ -124,6 +142,13 @@ export function PlaceOrder({ address }: IPlaceOrder) {
           </div>
         ))}
       </div>
+
+      {isFirstOrder && (
+        <div className="flex justify-between mb-4">
+          <h5 className="text-vividBlack">First Order Discount</h5>
+          <h5 className="text-neutral font-bold">- 25%</h5>
+        </div>
+      )}
 
       <hr className="text-borderColor" />
 
