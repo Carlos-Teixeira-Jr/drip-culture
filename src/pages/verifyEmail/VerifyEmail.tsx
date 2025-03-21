@@ -5,9 +5,7 @@ import BackgroundColor from "../../assets/heroImages/banner-about-me.jpg"
 
 export function VerifyEmail() {
   const [searchParams] = useSearchParams();
-  // const __clerk_status = searchParams.get("__clerk_status");
-  const __clerk_status = "verified";
-
+  const __clerk_status = searchParams.get("__clerk_status");
 
   if (__clerk_status === "verified") {
     return <VerifiedEmailPage />;

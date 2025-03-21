@@ -84,13 +84,12 @@ export function CartProductCard(product: CartProductType) {
   };
 
   return (
-    <div className="flex md:flex-row flex-col justify-between items-center">
+    <div className="flex md:flex-row flex-col justify-between items-center min-w-[600px]">
       <Link to={`/product/${product.id}`}>
         <div className="bg-offWhite md:px-2.5 md:w-20 md:min-w-20 md:h-20 flex justify-center items-center">
           <img
             src={product?.image && product?.image}
             alt={product.title}
-            className="md:w-11 md:h-16 w-56"
           />
         </div>
       </Link>

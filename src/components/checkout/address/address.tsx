@@ -141,11 +141,11 @@ export function Address({onAddressChange}: IAddresProps) {
               idx === addressInputs.length - 1 ? "col-span-2" : ""
             }`}
           >
-            <h5 className="">{input.label}</h5>
+            <h5 className="text-neutral">{input.label}</h5>
             <input
               name={input.name}
               value={input.value}
-              className="w-full "
+              className="w-full mt-1"
               onChange={(e) => handleAddressInputChange(e, input.name)}
             />
           </div>

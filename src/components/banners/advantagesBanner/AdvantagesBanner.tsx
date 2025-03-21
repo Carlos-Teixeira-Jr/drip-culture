@@ -32,8 +32,8 @@ export function AdvantagesBanner() {
           <div className="bg-offWhite rounded-full w-20 h-20 mx-auto md:mx-0 md:w-10 md:h-10 flex justify-center items-center p-[5px] shrink-0">
             <img src={advantage.icon} alt="logo" className="md:w-5 md:h-5 w-10 h-10" />
           </div>
-          <h3 className="text-center md:text-start">{advantage.title}</h3>
-          <h6 className="text-center md:text-start">
+          <h3 className="text-center md:text-start text-[#202533]">{advantage.title}</h3>
+          <h6 className="text-center md:text-start text-vividBlack">
             {advantage.description}
           </h6>
         </div>
