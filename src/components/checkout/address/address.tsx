@@ -17,7 +17,6 @@ export function Address({onAddressChange}: IAddresProps) {
     state: "",
     street: "",
   });
-  console.log("🚀 ~ Address ~ addressFormData:", addressFormData)
 
   const [addresErrors, setAddressErrors] = useState<IAddress>({
     zipcode: "",

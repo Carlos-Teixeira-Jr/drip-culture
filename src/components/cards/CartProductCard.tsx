@@ -28,8 +28,6 @@ export function CartProductCard(product: CartProductType) {
       products: newProduct,
     };
 
-    console.log("🚀 ~ handleAddProduct ~ updatedCart:", updatedCart);
-
     dispatch(setCart(updatedCart));
   };
 
