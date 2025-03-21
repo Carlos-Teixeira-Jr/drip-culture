@@ -24,8 +24,6 @@ export function CategoriesSideMenu({categories}: ICategoriesSideMenu) {
   const { price, priceEndPoints, filter } = useSelector(
     (state: RootState) => state.products
   );
-  console.log("🚀 ~ CategoriesSideMenu ~ price:", price)
-  console.log("🚀 ~ CategoriesSideMenu ~ priceEndPoints:", priceEndPoints)
 
   const [position, setPosition] = useState(0);
   const sliderRef = useRef<HTMLInputElement>(null);
@@ -66,11 +64,6 @@ export function CategoriesSideMenu({categories}: ICategoriesSideMenu) {
       dispatch(setFilters(category));
     }
   };
-
-  useEffect(() => {
-    dispatch(fetchProducts({}));
-    dispatch(fetchPriceEndPoints());
-  }, [dispatch, filter]);
 
   return (
     <section className="md:ml-44 border border-borderColor pt-6 pl-4.5 pr-3.5 w-full md:w-60.5 rounded-md h-fit relative">

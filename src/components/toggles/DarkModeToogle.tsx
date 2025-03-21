@@ -6,7 +6,6 @@ export function DarkModeToggle() {
   const [isDark, setIsDark] = useState(
     typeof window !== "undefined" && localStorage.getItem("theme") === "dark"
   );
-  console.log("🚀 ~ DarkModeToggle ~ isDark:", isDark)
 
   useEffect(() => {
     if (isDark) {
@@ -20,13 +19,13 @@ export function DarkModeToggle() {
 
   return (
     <button
-      className={`p-2 border-2 rounded-lg border-neutral cursor-pointer ${isDark ? "border-white bg-neutral" : "bg-white border-neutral"}`}
+      className={`md:p-2 p-1 border-2 w-fit h-fit rounded-lg border-neutral cursor-pointer ${isDark ? "border-white bg-neutral" : "bg-white border-neutral"}`}
       onClick={() => setIsDark(!isDark)}
     >
       {isDark ? (
-        <LightModeIcon className={`${isDark && "fill-white"}`} />
+        <LightModeIcon className={` w-4 h-4 ${isDark && "fill-white"}`} />
       ) : (
-        <DarkModeIcon className={`${!isDark && "fill-neutral"}`} />
+        <DarkModeIcon className={`w-4 h-4 ${!isDark && "fill-neutral"}`} />
       )}
     </button>
   )

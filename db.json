@@ -665,6 +665,99 @@
         }
       },
       "id": "DN6v02X"
+    },
+    {
+      "userEmail": "mari8102@uorak.com",
+      "address": {
+        "zipcode": "9621616",
+        "country": "Parque Residencial Jardim do Sol",
+        "city": "Rio Grande",
+        "state": "RS",
+        "street": "Rua Hélio Rego"
+      },
+      "cart": {
+        "id": 0,
+        "userEmail": "",
+        "products": [
+          {
+            "id": 3,
+            "title": "Columbia - Whirlibird IV Interchange Jacket",
+            "price": 180,
+            "quantity": 1,
+            "orderDate": "2025-03-21T14:42:46.199Z",
+            "image": "https://columbia.vtexassets.com/arquivos/ids/327401-800-auto?v=638739706241300000&width=800&height=auto&aspect=true",
+            "color": "navy",
+            "size": "M"
+          }
+        ],
+        "_persist": {
+          "version": -1,
+          "rehydrated": true
+        }
+      },
+      "id": "YhLUXN4"
+    },
+    {
+      "userEmail": "mari8102@uorak.com",
+      "address": {
+        "zipcode": "9621718",
+        "country": "Bolaxa",
+        "city": "Rio Grande",
+        "state": "RS",
+        "street": "Rua João Augusto dos Santos"
+      },
+      "cart": {
+        "id": 0,
+        "userEmail": "",
+        "products": [
+          {
+            "id": 7,
+            "title": "Ray-Ban - RB3025 Aviator Sunglasses",
+            "price": 150,
+            "quantity": 1,
+            "orderDate": "2025-03-21T14:57:48.214Z",
+            "image": "https://chillibeans.vteximg.com.br/arquivos/ids/534438-1200-1200/OC.MT.3614-1522Oculos-de-Sol-Unissex-Chilli-Beans-Aviador-MT-Slim-Verde--1-.jpg?v=638600410645600000",
+            "color": "black",
+            "size": "M"
+          }
+        ],
+        "_persist": {
+          "version": -1,
+          "rehydrated": true
+        }
+      },
+      "id": "XIXalcL"
+    },
+    {
+      "userEmail": "teixeirahist1988@gmail.com",
+      "address": {
+        "zipcode": "9621514",
+        "country": "Parque Marinha",
+        "city": "Rio Grande",
+        "state": "RS",
+        "street": "Rua Ilhas Canarias"
+      },
+      "cart": {
+        "id": 0,
+        "userEmail": "",
+        "products": [
+          {
+            "id": 2,
+            "title": "The North Face - Thermoball Jacket",
+            "price": 130,
+            "quantity": 1,
+            "orderDate": "2025-03-21T18:41:40.849Z",
+            "image": "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F2808209-628-628%2Fjaqueta-masculina-de-trekking-trek-100-preto-p2.jpg%3Fv%3D637617131704600000",
+            "color": "black",
+            "size": "L"
+          }
+        ],
+        "_persist": {
+          "version": -1,
+          "rehydrated": true
+        }
+      },
+      "id": "5U9M4i8"
     }
   ]
 }
