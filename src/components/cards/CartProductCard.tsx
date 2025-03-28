@@ -117,7 +117,7 @@ export function CartProductCard(product: CartProductType) {
           <h5 className=" px-4.5">
             {
               cart.products.find(
-                (item: CartProductType) => item.id === product.id
+                (item: CartProductType) => item.id === product.id && item.color === product.color && item.size === product.size
               )?.quantity
             }
           </h5>

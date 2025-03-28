@@ -574,8 +574,7 @@
   ],
   "checkout": [
     {
-      "id": "ade0",
-      "userEmail": "geane664@uorak.com",
+      "userEmail": "teixeirahist1988@gmail.com",
       "address": {
         "zipcode": "9621514",
         "country": "Parque Marinha",
@@ -591,40 +590,20 @@
             "id": 1,
             "title": "Levi's - Men's 541 Athletic Fit Jeans",
             "price": 68,
-            "quantity": 2,
-            "orderDate": "2025-03-17T16:31:58.956Z",
+            "quantity": 3,
+            "orderDate": "2025-03-28T13:55:13.463Z",
             "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSxC483Xq04peo0Fm44-DuyJfVY0P8nE310liPF2iB_2LxQanM15FiVyPM_apKr_-m6H5rbg1SGiXDVvg-qeuZG8aU8AG3kKU5plk2Fp3gr4gpHXdIRFyXI&usqp=CAE",
             "color": "darkBlue",
             "size": "S"
-          }
-        ],
-        "_persist": {
-          "version": -1,
-          "rehydrated": true
-        }
-      }
-    },
-    {
-      "userEmail": "teixeirahist1988@gmail.com",
-      "address": {
-        "zipcode": "9621514",
-        "country": "Parque Marinha",
-        "city": "Rio Grande",
-        "state": "RS",
-        "street": "Rua Ilhas Canarias"
-      },
-      "cart": {
-        "id": 0,
-        "userEmail": "",
-        "products": [
+          },
           {
-            "id": 11,
-            "title": "New Balance - 574 Sneakers",
-            "price": 110,
-            "quantity": 2,
-            "orderDate": "2025-03-21T13:28:30.072Z",
-            "image": "http://newbrasil.vtexassets.com/arquivos/ids/169777/U574G_U574GBG.jpg?v=638506122391000000",
-            "color": "grey",
+            "id": 1,
+            "title": "Levi's - Men's 541 Athletic Fit Jeans",
+            "price": 68,
+            "quantity": 1,
+            "orderDate": "2025-03-28T13:57:15.668Z",
+            "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSzUy0OgaD_ZAw0_k4tYzv0Lw9H0_3WFjuZsdDgU9nZjk6N0oeRgLWxE-8DqVzYMKwCnkCEsVMqVS8LQwTpgBmOF67sQdSv-8mIXGnIUl5iXrtRFkZ8cNuCqw&usqp=CAE",
+            "color": "lightBlue",
             "size": "S"
           }
         ],
@@ -633,131 +612,7 @@
           "rehydrated": true
         }
       },
-      "id": "xuodHsh"
-    },
-    {
-      "userEmail": "teixeirahist1988@gmail.com",
-      "address": {
-        "zipcode": "9621514",
-        "country": "Parque Marinha",
-        "city": "Rio Grande",
-        "state": "RS",
-        "street": "Rua Ilhas Canarias"
-      },
-      "cart": {
-        "id": 0,
-        "userEmail": "",
-        "products": [
-          {
-            "id": 9,
-            "title": "Vans - Old Skool Sneakers",
-            "price": 90,
-            "quantity": 1,
-            "orderDate": "2025-03-21T13:35:00.976Z",
-            "image": "https://secure-static.vans.com.br/medias/sys_master/vans/vans/hc0/h13/h00/h00/12093797695518/1002001090117U-01-BASEIMAGE-Hires.jpg",
-            "color": "green",
-            "size": "XL"
-          }
-        ],
-        "_persist": {
-          "version": -1,
-          "rehydrated": true
-        }
-      },
-      "id": "DN6v02X"
-    },
-    {
-      "userEmail": "mari8102@uorak.com",
-      "address": {
-        "zipcode": "9621616",
-        "country": "Parque Residencial Jardim do Sol",
-        "city": "Rio Grande",
-        "state": "RS",
-        "street": "Rua Hélio Rego"
-      },
-      "cart": {
-        "id": 0,
-        "userEmail": "",
-        "products": [
-          {
-            "id": 3,
-            "title": "Columbia - Whirlibird IV Interchange Jacket",
-            "price": 180,
-            "quantity": 1,
-            "orderDate": "2025-03-21T14:42:46.199Z",
-            "image": "https://columbia.vtexassets.com/arquivos/ids/327401-800-auto?v=638739706241300000&width=800&height=auto&aspect=true",
-            "color": "navy",
-            "size": "M"
-          }
-        ],
-        "_persist": {
-          "version": -1,
-          "rehydrated": true
-        }
-      },
-      "id": "YhLUXN4"
-    },
-    {
-      "userEmail": "mari8102@uorak.com",
-      "address": {
-        "zipcode": "9621718",
-        "country": "Bolaxa",
-        "city": "Rio Grande",
-        "state": "RS",
-        "street": "Rua João Augusto dos Santos"
-      },
-      "cart": {
-        "id": 0,
-        "userEmail": "",
-        "products": [
-          {
-            "id": 7,
-            "title": "Ray-Ban - RB3025 Aviator Sunglasses",
-            "price": 150,
-            "quantity": 1,
-            "orderDate": "2025-03-21T14:57:48.214Z",
-            "image": "https://chillibeans.vteximg.com.br/arquivos/ids/534438-1200-1200/OC.MT.3614-1522Oculos-de-Sol-Unissex-Chilli-Beans-Aviador-MT-Slim-Verde--1-.jpg?v=638600410645600000",
-            "color": "black",
-            "size": "M"
-          }
-        ],
-        "_persist": {
-          "version": -1,
-          "rehydrated": true
-        }
-      },
-      "id": "XIXalcL"
-    },
-    {
-      "userEmail": "teixeirahist1988@gmail.com",
-      "address": {
-        "zipcode": "9621514",
-        "country": "Parque Marinha",
-        "city": "Rio Grande",
-        "state": "RS",
-        "street": "Rua Ilhas Canarias"
-      },
-      "cart": {
-        "id": 0,
-        "userEmail": "",
-        "products": [
-          {
-            "id": 2,
-            "title": "The North Face - Thermoball Jacket",
-            "price": 130,
-            "quantity": 1,
-            "orderDate": "2025-03-21T18:41:40.849Z",
-            "image": "https://decathlonstore.vtexassets.com/unsafe/1256x1256/center/middle/https%3A%2F%2Fdecathlonpro.vtexassets.com%2Farquivos%2Fids%2F2808209-628-628%2Fjaqueta-masculina-de-trekking-trek-100-preto-p2.jpg%3Fv%3D637617131704600000",
-            "color": "black",
-            "size": "L"
-          }
-        ],
-        "_persist": {
-          "version": -1,
-          "rehydrated": true
-        }
-      },
-      "id": "5U9M4i8"
+      "id": 1
     }
   ]
 }
