@@ -92,8 +92,6 @@ export function Footer() {
             message: "Error subscribing",
             type: "error",
           });
-        response.json().then((data) => {
-        });
       } catch (error) {
         setShowToast({
           show: true,

@@ -18,24 +18,10 @@ export function Address({onAddressChange}: IAddresProps) {
     street: "",
   });
 
-  const [addresErrors, setAddressErrors] = useState<IAddress>({
-    zipcode: "",
-    country: "",
-    city: "",
-    state: "",
-    street: "",
-  });
-
   const [userFormData, setUserFormData] = useState({
     email: "",
     name: "",
   });
-
-  const [showToast, setShowToast] = useState({
-    show: false,
-    message: "",
-    type: "",
-  })
 
   const addressInputs = [
     {
@@ -111,20 +97,9 @@ export function Address({onAddressChange}: IAddresProps) {
             state: data.uf,
             street: data.logradouro,
           });
-        } else {
-          setShowToast({
-            show: true,
-            message: "Error fetching address",
-            type: "error",
-          })
         }
       } catch (error) {
         console.error(error);
-        setShowToast({
-          show: true,
-          message: "Error fetching address",
-          type: "error",
-        })
       }
     }
   };

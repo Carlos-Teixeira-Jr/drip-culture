@@ -22,7 +22,6 @@ export function SideMenu({
     account: false,
   });
   const [optionName, setOptionName] = useState("orders");
-  const dispatch = useDispatch();
   const { signOut } = useClerk();
 
   const options = [

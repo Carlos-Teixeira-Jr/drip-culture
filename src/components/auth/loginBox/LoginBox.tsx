@@ -27,13 +27,6 @@ export function LoginBox({
     password: "",
   });
 
-  const [authFormDataErrors, setAuthFormDataErrors] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [loading, setLoading] = useState(isLoading);
-
   const [hiddenPassword, setHiddenPassword] = useState("");
 
   const inputs = [

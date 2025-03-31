@@ -5,13 +5,10 @@ import { NewCollectionBanner } from "../components/banners/newCollectionBanner/N
 import { BestSellingProducts } from "../components/products/bestSellingProducts/BestSellingProducts";
 import { OnOfferProducts } from "../components/products/onOfferProducts/OnOfferProducts";
 import { IProduct } from "../interfaces/product.interface";
-import { useDispatch } from "react-redux";
-import { Loading } from "../components/loading/Loading";
 
 export function Home() {
   const [bestSellingProduct, setBestSellingProducts] = useState<IProduct[]>([]);
   const [productsOnOffer, setProductsOnOffer] = useState<IProduct[]>([]);
-  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async () => {

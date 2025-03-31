@@ -294,7 +294,7 @@ export function Product({ onProductFetched }: IProductProps) {
             />
           </div>
           <div className="flex justify-center items-center pb-8">
-            {product?.images[0].images.map((image, index) => (
+            {product?.images[0].images.map((_, index) => (
               <h1
                 key={index}
                 className={`text-5xl ${

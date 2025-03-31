@@ -25,15 +25,7 @@ export function SignUpBox({
     name: "",
   });
 
-  const [signUpFormDataErrors, setSignUpFormDataErrors] = useState({
-    email: "",
-    password: "",
-    name: "",
-  });
-
   const [hiddenPassword, setHiddenPassword] = useState("");
-
-  const [loading, setLoading] = useState(isLoading)
 
   useEffect(() => {
     onSignUpFormDataChange(signUpFormData);

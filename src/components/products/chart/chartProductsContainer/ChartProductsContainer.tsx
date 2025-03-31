@@ -1,7 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { dateFormatter } from "../../../../utils/formatters/dateFomatter";
 import { IOrders } from "../../../../interfaces/orders.interface";
-import { useEffect, useState } from "react";
 
 interface IOrdersProductsContainer {
   orders: IOrders;

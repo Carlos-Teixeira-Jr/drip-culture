@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../slices/store";
 import {
-  fetchPriceEndPoints,
-  fetchProducts,
   setFilters,
   setPrice,
 } from "../../../../slices/productsSlice";
