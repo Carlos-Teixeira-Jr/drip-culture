@@ -1,5 +1,5 @@
 import Banner from "../../../assets/heroImages/logo-banner.png";
-import Logo from "../../../assets/logos/logomark-big.png";
+import Logo from "../../../assets/logos/Logomark-big.png";
 
 export function LogoBanner() {
   return (
