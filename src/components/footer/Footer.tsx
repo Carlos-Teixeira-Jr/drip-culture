@@ -93,7 +93,6 @@ export function Footer() {
             type: "error",
           });
         response.json().then((data) => {
-          console.log("newsletter list:", data);
         });
       } catch (error) {
         setShowToast({

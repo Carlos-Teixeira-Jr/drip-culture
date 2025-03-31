@@ -16,7 +16,7 @@ export function OrdersContainer() {
         const data = await response.json();
         setOrders(data[data.length - 1]);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
     fetchOrders()

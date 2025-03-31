@@ -26,7 +26,7 @@ Siga os passos abaixo para rodar o projeto localmente:
 ### 1. **Clonar o repositório**
 
 ```bash
-git clone https://github.com/Carlos-Teixeira-Jr/aws_react_dez24_d03.git
+git clone https://github.com/Carlos-Teixeira-Jr/drip-culture.git
 cd aws_react_dez24_d03
 ```
 

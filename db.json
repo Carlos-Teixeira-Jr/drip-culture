@@ -570,11 +570,19 @@
     {
       "email": "david4651@uorak.com",
       "id": "MwmOL6m"
+    },
+    {
+      "email": "lucrecio6310@uorak.com",
+      "id": "-zS7Wc4"
+    },
+    {
+      "email": "teixeirahist1988@gmail.com",
+      "id": "zO8FY3I"
     }
   ],
   "checkout": [
     {
-      "userEmail": "teixeirahist1988@gmail.com",
+      "userEmail": "roldan3984@uorak.com",
       "address": {
         "zipcode": "9621514",
         "country": "Parque Marinha",
@@ -590,8 +598,8 @@
             "id": 1,
             "title": "Levi's - Men's 541 Athletic Fit Jeans",
             "price": 68,
-            "quantity": 3,
-            "orderDate": "2025-03-28T13:55:13.463Z",
+            "quantity": 2,
+            "orderDate": "2025-03-28T17:22:56.653Z",
             "image": "https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcSxC483Xq04peo0Fm44-DuyJfVY0P8nE310liPF2iB_2LxQanM15FiVyPM_apKr_-m6H5rbg1SGiXDVvg-qeuZG8aU8AG3kKU5plk2Fp3gr4gpHXdIRFyXI&usqp=CAE",
             "color": "darkBlue",
             "size": "S"
@@ -601,7 +609,7 @@
             "title": "Levi's - Men's 541 Athletic Fit Jeans",
             "price": 68,
             "quantity": 1,
-            "orderDate": "2025-03-28T13:57:15.668Z",
+            "orderDate": "2025-03-28T17:23:23.694Z",
             "image": "https://encrypted-tbn1.gstatic.com/shopping?q=tbn:ANd9GcSzUy0OgaD_ZAw0_k4tYzv0Lw9H0_3WFjuZsdDgU9nZjk6N0oeRgLWxE-8DqVzYMKwCnkCEsVMqVS8LQwTpgBmOF67sQdSv-8mIXGnIUl5iXrtRFkZ8cNuCqw&usqp=CAE",
             "color": "lightBlue",
             "size": "S"

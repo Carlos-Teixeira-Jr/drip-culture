@@ -62,7 +62,7 @@ export function OrderSummary() {
           const data = await response.json();
           setIsFirstOrder(data.length < 1);
         } catch (error) {
-          console.log(error);
+          console.error(error);
         }
       }
       fetchOrders()

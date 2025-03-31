@@ -7,7 +7,6 @@ import { OrderSummary } from "../components/checkout/order/OrderSummary";
 
 export function CartPage() {
   const cart: ICart = useSelector((state: RootState) => state.cart) as ICart;
-  console.log("🚀 ~ CartPage ~ cart:", cart)
   return (
     <main>
       <BreadCrumb />

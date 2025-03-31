@@ -66,7 +66,6 @@ export function LoginBox({
   };
 
   const handleGoogleLogin = async () => {
-    console.log("clicou")
     try {
       if (isLoaded) {
         await signIn.authenticateWithRedirect({
@@ -76,7 +75,7 @@ export function LoginBox({
         })
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 

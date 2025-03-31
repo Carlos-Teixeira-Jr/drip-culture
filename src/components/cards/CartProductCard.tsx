@@ -53,7 +53,7 @@ export function CartProductCard(product: CartProductType) {
 
         dispatch(setCart(updatedCart));
       } else {
-        console.log("Product not found in cart.");
+        console.error("Product not found in cart.");
       }
     }
   };

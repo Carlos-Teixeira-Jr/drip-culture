@@ -34,19 +34,20 @@ export function Header() {
 
         setUserCheckouts(data);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       } finally {
         setIsFetchingCheckouts(false);
       }
     };
     fetchUserCheckouts();
   }, [user]);
+  
 
   return (
     <header className="flex flex-col justify-center items-center min-h-30">
-      {isLoaded && !isFetchingCheckouts && (
+      {isLoaded && (
         <>
-          {!isFetchingCheckouts && userCheckouts.length === 0 && (
+          {(!user || (user && userCheckouts.length === 0 && !isFetchingCheckouts)) && (
             <section className="h-10 black-div text-white flex justify-center items-center gap-2 w-full">
               <div className="flex gap-2" onClick={() => navigate("/shop")}>
                 <h6 className="text-lg md:text-sm">
@@ -87,7 +88,7 @@ export function Header() {
             </Link>
 
             <div className="flex items-center justify-center px-0 md:px-5">
-              <DarkModeToggle />
+              {!isMobile && <DarkModeToggle />}
             </div>
 
             <div
