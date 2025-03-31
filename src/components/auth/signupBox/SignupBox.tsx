@@ -17,7 +17,6 @@ interface ISignUpBox {
 export function SignUpBox({
   onSignUpFormDataChange,
   onSubmit,
-  isLoading,
 }: ISignUpBox) {
   const [signUpFormData, setSignUpFormData] = useState({
     email: "",

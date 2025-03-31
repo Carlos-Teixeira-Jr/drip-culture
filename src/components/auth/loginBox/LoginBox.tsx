@@ -17,7 +17,6 @@ interface ILoginBox {
 export function LoginBox({
   onAuthFormDataChange,
   onSubmit,
-  isLoading,
 }: ILoginBox) {
   const { signIn, isLoaded } = useSignIn();
 

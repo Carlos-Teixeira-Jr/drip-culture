@@ -3,7 +3,6 @@ import UserImage from "../../../assets/icons/user.png";
 import LogOutImage from "../../../assets/icons/logout-icon.png";
 import { useEffect, useState } from "react";
 import { useClerk } from "@clerk/clerk-react";
-import { useDispatch } from "react-redux";
 
 export type SelectedOption = {
   orders: boolean;

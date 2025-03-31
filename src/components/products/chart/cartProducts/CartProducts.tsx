@@ -1,4 +1,4 @@
-import { CartProductType, ICart } from "../../../../interfaces/cart.interface";
+import { ICart } from "../../../../interfaces/cart.interface";
 import { CartProductCard } from "../../../cards/CartProductCard";
 
 interface ICartProducts {
