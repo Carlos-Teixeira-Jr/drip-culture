@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { IProduct } from "../../../interfaces/product.interface"
 import { ProductCard } from "../../cards/ProductCard";
+import { API_URL } from "../../../api/api";
 
 interface IRecomendedProducts {
   category: string | undefined
@@ -14,7 +15,7 @@ export function RecomendedProducts({ category }: IRecomendedProducts) {
   useEffect(() => {
     const fetchSimilarProducts = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/products?category=${category}&_limit=4`);
+        const response = await fetch(`${API_URL}/products?category=${category}&_limit=4`);
         const data = await response.json();
         setSimilarProducts(data);
       } catch (error) {

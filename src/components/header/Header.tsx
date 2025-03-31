@@ -6,6 +6,7 @@ import { HeaderComponents } from "./headerComponents/HeaderComponents";
 import { useIsMobile } from "../../utils/hooks/useIsMobile";
 import { DarkModeToggle } from "../toggles/DarkModeToogle";
 import { useUser } from "@clerk/clerk-react";
+import { API_URL } from "../../api/api";
 
 export function Header() {
   const isMobile = useIsMobile();
@@ -21,7 +22,7 @@ export function Header() {
       setIsFetchingCheckouts(true);
       try {
         const response = await fetch(
-          `http://localhost:3001/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`,
+          `${API_URL}/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`,
           {
             method: "GET",
             headers: {

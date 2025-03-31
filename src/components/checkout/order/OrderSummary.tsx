@@ -4,6 +4,7 @@ import { useUser } from "@clerk/clerk-react";
 import { Link, useNavigate } from "react-router-dom";
 import { ICart } from "../../../interfaces/cart.interface";
 import { RootState } from "../../../slices/store";
+import { API_URL } from "../../../api/api";
 
 export function OrderSummary() {
   const [subTotal, setSubTotal] = useState(0);
@@ -58,7 +59,7 @@ export function OrderSummary() {
     useEffect(()  => {
       const fetchOrders = async () => {
         try {
-          const response = await fetch(`http://localhost:3001/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`);
+          const response = await fetch(`${API_URL}/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`);
           const data = await response.json();
           setIsFirstOrder(data.length < 1);
         } catch (error) {

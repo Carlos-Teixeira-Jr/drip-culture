@@ -3,6 +3,7 @@ import { IProduct } from "../interfaces/product.interface";
 import { Category } from "../components/products/shop/categoriesSideMenu/CategoriesSideMenu";
 import { ICart } from "../interfaces/cart.interface";
 import { parseLinkHeader } from "../utils/formatters/parsePaginationLinks";
+import { API_URL } from "../api/api";
 
 export interface ProductsState {
   categories: Category[];
@@ -47,7 +48,7 @@ export const fetchProducts = createAsyncThunk(
 
     if (price === 0) {
       const allDataResponse = await fetch(
-        "http://localhost:3001/products?_sort=price&_order=desc"
+        `${API_URL}/products?_sort=price&_order=desc`
       );
       const allDataJson = await allDataResponse.json();
       if (allDataJson.length > 0) {
@@ -58,7 +59,7 @@ export const fetchProducts = createAsyncThunk(
 
     if (categories.length === 0) {
       const categoriesResponse = await fetch(
-        "http://localhost:3001/categories"
+        `${API_URL}/categories`
       );
       const categoriesJson = await categoriesResponse.json();
       categories = categoriesJson;
@@ -67,7 +68,7 @@ export const fetchProducts = createAsyncThunk(
 
     const url =
       customUrl ||
-      `http://localhost:3001/products?${filterParams}${titleFilterParam}&price_lte=${price}&_page=${page}&_limit=9`;
+      `${API_URL}/products?${filterParams}${titleFilterParam}&price_lte=${price}&_page=${page}&_limit=9`;
 
     const response = await fetch(url);
 
@@ -100,7 +101,7 @@ export const fetchPriceEndPoints = createAsyncThunk(
     const filterParams = filter ? `&category=${filter}` : "";
 
     const response = await fetch(
-      `http://localhost:3001/products?${filterParams}`
+      `${API_URL}/products?${filterParams}`
     );
     const allDataJson: IProduct[] = await response.json();
 

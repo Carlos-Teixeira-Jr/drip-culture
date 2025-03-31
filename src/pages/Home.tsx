@@ -5,6 +5,7 @@ import { NewCollectionBanner } from "../components/banners/newCollectionBanner/N
 import { BestSellingProducts } from "../components/products/bestSellingProducts/BestSellingProducts";
 import { OnOfferProducts } from "../components/products/onOfferProducts/OnOfferProducts";
 import { IProduct } from "../interfaces/product.interface";
+import { API_URL } from "../api/api";
 
 export function Home() {
   const [bestSellingProduct, setBestSellingProducts] = useState<IProduct[]>([]);
@@ -13,7 +14,7 @@ export function Home() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/products`, {
+        const response = await fetch(`${API_URL}/products`, {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
