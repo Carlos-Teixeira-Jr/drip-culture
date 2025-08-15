@@ -23,7 +23,7 @@ import { PageNotFound } from "./pages/PageNotFound";
 import { GoogleSignInCallback } from "./components/auth/google/GoogleSignInCallback";
 import { ForbiddenPage } from "./pages/ForbiddenPage";
 import ScrollToTop from "./utils/utilComponents/ScrollToTop";
-import { SignedIn, SignedOut, SignInButton, UserButton, useUser } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 import { Loading } from "./components/loading/Loading";
 
 const routes = [
