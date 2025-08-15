@@ -13,6 +13,7 @@ import { AppDispatch, RootState } from "../../../slices/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../../slices/productsSlice";
 import { CartProductType, ICart } from "../../../interfaces/cart.interface";
+import { API_URL } from "../../../utils/environments";
 
 type Image = {
   image: string,
@@ -50,7 +51,7 @@ export function Product({ onProductFetched }: IProductProps) {
   useEffect(() => {
     const fetchProductById = async (id: string) => {
       try {
-        const response = await fetch(`http://localhost:3001/products?id=${id}`);
+        const response = await fetch(`${API_URL}/products?id=${id}`);
         const products: IProduct[] = await response.json();
 
         if (products.length === 0) {

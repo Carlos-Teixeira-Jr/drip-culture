@@ -1,0 +1,1 @@
+export const API_URL = process.env.VITE_ENVIRONMENT === "dev" ? "http://localhost:3001" : "https://drip-culture-api.onrender.com";

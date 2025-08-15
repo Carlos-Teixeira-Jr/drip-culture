@@ -7,6 +7,7 @@ import { IAddress } from "../../../interfaces/address.interface";
 import { Toast } from "../../toasts/toast";
 import { setCart } from "../../../slices/productsSlice";
 import { useUser } from "@clerk/clerk-react";
+import { API_URL } from "../../../utils/environments";
 
 interface IPlaceOrder {
   address: IAddress;
@@ -62,7 +63,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
   useEffect(()  => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch(`http://localhost:3001/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`);
+        const response = await fetch(`${API_URL}/checkout?userEmail=${user?.emailAddresses[0].emailAddress}`);
         const data = await response.json();
         setIsFirstOrder(data.length < 1);
       } catch (error) {
