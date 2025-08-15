@@ -11,6 +11,18 @@ export function HeaderComponents() {
 
   const cart = useSelector((state: RootState) => state?.cart);
 
+  const productsCount = () => {
+    let count = cart.products.length;
+
+    for (let product of cart.products) {
+      if (product.quantity > 1) {
+        count += product.quantity - 1;
+      }
+    }
+
+    return count
+  }
+
   const [userProfileImg, setUserProfileImg] = useState<string>(UserImage);
 
   useEffect(() => {
@@ -29,7 +41,7 @@ export function HeaderComponents() {
             className="md:w-[18px] md:h-[18px] w-6 h-6"
           />
           <span className="absolute top-[10px] right-[-5px] bg-[#BE1313] text-white font-bold text-[10px] rounded-full w-3.5 h-3.5 flex justify-center items-center leading-24 pr-0.5 md:pr-0">
-            {cart?.products?.length}
+            {productsCount()}
           </span>
         </div>
       </Link>

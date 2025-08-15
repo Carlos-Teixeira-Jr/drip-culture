@@ -10,6 +10,7 @@ import { validateEmail } from "../../utils/validators/emailValidator/emailValida
 import { Toast } from "../toasts/toast";
 import { Link } from "react-router-dom";
 import { useUser } from "@clerk/clerk-react";
+import { API_URL } from "../../api/api";
 
 export function Footer() {
   const [email, setEmail] = useState("");
@@ -73,7 +74,7 @@ export function Footer() {
           message: "Subscribed successfully",
           type: "success",
         });
-        const response = await fetch("http://localhost:3001/newsletter", {
+        const response = await fetch(`${API_URL}/newsletter`, {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -92,9 +93,6 @@ export function Footer() {
             message: "Error subscribing",
             type: "error",
           });
-        response.json().then((data) => {
-          console.log("newsletter list:", data);
-        });
       } catch (error) {
         setShowToast({
           show: true,

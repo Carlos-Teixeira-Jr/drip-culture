@@ -2,8 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../../slices/store";
 import {
-  fetchPriceEndPoints,
-  fetchProducts,
   setFilters,
   setPrice,
 } from "../../../../slices/productsSlice";
@@ -66,7 +64,7 @@ export function CategoriesSideMenu({categories}: ICategoriesSideMenu) {
   };
 
   return (
-    <section className="md:ml-44 border border-borderColor pt-6 pl-4.5 pr-3.5 w-full md:w-60.5 rounded-md h-fit relative">
+    <section className="md:ml-44 md:mb-24 border border-borderColor pt-6 pl-4.5 pr-3.5 w-full md:w-60.5 rounded-md h-fit relative">
       <div className="mb-10">
         <h5 className="mb-4">Categories</h5>
         {categories.map((category: Category) => (

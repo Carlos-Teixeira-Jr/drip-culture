@@ -16,9 +16,9 @@ import { CartProductType, ICart } from "../../../interfaces/cart.interface";
 import { API_URL } from "../../../utils/environments";
 
 type Image = {
-  image: string,
-  index: number
-}
+  image: string;
+  index: number;
+};
 
 interface IProductProps {
   onProductFetched: (product: IProduct) => void;
@@ -116,7 +116,40 @@ export function Product({ onProductFetched }: IProductProps) {
 
       if (productIndex !== -1) {
         const updatedProducts = [...cart.products];
-        updatedProducts[productIndex].quantity = quantity;
+
+        //Verificar se já há o mesmo produto no carrinho, se houver e a cor ou o tamanho for diferente, inserir novamente;
+        const cartProductIndex = cart.products.findIndex(
+          (item: CartProductType) => item.id === Number(productId)
+        );
+
+        if (cartProductIndex !== -1) {
+
+          updatedProducts[cartProductIndex].color !== selectedColor ||
+          updatedProducts[cartProductIndex].size !== selectedSize
+            ? updatedProducts.push({
+                id: Number(productId),
+                title: product?.title,
+                price: product?.price,
+                quantity,
+                orderDate: new Date().toISOString(),
+                image: product?.images.find(
+                  (img) => img.color === selectedColor
+                )?.images[0] as unknown as string,
+                color: selectedColor,
+                size: selectedSize,
+              })
+            : (
+              updatedProducts[cartProductIndex] = {
+                ...updatedProducts[cartProductIndex],
+                quantity: updatedProducts[cartProductIndex].quantity + quantity,
+              }
+            );
+        } else {
+          updatedProducts[productIndex] = {
+            ...updatedProducts[productIndex],
+            quantity: quantity,
+          };
+        }
 
         const updatedCart = {
           ...cart,
@@ -124,6 +157,15 @@ export function Product({ onProductFetched }: IProductProps) {
         };
 
         dispatch(setCart(updatedCart));
+        setShowToast({
+          show: true,
+          message: "Product added to cart",
+          type: "success",
+        });
+        window.scrollTo({
+          top: 50,
+          behavior: "smooth",
+        })
       } else {
         const updatedCart: ICart = {
           id: cart.id,
@@ -135,7 +177,7 @@ export function Product({ onProductFetched }: IProductProps) {
               title: product?.title,
               price: product?.price,
               quantity,
-              orderDate: new Date(),
+              orderDate: new Date().toISOString(),
               image: product?.images.find((img) => img.color === selectedColor)
                 ?.images[0] as unknown as string,
               color: selectedColor,
@@ -150,6 +192,10 @@ export function Product({ onProductFetched }: IProductProps) {
           message: "Product added to cart",
           type: "success",
         });
+        window.scrollTo({
+          top: 50,
+          behavior: "smooth",
+        })
       }
     } catch (error) {
       console.error(error);
@@ -249,13 +295,11 @@ export function Product({ onProductFetched }: IProductProps) {
             />
           </div>
           <div className="flex justify-center items-center pb-8">
-            {product?.images[0].images.map((image, index) => (
+            {product?.images[0].images.map((_, index) => (
               <h1
                 key={index}
                 className={`text-5xl ${
-                  index === actualImage.index
-                    ? ""
-                    : "text-slateGrey"
+                  index === actualImage.index ? "" : "text-slateGrey"
                 }`}
               >
                 •

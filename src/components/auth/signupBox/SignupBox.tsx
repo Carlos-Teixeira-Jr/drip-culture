@@ -17,7 +17,6 @@ interface ISignUpBox {
 export function SignUpBox({
   onSignUpFormDataChange,
   onSubmit,
-  isLoading,
 }: ISignUpBox) {
   const [signUpFormData, setSignUpFormData] = useState({
     email: "",
@@ -25,15 +24,7 @@ export function SignUpBox({
     name: "",
   });
 
-  const [signUpFormDataErrors, setSignUpFormDataErrors] = useState({
-    email: "",
-    password: "",
-    name: "",
-  });
-
   const [hiddenPassword, setHiddenPassword] = useState("");
-
-  const [loading, setLoading] = useState(isLoading)
 
   useEffect(() => {
     onSignUpFormDataChange(signUpFormData);

@@ -20,7 +20,7 @@ export function ShopPage() {
 
   return (
     <>
-      {products.length === 0 || categories.length === 0 ? (
+      {categories.length === 0 ? (
         <Loading />
       ) : (
         <main>

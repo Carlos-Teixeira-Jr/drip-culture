@@ -1,5 +1,4 @@
 import { useUser } from "@clerk/clerk-react";
-import { useState } from "react";
 
 export function AccountDetailsContainer() {
   const { user } = useUser();

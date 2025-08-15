@@ -67,7 +67,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
         const data = await response.json();
         setIsFirstOrder(data.length < 1);
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     }
     fetchOrders()
@@ -93,7 +93,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
 
   const handlePaymentBtnClick = async () => {
     try {
-      const response = await fetch("http://localhost:3001/checkout", {
+      const response = await fetch(`${API_URL}/checkout`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -114,7 +114,7 @@ export function PlaceOrder({ address }: IPlaceOrder) {
         navigate("/after-payment");
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setShowToast({
         show: true,
         message: "Error on payment",

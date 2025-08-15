@@ -17,7 +17,6 @@ interface ILoginBox {
 export function LoginBox({
   onAuthFormDataChange,
   onSubmit,
-  isLoading,
 }: ILoginBox) {
   const { signIn, isLoaded } = useSignIn();
 
@@ -26,13 +25,6 @@ export function LoginBox({
     email: "",
     password: "",
   });
-
-  const [authFormDataErrors, setAuthFormDataErrors] = useState({
-    email: "",
-    password: "",
-  });
-
-  const [loading, setLoading] = useState(isLoading);
 
   const [hiddenPassword, setHiddenPassword] = useState("");
 
@@ -66,7 +58,6 @@ export function LoginBox({
   };
 
   const handleGoogleLogin = async () => {
-    console.log("clicou")
     try {
       if (isLoaded) {
         await signIn.authenticateWithRedirect({
@@ -76,7 +67,7 @@ export function LoginBox({
         })
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   }
 
