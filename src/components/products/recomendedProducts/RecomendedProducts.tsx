@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react"
 import { IProduct } from "../../../interfaces/product.interface"
 import { ProductCard } from "../../cards/ProductCard";
-import { API_URL } from "../../../api/api";
+import { API_URL } from "../../../utils/environments";
 
 interface IRecomendedProducts {
   category: string | undefined

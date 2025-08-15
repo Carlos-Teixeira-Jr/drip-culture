@@ -13,7 +13,7 @@ import { AppDispatch, RootState } from "../../../slices/store";
 import { useDispatch, useSelector } from "react-redux";
 import { setCart } from "../../../slices/productsSlice";
 import { CartProductType, ICart } from "../../../interfaces/cart.interface";
-import { API_URL } from "../../../api/api";
+import { API_URL } from "../../../utils/environments";
 
 type Image = {
   image: string;

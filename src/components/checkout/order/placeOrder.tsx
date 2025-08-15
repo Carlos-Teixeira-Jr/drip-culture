@@ -7,7 +7,7 @@ import { IAddress } from "../../../interfaces/address.interface";
 import { Toast } from "../../toasts/toast";
 import { setCart } from "../../../slices/productsSlice";
 import { useUser } from "@clerk/clerk-react";
-import { API_URL } from "../../../api/api";
+import { API_URL } from "../../../utils/environments";
 
 interface IPlaceOrder {
   address: IAddress;

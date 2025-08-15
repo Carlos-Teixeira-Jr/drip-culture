@@ -5,7 +5,7 @@ import { NewCollectionBanner } from "../components/banners/newCollectionBanner/N
 import { BestSellingProducts } from "../components/products/bestSellingProducts/BestSellingProducts";
 import { OnOfferProducts } from "../components/products/onOfferProducts/OnOfferProducts";
 import { IProduct } from "../interfaces/product.interface";
-import { API_URL } from "../api/api";
+import { API_URL } from "../utils/environments";
 
 export function Home() {
   const [bestSellingProduct, setBestSellingProducts] = useState<IProduct[]>([]);

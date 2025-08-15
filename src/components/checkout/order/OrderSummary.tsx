@@ -4,7 +4,7 @@ import { useUser } from "@clerk/clerk-react";
 import { Link, useNavigate } from "react-router-dom";
 import { ICart } from "../../../interfaces/cart.interface";
 import { RootState } from "../../../slices/store";
-import { API_URL } from "../../../api/api";
+import { API_URL } from "../../../utils/environments";
 
 export function OrderSummary() {
   const [subTotal, setSubTotal] = useState(0);

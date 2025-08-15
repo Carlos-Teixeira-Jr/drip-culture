@@ -2,7 +2,7 @@ import { EmptyCartContainer } from "../chart/emptyChartContainer/EmptyCartContai
 import { useEffect, useState } from "react";
 import { OrdersProductsContainer } from "../chart/chartProductsContainer/ChartProductsContainer";
 import { useUser } from "@clerk/clerk-react";
-import { API_URL } from "../../../api/api";
+import { API_URL } from "../../../utils/environments";
 
 
 export function OrdersContainer() {
