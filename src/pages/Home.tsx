@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { AdvantagesBanner } from "../components/banners/advantagesBanner/AdvantagesBanner";
 import { BrowsingProductsBanner } from "../components/banners/browsingProductsBanner/BrowsingProductsBanner";
 import { NewCollectionBanner } from "../components/banners/newCollectionBanner/NewCollectionBanner";
