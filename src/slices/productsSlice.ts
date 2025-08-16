@@ -47,20 +47,17 @@ export const fetchProducts = createAsyncThunk(
     const titleFilterParam = titleFilter ? `&title_like=${titleFilter}` : "";
 
     if (price === 0) {
-      const allDataResponse = await fetch(
-        `${API_URL}/products?_sort=price&_order=desc`
-      );
-      const allDataJson = await allDataResponse.json();
-      if (allDataJson.length > 0) {
-        price = allDataJson[0].price;
-        dispatch(setPrice(price));
-      }
+      await fetch(`${API_URL}/products?_sort=price&_order=desc`)
+        .then(async (response) => {
+          const res = await response.json();
+          price = res.length > 0 ? res[0].price : 0;
+          dispatch(setPrice(price));
+        })
+        .catch((error) => console.error("error: ", error));
     }
 
     if (categories.length === 0) {
-      const categoriesResponse = await fetch(
-        `${API_URL}/categories`
-      );
+      const categoriesResponse = await fetch(`${API_URL}/categories`);
       const categoriesJson = await categoriesResponse.json();
       categories = categoriesJson;
       dispatch(setCategories(categories));
@@ -100,9 +97,7 @@ export const fetchPriceEndPoints = createAsyncThunk(
 
     const filterParams = filter ? `&category=${filter}` : "";
 
-    const response = await fetch(
-      `${API_URL}/products?${filterParams}`
-    );
+    const response = await fetch(`${API_URL}/products?${filterParams}`);
     const allDataJson: IProduct[] = await response.json();
 
     let minPrice = 0;
@@ -118,7 +113,7 @@ export const fetchPriceEndPoints = createAsyncThunk(
         }
         if (allDataJson[i].price > maxPrice) {
           maxPrice = allDataJson[i].price;
-          dispatch(setPrice(maxPrice))
+          dispatch(setPrice(maxPrice));
         }
       }
     }
@@ -175,7 +170,7 @@ const productsSlice = createSlice({
         if (state.price === productsInitialState.price) {
           state.price = action.payload.max;
         }
-      })
+      });
   },
 });
 
